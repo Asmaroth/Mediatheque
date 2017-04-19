@@ -1,0 +1,20 @@
+clients : 
+	- mettre toutes les fonctions réservées à admin (surcharge) en mettant juste un cout disant qu'il n'a pas accès à cette commande et de demaner de l'aide à un admin
+	- ajouter un formulaire de création de client (doit etre checké par un compte admin ? Via une autre console)
+	- ajouter fonction saveClient : pour ajouter le client créer (via la fct précedente ?) dans la database
+	- fct loadFromFile
+	- mettre a jour : nom/prenom + setter/getter asociés
+	- ATTENTION : getId retourne un string : penser au atoi si on veut utiliser en tant que int
+
+admin :
+	- ajouter fct deleteClient/Admin ? Verifier qu'il a bien rendu tout ses médias
+	- 
+
+
+main :
+	- fct de présentation "bonjour, bienvenu,... Que souhaitez vous faire ? Log in client, admin, créer nouveau compte client, boite à idée pour la médiathèque, informations générales, cdt d'utilisation, informations sur le logiciel (dévellopeurs, verion, ...)"
+
+
+
+divers :
+	- est-ce que c'est le .hpp qui include le .cpp ou l'inverse ? Actuellement : .cpp include .hpp
