@@ -5,20 +5,24 @@
 
 class vhs : public mediat {
     // Attributes
-    protected :
+    protected:
         /// duree en s
         int duree;
-        string maisonProduction;
+        std::string maisonProduction;
         int note;
     // Operations
-    public :
+    public:
+
+        vhs();
+        vhs(int _duree, std::string _maisonProduction, int _note);
+        ~vhs();
         void setDuree (int _duree);
         int getDuree ();
-        void setMaisonProduction (string _maisonProduction);
-        string getMaisonProduction ();
+        void setMaisonProduction (std::string _maisonProduction);
+        std::string getMaisonProduction ();
         void setNote (int _note);
         int getNote ();
-        void info ();
+        virtual void info ();
 };
 
 #endif

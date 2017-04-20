@@ -5,16 +5,20 @@
 
 class peinture : public mediat {
     // Attributes
-    protected :
+    protected:
         int hauteur;
         int longueur;
     // Operations
-    public :
+    public:
+
+        peinture();
+        peinture(int _hauteur, int _longueur);
+        ~peinture();
         void setHauteur (int _hauteur);
         int getHauteur ();
         void setLongueur (int _longueur);
         int getLongueur ();
-        void info ();
+        virtual void info ();
 };
 
 #endif

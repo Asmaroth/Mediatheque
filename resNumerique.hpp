@@ -5,19 +5,22 @@
 
 class resNumerique : public mediat {
     // Attributes
-    protected :
-        string format;
+    protected:
+        std::string format;
         int taille;
-        string path;
+        std::string path;
     // Operations
-    public :
-        void setFormat (string _format);
-        string getFormat ();
+    public:
+        resNumerique();
+        resNumerique( std::string _format, int _taille, std::string path);
+        ~resNumerique();
+        void setFormat (std::string _format);
+        std::string getFormat ();
         void setTaille (int _taille);
         int getTaille ();
-        void setPath (string _path);
-        string getPath ();
-        void info ();
+        void setPath (std::string _path);
+        std::string getPath ();
+        virtual void info ();
 };
 
 #endif

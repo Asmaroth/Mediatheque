@@ -10,7 +10,7 @@ class revues : public livre {
         std::string editeur;
         int nbrArticle;
         /// tableau
-        std::string nomArticle;
+        std::vector<std::string>  nomArticle;
     // Operations
     public:
 
@@ -23,7 +23,8 @@ class revues : public livre {
         int getNbrArticle ();
         void setNomArticle (std::string _nomArticle, int _idArticle);
         std::string getNomArticle (int _idArticle);
-        void info ();
+        std::string getArticle();
+        virtual void info ();
 };
 
 #endif

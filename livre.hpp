@@ -25,7 +25,7 @@ class livre : public mediat {
         std::string getResume ();
         void setNote (int _note);
         int getNote ();
-        void info ();
+        virtual void info ();
 };
 
 #endif

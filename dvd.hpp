@@ -8,14 +8,18 @@ class dvd : public vhs {
     protected :
         int nbrPiste;
         /// tableau
-        string nomPiste;
+        std::vector<std::string> nomPiste;
     // Operations
-    public :
+    public:
+        dvd();
+        dvd(int _nbrPiste, std::string _nomPiste);
+        ~dvd();
         void setNbrPiste (int _nbrPiste);
         int getNbrPiste ();
-        void setNomPiste (string _nomPiste, int _nbrPiste);
-        string getNomPiste (int _nbrPiste);
-        void info ();
+        void setNomPiste (std::string _nomPiste, int _nbrPiste);
+        std::string getNomPiste (int _nbrPiste);
+        std::string getPiste();
+        virtual void info ();
 };
 
 #endif

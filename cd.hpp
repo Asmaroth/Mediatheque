@@ -5,23 +5,29 @@
 
 class cd : public mediat {
     // Attributes
-    protected :
+    protected:
+
         int duree;
         int nbrPiste;
-        string maisonDisque;
+        std::string maisonDisque;
         /// tableau
-        string titrePiste;
+        std::vector<std::string> titrePiste;
         int note;
     // Operations
-    public :
+    public:
+
+        cd();
+        cd(int _duree, int _nbrPiste, std::string _maisonDisque, std::string _titrePiste, int _note);
+        ~cd();
         void setDuree (int _duree);
         int getDuree ();
         void setNbrPiste (int _nbrPiste);
         int getNbrPiste ();
-        void setMaisonDisque (string _maisonDisque);
-        string getMaisonDisque ();
-        void setTitrePiste (string _titrePiste, int _idPiste);
-        string getTitrePiste (int _idPiste);
+        void setMaisonDisque (std::string _maisonDisque);
+        std::string getMaisonDisque ();
+        void setTitrePiste (std::string _titrePiste, int _idPiste);
+        std::string getTitrePiste (int _idPiste);
+        std::string getTitre();
         void setNote (int _note);
         int getNote ();
         void info ();
