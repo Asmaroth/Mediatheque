@@ -1,18 +1,20 @@
 #ifndef MEDIATHEQUE__HPP
 #define MEDIATHEQUE__HPP
 
-#include "utilisateurs.hpp"
-#include "ressources.hpp"
+//#include "utilisateurs.hpp"
+//#include "ressources.hpp"
 
 class mediatheque {
-    // Associations
     // Attributes
     protected :
-        string nom;
+        std::string nom;
     // Operations
     public :
-        void setNom (string _nom);
-        string getNom ();
+    	mediatheque();
+    	mediatheque(std::string _nom);
+    	~mediatheque();
+        void setNom (std::string _nom);
+        std::string getNom ();
         void info ();
 };
 
