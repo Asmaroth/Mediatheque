@@ -14,7 +14,7 @@ class vhs : public media {
     public:
 
         vhs();
-        vhs(int _duree, std::string _maisonProduction, int _note);
+        vhs(int _duree, std::string _maisonProduction, int _note,int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt);
         ~vhs();
         void setDuree (int _duree);
         int getDuree ();

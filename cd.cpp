@@ -8,17 +8,30 @@ cd::cd()
 	maisonDisque = "inconnu";
 	titrePiste.push_back("inconnu");
 	note = 0;
+	id = 0;
+	titre = "Aucun";
+    auteur = "Inconnu";
+    annee = -1;
+    disponible = 2;
+    dureeEmprunt = -1;
+    dateEmprunt = -1;
 
 }
 
-cd::cd(int _duree, int _nbrPiste, std::string _maisonDisque, std::string _titrePiste, int _note)
+cd::cd(int _duree, int _nbrPiste, std::string _maisonDisque, std::string _titrePiste, int _note,int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt)
 {
 	duree = _duree;
 	nbrPiste = _nbrPiste;
 	maisonDisque = _maisonDisque;
 	titrePiste.push_back(_titrePiste);
 	note = _note;
-
+	id = _id;
+	titre = _titre;
+	auteur = _auteur;
+	annee = _annee;
+	disponible = _disponible;
+	dureeEmprunt = _dureeEmprunt;
+	dateEmprunt = _dateEmprunt;
 }
 
 cd::~cd(){}

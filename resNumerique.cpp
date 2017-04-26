@@ -6,13 +6,27 @@ resNumerique::resNumerique()
 	format = "inconnu";
 	taille = 0;
 	path = "inconnu";
+	id = 0;
+	titre = "Aucun";
+    auteur = "Inconnu";
+    annee = -1;
+    disponible = 2;
+    dureeEmprunt = -1;
+    dateEmprunt = -1;
 }
 
-resNumerique::resNumerique( std::string _format, int _taille, std::string _path)
+resNumerique::resNumerique( std::string _format, int _taille, std::string _path,int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt)
 {
 	format = _format;
 	taille = _taille;
 	path = _path;
+	id = _id;
+	titre = _titre;
+	auteur = _auteur;
+	annee = _annee;
+	disponible = _disponible;
+	dureeEmprunt = _dureeEmprunt;
+	dateEmprunt = _dateEmprunt;
 }
 
 resNumerique::~resNumerique(){}

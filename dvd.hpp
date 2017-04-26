@@ -12,7 +12,7 @@ class dvd : public vhs {
     // Operations
     public:
         dvd();
-        dvd(int _nbrPiste, std::string _nomPiste);
+        dvd(int _nbrPiste, std::string _nomPiste,int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt);
         ~dvd();
         void setNbrPiste (int _nbrPiste);
         int getNbrPiste ();

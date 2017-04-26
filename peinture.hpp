@@ -12,7 +12,7 @@ class peinture : public media {
     public:
 
         peinture();
-        peinture(int _hauteur, int _longueur);
+        peinture(int _hauteur, int _longueur,int _hauteur, int _longueur,int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt);
         ~peinture();
         void setHauteur (int _hauteur);
         int getHauteur ();

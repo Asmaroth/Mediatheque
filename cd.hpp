@@ -17,7 +17,7 @@ class cd : public media {
     public:
 
         cd();
-        cd(int _duree, int _nbrPiste, std::string _maisonDisque, std::string _titrePiste, int _note);
+        cd(int _duree, int _nbrPiste, std::string _maisonDisque, std::string _titrePiste, int _note,int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt);
         ~cd();
         void setDuree (int _duree);
         int getDuree ();

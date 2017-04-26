@@ -12,7 +12,7 @@ class resNumerique : public media {
     // Operations
     public:
         resNumerique();
-        resNumerique( std::string _format, int _taille, std::string path);
+        resNumerique( std::string _format, int _taille, std::string path,int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt);
         ~resNumerique();
         void setFormat (std::string _format);
         std::string getFormat ();
