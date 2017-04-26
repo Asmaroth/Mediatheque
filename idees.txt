@@ -18,3 +18,9 @@ main :
 
 divers :
 	- est-ce que c'est le .hpp qui include le .cpp ou l'inverse ? Actuellement : .cpp include .hpp
+
+
+
+
+TODO avant la fin :
+	- renommé toutes les classes en mettant une majuscule au debut du nom de la classe + penser a changer les noms de fichiers correspondant + les appels à ces fichiers
