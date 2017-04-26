@@ -108,20 +108,10 @@ void media::info(){
 		str = "indisponible";
 	else
 		str = "disponible";
-	std::cout << "(" << id << ") " << titre << ", de " << auteur << " est paru en " << annee << ". Il est actuellement " << str << ".\n" << std::endl;
+	std::cout << "(" << id << ") " << titre << ", de " << auteur << " est paru en " << annee << ". Il est actuellement " << str << "." << std::endl;
 }
 
 void media::infoAdmin(){
-	/*std::string str;
-	if (disponible == 0)
-		str = "réservé";
-	else if (disponible == 1)
-		str = "emprunté";
-	else if (disponible == 2)
-		str = "disponible";
-	else
-		str = "indisponible";
-	std::cout << "(" << id << ") " << titre << ", de " << auteur << "est paru en " << annee << ". Il est actuellement " << str << ".\n" << std::endl;*/
-	info();
 	std::cout << "Ce media a été emprunté par (" << idClient << ") le " << dateEmprunt << " pour une durée maximale de " << dureeEmprunt << ".\n" << std::endl;	
+	info();
 }

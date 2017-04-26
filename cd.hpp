@@ -1,9 +1,9 @@
 #ifndef CD__HPP
 #define CD__HPP
 
-#include "mediat.hpp"
+#include "media.cpp"
 
-class cd : public mediat {
+class cd : public media {
     // Attributes
     protected:
 

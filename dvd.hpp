@@ -1,7 +1,7 @@
 #ifndef DVD__HPP
 #define DVD__HPP
 
-#include "vhs.hpp"
+#include "vhs.cpp"
 
 class dvd : public vhs {
     // Attributes

@@ -41,8 +41,8 @@ class media {
         int getDateEmprunt ();
         void setIdClient(int _idClient);
         int getIdClient();
-        void info();
-        void infoAdmin();
+        virtual void info();
+        virtual void infoAdmin();
 };
 
 #endif

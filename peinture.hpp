@@ -1,9 +1,9 @@
 #ifndef PEINTURE__HPP
 #define PEINTURE__HPP
 
-#include "mediat.hpp"
+#include "media.cpp"
 
-class peinture : public mediat {
+class peinture : public media {
     // Attributes
     protected:
         int hauteur;

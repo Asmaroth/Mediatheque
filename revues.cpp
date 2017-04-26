@@ -5,15 +5,37 @@ revues::revues()
 	editeur = "inconnu";
 	nbrArticle = 0;
 	nomArticle.push_back("inconnu");
+	nbrPage = 0;
+	collection = "inconnu";
+	resume = "non existant";
+	note = 0;
+	id = 0;
+	titre = "Aucun";
+    auteur = "Inconnu";
+    annee = -1;
+    disponible = 2;
+    dureeEmprunt = -1;
+    dateEmprunt = -1;
 }
 
 revues::~revues(){}
 
-revues::revues(std::string _editeur, int _nbrArticle, std::string _nomArticle)
+revues::revues(std::string _editeur, int _nbrArticle, std::string _nomArticle, int _nbrPage, std::string _collection, std::string _resume, int _note, int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt)
 {
 	editeur = _editeur;
 	nbrArticle = _nbrArticle;
 	nomArticle.push_back(_nomArticle);
+	nbrPage = _nbrPage;
+	collection = _collection;
+	resume = _resume;
+	note = _note;
+	id = _id;
+	titre = _titre;
+	auteur = _auteur;
+	annee = _annee;
+	disponible = _disponible;
+	dureeEmprunt = _dureeEmprunt;
+	dateEmprunt = _dateEmprunt;
 }
 
 void revues::setEditeur(std::string _editeur)
@@ -52,10 +74,16 @@ int revues::getNbrArticle()
   		return nomArticle[i];
  }
 
-
-
  void revues::info()
  {
-	std::cout << "Cette revue est de la produite par " << getEditeur() << " et contient " << getNbrArticle() << " Article(s)." << std::endl
-		  	  << "Le nom des articles est: " << getArticle() << std::endl;
+ 	livre::info();
+	std::cout << "Cette revue est produite par " << getEditeur() << " et contient " << getNbrArticle() << " Article(s)." << std::endl
+		  	  << "Le nom des articles est : " << getArticle() << std::endl;
  }
+
+void revues::infoAdmin()
+{
+	livre::infoAdmin();
+	std::cout << "Cette revue est produite par " << getEditeur() << " et contient " << getNbrArticle() << " Article(s)." << std::endl
+		  	  << "Le nom des articles est : " << getArticle() << std::endl;
+}

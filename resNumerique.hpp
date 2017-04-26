@@ -1,9 +1,9 @@
 #ifndef RESNUMERIQUE__HPP
 #define RESNUMERIQUE__HPP
 
-#include "mediat.hpp"
+#include "media.cpp"
 
-class resNumerique : public mediat {
+class resNumerique : public media {
     // Attributes
     protected:
         std::string format;

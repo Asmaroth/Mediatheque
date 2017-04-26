@@ -1,9 +1,9 @@
 #ifndef VHS__HPP
 #define VHS__HPP
 
-#include "mediat.hpp"
+#include "media.cpp"
 
-class vhs : public mediat {
+class vhs : public media {
     // Attributes
     protected:
         /// duree en s
