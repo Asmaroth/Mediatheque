@@ -19,7 +19,7 @@ class revues : public livre {
 
         revues();
         ~revues();
-        revues(std::string _editeur, int _nbrArticle, std::string _nomArticle, int _nbrPage, std::string _collection, std::string _resume, int _note, int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt);
+        revues(int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt, int _nbrPage, std::string _collection, std::string _resume, int _note, std::string _editeur, int _nbrArticle, std::string _nomArticle);
         void setEditeur (std::string _editeur);
         std::string getEditeur ();
         void setNbrArticle (int _nbrArticle);

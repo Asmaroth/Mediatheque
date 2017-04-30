@@ -1,15 +1,15 @@
 #include "client.hpp"
 
 
-void client::initTableau(std::string tab, int taille){ //utile ??
+void client::initTableau(std::string *tab, int taille){ //utile ??
 	for (int i = 0 ; i < taille ; i++)
-		tab[i] = "Aucune";
+		tab[i] = "Aucun";
 }
 
-void client::initTableau(int tab, int taille){ //utile ??
+/*void client::initTableau(int tab, int taille){ //utile ??
 	for (int i = 0 ; i < taille ; i++)
 		tab[i] = 0;
-}
+}*/
 
 client::client(){
 	id = 100;
@@ -21,7 +21,7 @@ client::client(){
     initTableau(dateEmprunt, LIMITE_EMPRUNT);
 }
 
-client::client(int _id, std::string _nom, std::string _prenom, std::string _resReservee, std::string _resRendue, std::string _resEmpruntee, std::string _dateEmprunt){
+client::client(int _id, std::string _nom, std::string _prenom, std::string *_resReservee, media *_resRendue, std::string _resEmpruntee, int *_dateEmprunt){
 	std::string str;
 	std::stringstream ss1(_resReservee);
 	std::stringstream ss2(_resRendue);

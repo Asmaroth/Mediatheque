@@ -1,6 +1,8 @@
 #ifndef MEDIAT__HPP
 #define MEDIAT__HPP
 
+#include <string>
+
 /**
  * \brief Contient toutes les ressources de la médiathèque
  *        Ajouter un "info" ou pas ?
@@ -12,6 +14,7 @@ class media {
         int id;
         std::string titre;
         std::string auteur;
+        std::string type;
         int annee;
         int disponible;     //0 = réservé, 1 = emprunté, 2 = non disponible (utile ?), 3 = disponible
         int dureeEmprunt;
@@ -20,7 +23,7 @@ class media {
     // Operations
     public :
         media();
-        media(int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt);
+        media(int _id, std::string _titre, std::string _auteur, std::string _type, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt);
         ~media();
         void reserver ();
         void emprunter ();
@@ -31,6 +34,8 @@ class media {
         std::string getTitre ();
         void setAuteur (std::string _auteur);
         std::string getAuteur ();
+        void setType (std::string _type);
+        std::string getType ();
         void setAnnee (int _annee);
         int getAnnee ();
         void setDisponible (int _disponible);

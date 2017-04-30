@@ -4,16 +4,18 @@ media::media(){
 	id = 0;
 	titre = "Aucun";
     auteur = "Inconnu";
+    type = "Indéfini";
     annee = -1;
     disponible = 2;
     dureeEmprunt = -1;
-    dateEmprunt = -1;
+    dateEmprunt = 0;
 }
 
-media::media(int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt){
+media::media(int _id, std::string _titre, std::string _auteur, std::string _type, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt){
 	id = _id;
 	titre = _titre;
 	auteur = _auteur;
+	type = _type;
 	annee = _annee;
 	disponible = _disponible;
 	dureeEmprunt = _dureeEmprunt;
@@ -56,6 +58,14 @@ void media::setAuteur (std::string _auteur){
 
 std::string media::getAuteur (){
 	return auteur;
+}
+
+void media::setType (std::string _type){
+	type = _type;
+}
+
+std::string media::getType (){
+	return type;
 }
 
 void media::setAnnee (int _annee){

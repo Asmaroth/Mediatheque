@@ -10,15 +10,16 @@ livre::livre()
 	id = 0;
 	titre = "Aucun";
     auteur = "Inconnu";
+    type = "Livre";
     annee = -1;
     disponible = 2;
     dureeEmprunt = -1;
-    dateEmprunt = -1;
+    dateEmprunt = 0;
 }
 
 livre::~livre(){}
 
-livre::livre(int _nbrPage, std::string _collection, std::string _resume, int _note, int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt)
+livre::livre(int _id, const char *_titre, const char *_auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt, int _nbrPage, const char *_collection, const char *_resume, int _note)
 {
 	nbrPage = _nbrPage;
 	collection = _collection;
@@ -27,6 +28,23 @@ livre::livre(int _nbrPage, std::string _collection, std::string _resume, int _no
 	id = _id;
 	titre = _titre;
 	auteur = _auteur;
+	type = "Livre";
+	annee = _annee;
+	disponible = _disponible;
+	dureeEmprunt = _dureeEmprunt;
+	dateEmprunt = _dateEmprunt;
+}
+
+livre::livre(int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt, int _nbrPage, std::string _collection, std::string _resume, int _note)
+{
+	nbrPage = _nbrPage;
+	collection = _collection;
+	resume = _resume;
+	note = _note;
+	id = _id;
+	titre = _titre;
+	auteur = _auteur;
+	type = "Livre";
 	annee = _annee;
 	disponible = _disponible;
 	dureeEmprunt = _dureeEmprunt;
@@ -77,7 +95,7 @@ void livre::info()
 {
 	media::info();
 	std::cout << "Ce livre est de la collection " << getCollection() << " et contient " << getPage() << " pages." << std::endl
-		  	  << "La note des lecteurs est de: " << getNote() << std::endl
+		  	  << "La note des lecteurs est de : " << getNote() << "/5" << std::endl
 		  	  << "En voici un resume: " << getResume() << std::endl;
 }
 
@@ -85,7 +103,7 @@ void livre::infoAdmin()
 {
 	media::infoAdmin();
 	std::cout << "Ce livre est de la collection " << getCollection() << " et contient " << getPage() << " pages." << std::endl
-		  	  << "La note des lecteurs est de: " << getNote() << std::endl
+		  	  << "La note des lecteurs est de : " << getNote() << "/5" << std::endl
 		  	  << "En voici un resume: " << getResume() << std::endl;
 
 }

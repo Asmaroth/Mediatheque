@@ -1,11 +1,15 @@
+#include <vector>
+#include <iostream>	// std::cout
+#include <cstring>
 #include <stdio.h>
-#include <iostream>
+#include <ctime>
 #include <string>
 #include <fstream>
 #include <ostream>
 #include <ios>
 #include <sstream>
 #include <cstdlib>
+#include <string>	//std::string   std::to_string
 
 
 /*
@@ -22,8 +26,9 @@ IMPORTANT :
 */
 
 //#include "mediatheque.cpp"
-//#include "livre.cpp"
-#include "revues.cpp"
+#include "livre.cpp"
+//#include "revues.cpp"
+#include "ressources.cpp"
 
 /* test mediatheque
 int main(){
@@ -36,7 +41,7 @@ int main(){
 }
 */
 
-/*test livre*/
+/*test revue
 int main(){
 	revues *lvr = new revues();
 	lvr->setCollection("Milles et une nuits");
@@ -44,4 +49,22 @@ int main(){
 	lvr->infoAdmin();
 	delete lvr;
 	exit(EXIT_SUCCESS);
+}*/
+
+/*test ressource*/
+int main(){
+	/*std::vector<media*> myvector;
+	livre *lvr = new livre();
+	myvector.push_back(lvr);
+	myvector[0]->info();*/
+	/*std::string str;
+	std::stringstream ss("100;DUPONT ;JEAN ;aucune ;aucune ;aucune ;0\n100 ;BELLICAULT ;CORENTIN ;aucune ;aucune ;aucune ;0");
+	getline(ss, str, ';');*/
+	ressources *res = new ressources();
+	//res->info();
+	res->load("livre.txt");
+	//res->info();
+	//res->infoContenu();
+	delete res;
+	//exit(EXIT_SUCCESS);
 }
