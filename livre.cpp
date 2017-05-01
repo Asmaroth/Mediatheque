@@ -1,4 +1,5 @@
 #include "livre.hpp"
+#include "ressources.hpp"
 
 
 livre::livre()
@@ -106,4 +107,9 @@ void livre::infoAdmin()
 		  	  << "La note des lecteurs est de : " << getNote() << "/5" << std::endl
 		  	  << "En voici un resume: " << getResume() << std::endl;
 
+}
+
+std::string livre::infoToSave(){
+	std::string str = int2str(getId()) + ';' + getTitre() + ';' + getAuteur() + ';' + getType() + ';' + int2str(getAnnee()) + ';' + int2str(getDisponible()) + ';' + int2str(getDureeEmprunt()) + ';' + int2str(getDateEmprunt()) + ';' + int2str(getIdClient()) + ';' + int2str(getPage()) + ';' + getCollection() + ';' + getResume() + ';' + int2str(getNote());
+	return str;
 }

@@ -4,9 +4,11 @@
 #include <string>
 #include <vector>
 #include "media.hpp"
+#include <iostream>
+#include <fstream>
 
 
-#define NBR_DATA_LIVRE 11
+#define NBR_DATA_LIVRE 10
 
 class ressources {
     // Attributes
@@ -32,10 +34,16 @@ class ressources {
         void setStock (int _stock);
         int getStock ();
         void info ();
-        void infoContenu();
         int str2int(std::string str);
+        std::string int2str(int nbr);
         void createLivre(std::string _buf, livre *lvr);
         void load(const char *filename);
+        void save(const char *filename);
+        void clear();
+        void show(int _id);
+        void list();
+        void deleteMedia(int _id);
+        void reset();
 };
 
 #endif

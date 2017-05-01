@@ -46,8 +46,10 @@ class media {
         int getDateEmprunt ();
         void setIdClient(int _idClient);
         int getIdClient();
+        std::string int2str(int nbr);
         virtual void info();
         virtual void infoAdmin();
+        virtual std::string infoToSave();
 };
 
 #endif

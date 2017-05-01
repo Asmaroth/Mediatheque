@@ -4,12 +4,13 @@
 #include <stdio.h>
 #include <ctime>
 #include <string>
-#include <fstream>
+#include <fstream> //file stream
 #include <ostream>
 #include <ios>
 #include <sstream>
 #include <cstdlib>
 #include <string>	//std::string   std::to_string
+#include <stdlib.h>
 
 
 /*
@@ -52,19 +53,14 @@ int main(){
 }*/
 
 /*test ressource*/
+
 int main(){
-	/*std::vector<media*> myvector;
-	livre *lvr = new livre();
-	myvector.push_back(lvr);
-	myvector[0]->info();*/
-	/*std::string str;
-	std::stringstream ss("100;DUPONT ;JEAN ;aucune ;aucune ;aucune ;0\n100 ;BELLICAULT ;CORENTIN ;aucune ;aucune ;aucune ;0");
-	getline(ss, str, ';');*/
 	ressources *res = new ressources();
-	//res->info();
 	res->load("livre.txt");
-	//res->info();
-	//res->infoContenu();
+	res->reset();
+	res->list();
+	//res->save("save.txt");
+	//res->reset();
 	delete res;
-	//exit(EXIT_SUCCESS);
+	exit(EXIT_FAILURE);
 }

@@ -27,6 +27,7 @@ class livre : public media {
         int getNote ();
         virtual void info ();
         virtual void infoAdmin();
+        virtual std::string infoToSave();
 };
 
 #endif

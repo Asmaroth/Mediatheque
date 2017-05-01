@@ -108,6 +108,13 @@ int media::getIdClient(){
 	return idClient;
 }
 
+std::string media::int2str(int nbr)
+{
+	std::stringstream ss;
+	ss << nbr;
+	return ss.str();
+}
+
 void media::info(){
 	std::string str;
 	if (disponible == 0)
@@ -124,4 +131,9 @@ void media::info(){
 void media::infoAdmin(){
 	std::cout << "Ce media a été emprunté par (" << idClient << ") le " << dateEmprunt << " pour une durée maximale de " << dureeEmprunt << ".\n" << std::endl;	
 	info();
+}
+
+std::string media::infoToSave(){
+	std::string str = int2str(getId()) + ';' + getTitre() + ';' + getAuteur() + ';' + getType() + ';' + int2str(getAnnee()) + ';' + int2str(getDisponible()) + ';' + int2str(getDureeEmprunt()) + ';' + int2str(getDateEmprunt()) + ';' + int2str(getIdClient());
+	return str;
 }
