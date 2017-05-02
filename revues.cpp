@@ -15,12 +15,12 @@ revues::revues()
     annee = -1;
     disponible = 2;
     dureeEmprunt = -1;
-    dateEmprunt = -1;
+    dateEmprunt = 0;
 }
 
 revues::~revues(){}
 
-revues::revues(std::string _editeur, int _nbrArticle, std::string _nomArticle, int _nbrPage, std::string _collection, std::string _resume, int _note, int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt)
+revues::revues(int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt, int _nbrPage, std::string _collection, std::string _resume, int _note, std::string _editeur, int _nbrArticle, std::string _nomArticle)
 {
 	editeur = _editeur;
 	nbrArticle = _nbrArticle;

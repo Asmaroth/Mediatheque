@@ -1,8 +1,23 @@
 #ifndef CLIENT__HPP
 #define CLIENT__HPP
 
+#include <vector>
+#include <iostream> // std::cout
+#include <cstring>
+#include <stdio.h>
+#include <ctime>
+#include <string>
+#include <fstream>
+#include <ostream>
+#include <ios>
+#include <sstream>
+#include <cstdlib>
+#include <string>
+
 #define LIMITE_RESERVATION 2
 #define LIMITE_EMPRUNT 2
+
+#include "media.cpp"
 
 class client {
     // Attributes
@@ -19,6 +34,8 @@ class client {
         client();
         client(int _id, std::string _nom, std::string _prenom, std::string *_resReservee, media *_resRendue, std::string _resEmpruntee, int *_dateEmprunt);
         ~client();
+        void initTableau(std::string *tab, int taille);
+        //void initTableau(int tab, int taille);
         void setId(int _id);
         int getId ();
         void setNom(std::string _nom);

@@ -7,7 +7,7 @@ client utilisateurs::createClient(std::string _buf){
 	std::string data[NBR_DATA_USER];
 	std::stringstream ss(_buf);
 	for (int i = 0 ; i < NBR_DATA_USER ; i++)
-		getline(ss, data[i]);
+		getline(ss, data[i], ';');
 	clients *newClient = new client(atoi(data[0].c_str()), data[1], data[2], data[3], data[4], data[5], data[6]);
 	return newClient;
 }
@@ -16,7 +16,7 @@ admin utilisateurs::createAdmin(std::string _buf){
 	std::string data[NBR_DATA_ADMIN];
 	std::stringstream ss(_buf);
 	for (int i = 0 ; i < NBR_DATA_ADMIN ; i++)
-		getline(ss, data[i]);
+		getline(ss, data[i], ';');
 	admin *newAdmin = new admin(atoi(data[0].c_str()), data[1], data[2], data[3], data[4], data[5], data[6]);
 	return newAdmin;
 }

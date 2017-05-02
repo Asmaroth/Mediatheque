@@ -1,11 +1,16 @@
+#include <vector>
+#include <iostream>	// std::cout
+#include <cstring>
 #include <stdio.h>
-#include <iostream>
+#include <ctime>
 #include <string>
-#include <fstream>
+#include <fstream> //file stream
 #include <ostream>
 #include <ios>
 #include <sstream>
 #include <cstdlib>
+#include <string>	//std::string   std::to_string
+#include <stdlib.h>
 
 
 /*
@@ -22,8 +27,9 @@ IMPORTANT :
 */
 
 //#include "mediatheque.cpp"
-//#include "livre.cpp"
-#include "revues.cpp"
+#include "livre.cpp"
+//#include "revues.cpp"
+#include "ressources.cpp"
 
 /* test mediatheque
 int main(){
@@ -36,7 +42,7 @@ int main(){
 }
 */
 
-/*test livre*/
+/*test revue
 int main(){
 	revues *lvr = new revues();
 	lvr->setCollection("Milles et une nuits");
@@ -44,4 +50,17 @@ int main(){
 	lvr->infoAdmin();
 	delete lvr;
 	exit(EXIT_SUCCESS);
+}*/
+
+/*test ressource*/
+
+int main(){
+	ressources *res = new ressources();
+	res->load("livre.txt");
+	res->reset();
+	res->list();
+	//res->save("save.txt");
+	//res->reset();
+	delete res;
+	exit(EXIT_FAILURE);
 }

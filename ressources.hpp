@@ -1,21 +1,32 @@
 #ifndef RESSOURCES__HPP
 #define RESSOURCES__HPP
 
+#include <string>
+#include <vector>
+#include "media.hpp"
+#include <iostream>
+#include <fstream>
+
+
+#define NBR_DATA_LIVRE 10
+
 class ressources {
-    // Associations
     // Attributes
+    private:
+        std::vector<media*> medias;
+        std::vector<media*> mediaSave; //use mediaSave.swap(medias)
+
     protected:
 
-        int nbrRessource;
-        /// vecteur
         std::vector<std::string> typeRessource;
+        int nbrRessource; //utile ?
         int stock;
     // Operations
     public:
 
     	ressources();
     	~ressources();
-    	ressources(int _nbrRessource , std::string _nomRessource , int _stock);
+    	ressources(int _nbrRessource, std::string _nomRessource, int _stock);
         void setNbrRessource (int _nbrRessource);
         int getNbrRessource ();
         void setTypeRessource (std::string _nomRessource);
@@ -23,6 +34,16 @@ class ressources {
         void setStock (int _stock);
         int getStock ();
         void info ();
+        int str2int(std::string str);
+        std::string int2str(int nbr);
+        void createLivre(std::string _buf, livre *lvr);
+        void load(const char *filename);
+        void save(const char *filename);
+        void clear();
+        void show(int _id);
+        void list();
+        void deleteMedia(int _id);
+        void reset();
 };
 
 #endif
