@@ -1,4 +1,4 @@
 (1) Liste des Livres :
-Eragon; Christopher PAOLINI ; 2002 ; 3 ; 60 ; 0 ; 694 ; L'Héritage ; Eragon trouve une pierre dans la foret, c'est un oeuf de dragon, il devient dragonnier et se bat pour renverser le despote au pouvoir en Alagaesia ayant renversé l'antique ordre des Dragonniers qui maintenaient la paix ; 5
-D'un Monde à l'Autre ; Pierre BOTTERO ; 2003 ; 3 ; 60 ; 0 ; 200 ; La Quete d'Ewilan ; Camille est une jeune surdouée qui a la capacité de passer dans un monde parallèle grace au pouvoir de l'imagination. Elle se retrouve dans un monde fantastique avec comme objectif de sauver le peuple des hommes des Ts'liches et de retrouver ses parents. ; 5
-Les Chroniques de Corentin;Corentin BELLICAULT;2017 ; 3 ; 1 ; 0 ; 1500 ; La vie de Dieu ; Coco en vacances a l'ENSEIRB ; 500
+L1 ; Eragon; Christopher PAOLINI ; 2002 ; 3 ; 60 ; 0 ; 694 ; L'Héritage ; Eragon trouve une pierre dans la foret, c'est un oeuf de dragon, il devient dragonnier et se bat pour renverser le despote au pouvoir en Alagaesia ayant renversé l'antique ordre des Dragonniers qui maintenaient la paix ; 5
+L2 ; D'un Monde à l'Autre ; Pierre BOTTERO ; 2003 ; 3 ; 60 ; 0 ; 200 ; La Quete d'Ewilan ; Camille est une jeune surdouée qui a la capacité de passer dans un monde parallèle grace au pouvoir de l'imagination. Elle se retrouve dans un monde fantastique avec comme objectif de sauver le peuple des hommes des Ts'liches et de retrouver ses parents. ; 5
+L3 ; Les Chroniques de Corentin;Corentin BELLICAULT;2017 ; 3 ; 1 ; 0 ; 1500 ; La vie de Dieu ; Coco en vacances a l'ENSEIRB ; 500

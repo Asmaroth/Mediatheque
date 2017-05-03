@@ -40,9 +40,9 @@ class ressources {
         void load(const char *filename);
         void save(const char *filename);
         void clear();
-        void show(int _id);
+        void show(int _id); //revoir par rapport a ID ?
         void list();
-        void deleteMedia(int _id);
+        void deleteMedia(int _id);  //revoir par rapport a ID ?
         void reset();
 };
 

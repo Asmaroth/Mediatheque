@@ -1,7 +1,7 @@
 #include "media.hpp"
 
 media::media(){
-	id = 0;
+	id = "0";
 	titre = "Aucun";
     auteur = "Inconnu";
     type = "Indéfini";
@@ -11,7 +11,7 @@ media::media(){
     dateEmprunt = 0;
 }
 
-media::media(int _id, std::string _titre, std::string _auteur, std::string _type, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt){
+media::media(std::string _id, std::string _titre, std::string _auteur, std::string _type, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt){
 	id = _id;
 	titre = _titre;
 	auteur = _auteur;
@@ -36,11 +36,11 @@ void media::rendre(){
 	disponible = 3;
 }
 
-void media::setId(int _id){
+void media::setId(std::string _id){
 	id = _id;
 }
 
-int media::getId(){
+std::string media::getId(){
 	return id;
 }
 
@@ -134,6 +134,6 @@ void media::infoAdmin(){
 }
 
 std::string media::infoToSave(){
-	std::string str = int2str(getId()) + ';' + getTitre() + ';' + getAuteur() + ';' + getType() + ';' + int2str(getAnnee()) + ';' + int2str(getDisponible()) + ';' + int2str(getDureeEmprunt()) + ';' + int2str(getDateEmprunt()) + ';' + int2str(getIdClient());
+	std::string str = getId() + ';' + getTitre() + ';' + getAuteur() + ';' + getType() + ';' + int2str(getAnnee()) + ';' + int2str(getDisponible()) + ';' + int2str(getDureeEmprunt()) + ';' + int2str(getDateEmprunt()) + ';' + int2str(getIdClient());
 	return str;
 }

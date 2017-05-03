@@ -11,7 +11,7 @@
 class media {
     // Attributes
     protected :
-        int id;
+        std::string id;
         std::string titre;
         std::string auteur;
         std::string type;
@@ -23,13 +23,13 @@ class media {
     // Operations
     public :
         media();
-        media(int _id, std::string _titre, std::string _auteur, std::string _type, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt);
+        media(std::string _id, std::string _titre, std::string _auteur, std::string _type, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt);
         ~media();
         void reserver ();
         void emprunter ();
         void rendre ();
-        void setId(int _id);
-        int getId();
+        void setId(std::string _id);
+        std::string getId();
         void setTitre (std::string _titre);
         std::string getTitre ();
         void setAuteur (std::string _auteur);

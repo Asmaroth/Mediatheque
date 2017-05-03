@@ -8,7 +8,7 @@ livre::livre()
 	collection = "inconnu";
 	resume = "non existant";
 	note = 0;
-	id = 0;
+	id = "L0";
 	titre = "Aucun";
     auteur = "Inconnu";
     type = "Livre";
@@ -20,7 +20,7 @@ livre::livre()
 
 livre::~livre(){}
 
-livre::livre(int _id, const char *_titre, const char *_auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt, int _nbrPage, const char *_collection, const char *_resume, int _note)
+livre::livre(std::string _id, const char *_titre, const char *_auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt, int _nbrPage, const char *_collection, const char *_resume, int _note)
 {
 	nbrPage = _nbrPage;
 	collection = _collection;
@@ -36,7 +36,7 @@ livre::livre(int _id, const char *_titre, const char *_auteur, int _annee, int _
 	dateEmprunt = _dateEmprunt;
 }
 
-livre::livre(int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt, int _nbrPage, std::string _collection, std::string _resume, int _note)
+livre::livre(std::string _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt, int _nbrPage, std::string _collection, std::string _resume, int _note)
 {
 	nbrPage = _nbrPage;
 	collection = _collection;
