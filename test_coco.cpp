@@ -33,6 +33,9 @@ IMPORTANT :
 #include "livre.cpp"
 #include "revues.cpp"
 #include "ressources.cpp"
+#include "utilisateurs.cpp"
+//#include "client.cpp"
+//#include "admin.cpp"
 
 /* test mediatheque
 int main(){
@@ -57,12 +60,30 @@ int main(){
 
 /*test ressource*/
 
+<<<<<<< HEAD
 int main(){
 	ressources *res = new ressources();
 	res->load("revues.txt");
+=======
+/*int main(){
+	/*ressources *res = new ressources();
+>>>>>>> f37b30277b10cba53a6af24629586b4a56472685
 	res->load("livre.txt");
 	//res->reset();
 	//res->save("save.txt");
 	delete res;
+<<<<<<< HEAD
+=======
+	exit(EXIT_SUCCESS);
+}*/
+
+
+
+/*test utilisateurs*/
+
+int main(){
+	utilisateurs *uti = new utilisateurs("utilisateurs.txt");
+	delete uti;
+>>>>>>> f37b30277b10cba53a6af24629586b4a56472685
 	exit(EXIT_SUCCESS);
 }
