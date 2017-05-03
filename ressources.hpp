@@ -11,6 +11,10 @@
 #define NBR_DATA_LIVRE 11
 #define NBR_DATA_REVUES 14
 #define NBR_DATA_CD 12
+#define NBR_DATA_VHS 10
+#define NBR_DATA_DVD 12
+#define NBR_DATA_RESNUM 10
+#define NBR_DATA_PTR 9
 
 class ressources {
     // Attributes
@@ -42,9 +46,9 @@ class ressources {
         void createRevues(std::string _buf, revues *rev);
         void createCd(std::string _buf, cd *cd);
         void createDvd(std::string _buf, dvd *dvd);
-        //void createResNumerique(std::string _buf, resNumerique *resNum);
-        //void createVhs(std::string _buf, vhs *vhs);
-        //void createPeinture(std::string _buf, peinture *ptr);
+        void createResNumerique(std::string _buf, resNumerique *resNum);
+        void createVhs(std::string _buf, vhs *vhs);
+        void createPeinture(std::string _buf, peinture *ptr);
         void load(const char *filename);
         void save(const char *filename);
         void clear();

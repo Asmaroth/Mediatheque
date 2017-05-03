@@ -1,7 +1,7 @@
 #ifndef RESNUMERIQUE__HPP
 #define RESNUMERIQUE__HPP
 
-#include "media.cpp"
+
 
 class resNumerique : public media {
     // Attributes

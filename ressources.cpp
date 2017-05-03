@@ -166,85 +166,92 @@ void ressources::createCd(std::string _buf, cd *cd)
 void ressources::createDvd(std::string _buf, dvd *dvd)
 {
 	std::string str;
-	std::string data[NBR_DATA_LIVRE];
+	std::string data[NBR_DATA_DVD];
 	std::stringstream ss(_buf);
-	for (int i = 0 ; i < NBR_DATA_LIVRE ; i++){
+	for (int i = 0 ; i < NBR_DATA_DVD ; i++){
 		getline(ss, str, ';');
 		data[i] = str;
 	}
-	dvd->setId(0);
-	dvd->setTitre(data[0]);
-	dvd->setAuteur(data[1]);
-	dvd->setAnnee(str2int(data[2]));
-	dvd->setDisponible(str2int(data[3]));
-	dvd->setDureeEmprunt(str2int(data[4]));
-	dvd->setDateEmprunt(str2int(data[5]));
-	dvd->setDuree(str2int(data[6]));
-	dvd->setNbrPiste(str2int(data[7]);
-	dvd->setNomPiste(data[8]);
+	std::stringstream ss2(data[10]);
+	for (int i = 0 ; i < str2int(data[10]); i++)
+	{
+		getline(ss2, str , ',');
+		dvd->setNomPiste(str);
+	}
+	dvd->setId(data[0]);
+	dvd->setTitre(data[1]);
+	dvd->setAuteur(data[2]);
+	dvd->setAnnee(str2int(data[3]));
+	dvd->setDisponible(str2int(data[4]));
+	dvd->setDureeEmprunt(str2int(data[5]));
+	dvd->setDateEmprunt(str2int(data[6]));
+	dvd->setDuree(str2int(data[7]));
+	dvd->setMaisonProduction(data[8]);
+	dvd->setNote(str2int(data[9]));
+	dvd->setNbrPiste(str2int(data[10]));
 }
-/*
+
 void ressources::createResNumerique(std::string _buf, resNumerique *resNum)
 {
 	std::string str;
-	std::string data[NBR_DATA_LIVRE];
+	std::string data[NBR_DATA_RESNUM];
 	std::stringstream ss(_buf);
-	for (int i = 0 ; i < NBR_DATA_LIVRE ; i++){
+	for (int i = 0 ; i < NBR_DATA_RESNUM ; i++){
 		getline(ss, str, ';');
 		data[i] = str;
 	}
-	resNum->setId(0);
-	resNum->setTitre(data[0]);
-	resNum->setAuteur(data[1]);
-	resNum->setAnnee(str2int(data[2]));
-	resNum->setDisponible(str2int(data[3]));
-	resNum->setDureeEmprunt(str2int(data[4]));
-	resNum->setDateEmprunt(str2int(data[5]));
-	resNum->setFormat((data[6]));
-	resNum->setTaille(str2int(data[7]);
-	resNum->setPath(data[8]);
+	resNum->setId(data[0]);
+	resNum->setTitre(data[1]);
+	resNum->setAuteur(data[2]);
+	resNum->setAnnee(str2int(data[3]));
+	resNum->setDisponible(str2int(data[4]));
+	resNum->setDureeEmprunt(str2int(data[5]));
+	resNum->setDateEmprunt(str2int(data[6]));
+	resNum->setFormat((data[7]));
+	resNum->setTaille(str2int(data[8]));
+	resNum->setPath(data[9]);
 }
 
 void ressources::createVhs(std::string _buf, vhs *vhs)
 {
 	std::string str;
-	std::string data[NBR_DATA_LIVRE];
+	std::string data[NBR_DATA_VHS];
 	std::stringstream ss(_buf);
-	for (int i = 0 ; i < NBR_DATA_LIVRE ; i++){
+	for (int i = 0 ; i < NBR_DATA_VHS ; i++){
 		getline(ss, str, ';');
 		data[i] = str;
 	}
-	vhs->setId(0);
-	vhs->setTitre(data[0]);
-	vhs->setAuteur(data[1]);
-	vhs->setAnnee(str2int(data[2]));
-	vhs->setDisponible(str2int(data[3]));
-	vhs->setDureeEmprunt(str2int(data[4]));
-	vhs->setDateEmprunt(str2int(data[5]));
-	vhs->setDuree(str2int(data[6]));
-	vhs->setMaisonProduction(data[7]);
+	vhs->setId(data[0]);
+	vhs->setTitre(data[1]);
+	vhs->setAuteur(data[2]);
+	vhs->setAnnee(str2int(data[3]));
+	vhs->setDisponible(str2int(data[4]));
+	vhs->setDureeEmprunt(str2int(data[5]));
+	vhs->setDateEmprunt(str2int(data[6]));
+	vhs->setDuree(str2int(data[7]));
+	vhs->setMaisonProduction(data[8]);
 	vhs->setNote(str2int(data[9]));
 }
 
 void ressources::createPeinture(std::string _buf, peinture *ptr)
 {
 	std::string str;
-	std::string data[NBR_DATA_LIVRE];
+	std::string data[NBR_DATA_PTR];
 	std::stringstream ss(_buf);
-	for (int i = 0 ; i < NBR_DATA_LIVRE ; i++){
+	for (int i = 0 ; i < NBR_DATA_PTR ; i++){
 		getline(ss, str, ';');
 		data[i] = str;
 	}
-	ptr->setId(0);
-	ptr->setTitre(data[0]);
-	ptr->setAuteur(data[1]);
-	ptr->setAnnee(str2int(data[2]));
-	ptr->setDisponible(str2int(data[3]));
-	ptr->setDureeEmprunt(str2int(data[4]));
-	ptr->setDateEmprunt(str2int(data[5]));
-	ptr->setHauteur(str2int(data[6]));
-	ptr->setLongueur(str2int(data[7]));
-}*/
+	ptr->setId(data[0]);
+	ptr->setTitre(data[1]);
+	ptr->setAuteur(data[2]);
+	ptr->setAnnee(str2int(data[3]));
+	ptr->setDisponible(str2int(data[4]));
+	ptr->setDureeEmprunt(str2int(data[5]));
+	ptr->setDateEmprunt(str2int(data[6]));
+	ptr->setHauteur(str2int(data[7]));
+	ptr->setLongueur(str2int(data[8]));
+}
 
 void ressources::load(const char *filename)
 {
@@ -298,7 +305,7 @@ void ressources::load(const char *filename)
 				mediaSave.push_back(DVD);
 				nbrRessource++;
 				stock++;
-			}/*
+			}
 			else if(mediaType == 5)
 			{
 				//creation d'une ResNumerique
@@ -314,10 +321,10 @@ void ressources::load(const char *filename)
 			{
 				//creation d'une vhs
 				std::cout << "Creation d'une cassette vhs." << std::endl;
-				vhs *vhs = new vhs();
-				createVhs(buf,vhs);
-				medias.push_back(vhs);
-				mediaSave.push_back(vhs);
+				vhs *VHS = new vhs();
+				createVhs(buf,VHS);
+				medias.push_back(VHS);
+				mediaSave.push_back(VHS);
 				nbrRessource++;
 				stock++;
 			}
@@ -331,7 +338,7 @@ void ressources::load(const char *filename)
 				mediaSave.push_back(ptr);
 				nbrRessource++;
 				stock++;
-			}*/
+			}
 			else
 				std::cout << "Impossible de créer le media : " << buf << std::endl;
     	}

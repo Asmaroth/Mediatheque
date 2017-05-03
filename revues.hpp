@@ -1,6 +1,6 @@
 #ifndef REVUES__HPP
 #define REVUES__HPP
-
+#include "media.hpp"
 
 //#include "livre.hpp"      //dans la version finale, on doit inclure .hpp et non pas .cpp
 #include <string>

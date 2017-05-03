@@ -27,15 +27,29 @@ IMPORTANT :
 */
 
 //#include "mediatheque.cpp"
+
 #include "livre.hpp"
 #include "revues.hpp"
+#include "cd.hpp"
+#include "vhs.hpp"
+#include "dvd.hpp"
+#include "resNumerique.hpp"
+#include "peinture.hpp"
+#include "media.hpp"
 #include "ressources.hpp"
+
+
+#include "media.cpp"
 #include "livre.cpp"
 #include "revues.cpp"
+#include "cd.cpp"
+#include "vhs.cpp"
+#include "dvd.cpp"
+#include "resNumerique.cpp"
+#include "peinture.cpp"
 #include "ressources.cpp"
-#include "utilisateurs.cpp"
-//#include "client.cpp"
-//#include "admin.cpp"
+
+
 
 /* test mediatheque
 int main(){
@@ -60,30 +74,17 @@ int main(){
 
 /*test ressource*/
 
-<<<<<<< HEAD
 int main(){
 	ressources *res = new ressources();
+	res->load("cd.txt");
 	res->load("revues.txt");
-=======
-/*int main(){
-	/*ressources *res = new ressources();
->>>>>>> f37b30277b10cba53a6af24629586b4a56472685
 	res->load("livre.txt");
+	res->load ("vhs.txt");
+	res->load("dvd.txt");
+	res->load("resNumerique.txt");
+	res->load("peinture.txt");
 	//res->reset();
 	//res->save("save.txt");
 	delete res;
-<<<<<<< HEAD
-=======
-	exit(EXIT_SUCCESS);
-}*/
-
-
-
-/*test utilisateurs*/
-
-int main(){
-	utilisateurs *uti = new utilisateurs("utilisateurs.txt");
-	delete uti;
->>>>>>> f37b30277b10cba53a6af24629586b4a56472685
 	exit(EXIT_SUCCESS);
 }

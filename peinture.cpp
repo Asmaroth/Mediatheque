@@ -14,7 +14,7 @@ peinture::peinture()
     type = "Peinture";
 }
 
-peinture::peinture(int _hauteur, int _longueur,std::string _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt)
+peinture::peinture(int _hauteur, int _longueur,int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt)
 {
 	hauteur = _hauteur;
 	longueur = _longueur;

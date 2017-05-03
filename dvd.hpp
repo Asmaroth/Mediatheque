@@ -1,7 +1,6 @@
 #ifndef DVD__HPP
 #define DVD__HPP
-
-#include "vhs.cpp"
+#include "media.hpp"
 
 class dvd : public vhs {
     // Attributes
@@ -18,6 +17,7 @@ class dvd : public vhs {
         virtual void setNbrPiste (int _nbrPiste);
         int getNbrPiste ();
         void setNomPiste (std::string _nomPiste, int _nbrPiste);
+        void setNomPiste(std::string _nomPiste);
         std::string getNomPiste (int _nbrPiste);
         std::string getPiste();
         virtual void info ();

@@ -13,10 +13,10 @@ resNumerique::resNumerique()
     disponible = 2;
     dureeEmprunt = -1;
     dateEmprunt = -1;
-    type = " Ressource Numerique";
+    type = "Ressource Numerique";
 }
 
-resNumerique::resNumerique( std::string _format, int _taille, std::string _path,std::string _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt)
+resNumerique::resNumerique( std::string _format, int _taille, std::string _path,int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt)
 {
 	format = _format;
 	taille = _taille;

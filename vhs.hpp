@@ -1,7 +1,7 @@
 #ifndef VHS__HPP
 #define VHS__HPP
 
-#include "media.cpp"
+#include "media.hpp"
 
 class vhs : public media {
     // Attributes

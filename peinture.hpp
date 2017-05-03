@@ -1,7 +1,6 @@
 #ifndef PEINTURE__HPP
 #define PEINTURE__HPP
 
-#include "media.cpp"
 
 class peinture : public media {
     // Attributes
@@ -12,7 +11,7 @@ class peinture : public media {
     public:
 
         peinture();
-        peinture(int _hauteur, int _longueur,int _hauteur, int _longueur,int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt);
+        peinture(int _hauteur, int _longueur,int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt);
         ~peinture();
         void setHauteur (int _hauteur);
         int getHauteur ();
