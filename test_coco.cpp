@@ -28,8 +28,11 @@ IMPORTANT :
 
 //#include "mediatheque.cpp"
 #include "livre.cpp"
-//#include "revues.cpp"
+#include "revues.cpp"
 #include "ressources.cpp"
+#include "utilisateurs.cpp"
+//#include "client.cpp"
+//#include "admin.cpp"
 
 /* test mediatheque
 int main(){
@@ -54,12 +57,22 @@ int main(){
 
 /*test ressource*/
 
-int main(){
+/*int main(){
 	/*ressources *res = new ressources();
 	res->load("livre.txt");
 	//res->reset();
 	//res->list();
 	//res->save("save.txt");
-	delete res;*/
+	delete res;
+	exit(EXIT_SUCCESS);
+}*/
+
+
+
+/*test utilisateurs*/
+
+int main(){
+	utilisateurs *uti = new utilisateurs("utilisateurs.txt");
+	delete uti;
 	exit(EXIT_SUCCESS);
 }
