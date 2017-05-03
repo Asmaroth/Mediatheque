@@ -88,44 +88,48 @@ void ressources::createLivre(std::string _buf, livre *lvr)
 		getline(ss, str, ';');
 		data[i] = str;
 	}
-	lvr->setId(0);
-	lvr->setTitre(data[0]);
-	lvr->setAuteur(data[1]);
-	lvr->setAnnee(str2int(data[2]));
-	lvr->setDisponible(str2int(data[3]));
-	lvr->setDureeEmprunt(str2int(data[4]));
-	lvr->setDateEmprunt(str2int(data[5]));
-	lvr->setPage(str2int(data[6]));
-	lvr->setCollection(data[7]);
-	lvr->setResume(data[8]);
-	lvr->setNote(str2int(data[9]));
+	lvr->setId(data[0]);
+	lvr->setTitre(data[1]);
+	lvr->setAuteur(data[2]);
+	lvr->setAnnee(str2int(data[3]));
+	lvr->setDisponible(str2int(data[4]));
+	lvr->setDureeEmprunt(str2int(data[5]));
+	lvr->setDateEmprunt(str2int(data[6]));
+	lvr->setPage(str2int(data[7]));
+	lvr->setCollection(data[8]);
+	lvr->setResume(data[9]);
+	lvr->setNote(str2int(data[10]));
 }
 
 
 void ressources::createRevues(std::string _buf, revues *rev)
 {
 	std::string str;
-	std::string data[NBR_DATA_LIVRE];
+	std::string data[NBR_DATA_REVUES];
 	std::stringstream ss(_buf);
-	for (int i = 0 ; i < NBR_DATA_LIVRE ; i++){
+	for (int i = 0 ; i < NBR_DATA_REVUES ; i++){
 		getline(ss, str, ';');
 		data[i] = str;
 	}
-	std::stringstream ss2(data[8]);
-	for( int i = 0 ; i < str2int(data[7]); i++ )
+	std::stringstream ss2(data[12]);
+	for( int i = 0 ; i < str2int(data[12]); i++ )
 	{
 		getline(ss2,str,',');
 		rev->setNomArticle(str);
 	}
-	rev->setId(0);
-	rev->setTitre(data[0]);
-	rev->setAuteur(data[1]);
-	rev->setAnnee(str2int(data[2]));
-	rev->setDisponible(str2int(data[3]));
-	rev->setDureeEmprunt(str2int(data[4]));
-	rev->setDateEmprunt(str2int(data[5]));
-	rev->setEditeur(data[6]);
-	rev->setNbrArticle(str2int(data[7]));
+	rev->setId(data[0]);
+	rev->setTitre(data[1]);
+	rev->setAuteur(data[2]);
+	rev->setAnnee(str2int(data[3]));
+	rev->setDisponible(str2int(data[4]));
+	rev->setDureeEmprunt(str2int(data[5]));
+	rev->setDateEmprunt(str2int(data[6]));
+	rev->setPage(str2int(data[7]));
+	rev->setCollection(data[8]);
+	rev->setResume(data[9]);
+	rev->setNote(str2int(data[10]));
+	rev->setEditeur(data[11]);
+	rev->setNbrArticle(str2int(data[12]));
 
 }
 
@@ -259,11 +263,9 @@ void ressources::load(const char *filename)
     		}
   			else if(mediaType == 2){
 				//creation d'une revue
-				std::cout << "Creation d'une revues." << std::endl;
+				std::cout << "Creation d'une revue." << std::endl;
 				revues *rev = new revues();
-				printf("coucou toi \n");
 				createRevues(buf,rev);
-				printf("bha voilaaaa \n");
 				medias.push_back(rev);
 				mediaSave.push_back(rev);
 				nbrRessource++;

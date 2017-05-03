@@ -4,16 +4,17 @@ peinture::peinture()
 {
 	hauteur = 0;
 	longueur = 0;
-	id = 0;
+	id = '0';
 	titre = "Aucun";
     auteur = "Inconnu";
     annee = -1;
     disponible = 2;
     dureeEmprunt = -1;
     dateEmprunt = -1;
+    type = "Peinture";
 }
 
-peinture::peinture(int _hauteur, int _longueur,int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt)
+peinture::peinture(int _hauteur, int _longueur,std::string _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt)
 {
 	hauteur = _hauteur;
 	longueur = _longueur;
@@ -24,6 +25,7 @@ peinture::peinture(int _hauteur, int _longueur,int _id, std::string _titre, std:
 	disponible = _disponible;
 	dureeEmprunt = _dureeEmprunt;
 	dateEmprunt = _dateEmprunt;
+	type = "Peinture";
 }
 
 peinture::~peinture(){}

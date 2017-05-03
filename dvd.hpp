@@ -5,7 +5,8 @@
 
 class dvd : public vhs {
     // Attributes
-    protected :
+    protected:
+
         int nbrPiste;
         /// tableau
         std::vector<std::string> nomPiste;
@@ -14,7 +15,7 @@ class dvd : public vhs {
         dvd();
         dvd(int _nbrPiste, std::string _nomPiste,int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt);
         ~dvd();
-        void setNbrPiste (int _nbrPiste);
+        virtual void setNbrPiste (int _nbrPiste);
         int getNbrPiste ();
         void setNomPiste (std::string _nomPiste, int _nbrPiste);
         std::string getNomPiste (int _nbrPiste);

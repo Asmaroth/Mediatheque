@@ -6,16 +6,17 @@ vhs::vhs()
     duree = 0;
      maisonProduction = "inconnu";
     note = 0;
-    id = 0;
+    id = '0';
     titre = "Aucun";
     auteur = "Inconnu";
     annee = -1;
     disponible = 2;
     dureeEmprunt = -1;
     dateEmprunt = -1;
+    type = "VHS";
 }
 
-vhs::vhs(int _duree, std::string _maisonProduction, int _note,int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt)
+vhs::vhs(int _duree, std::string _maisonProduction, int _note,std::string _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt)
 {
     duree = _duree;
     maisonProduction = _maisonProduction;
@@ -27,6 +28,7 @@ vhs::vhs(int _duree, std::string _maisonProduction, int _note,int _id, std::stri
     disponible = _disponible;
     dureeEmprunt = _dureeEmprunt;
     dateEmprunt = _dateEmprunt;
+    type = "VHS";
 }
 
 vhs::~vhs(){}

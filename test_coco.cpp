@@ -27,8 +27,11 @@ IMPORTANT :
 */
 
 //#include "mediatheque.cpp"
+#include "livre.hpp"
+#include "revues.hpp"
+#include "ressources.hpp"
 #include "livre.cpp"
-//#include "revues.cpp"
+#include "revues.cpp"
 #include "ressources.cpp"
 
 /* test mediatheque
@@ -42,24 +45,24 @@ int main(){
 }
 */
 
-/*test revue
-int main(){
-	revues *lvr = new revues();
-	lvr->setCollection("Milles et une nuits");
-	lvr->setTitre("Les aventures de Don Quichote");
-	lvr->infoAdmin();
-	delete lvr;
+//test revue
+/*int main(){
+	revues *rev = new revues();
+	rev->setCollection("Milles et une nuits");
+	rev->setTitre("Les aventures de Don Quichote");
+	rev->infoAdmin();
+	delete rev;
 	exit(EXIT_SUCCESS);
 }*/
 
 /*test ressource*/
 
 int main(){
-	/*ressources *res = new ressources();
+	ressources *res = new ressources();
+	res->load("revues.txt");
 	res->load("livre.txt");
 	//res->reset();
-	//res->list();
 	//res->save("save.txt");
-	delete res;*/
+	delete res;
 	exit(EXIT_SUCCESS);
 }

@@ -8,7 +8,7 @@
 #include <fstream>
 
 
-#define NBR_DATA_LIVRE 10
+#define NBR_DATA_LIVRE 11
 #define NBR_DATA_REVUES 14
 
 class ressources {

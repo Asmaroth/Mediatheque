@@ -5,16 +5,17 @@ dvd::dvd()
 {
 	nbrPiste = 0;
 	nomPiste.push_back("inconnu");
-	id = 0;
+	id = '0';
 	titre = "Aucun";
     auteur = "Inconnu";
     annee = -1;
     disponible = 2;
     dureeEmprunt = -1;
     dateEmprunt = -1;
+    type = "DVD";
 }
 
-dvd::dvd(int _nbrPiste, std::string _nomPiste,int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt)
+dvd::dvd(int _nbrPiste, std::string _nomPiste,std::string _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt)
 {
 	nbrPiste = _nbrPiste;
 	nomPiste.push_back(_nomPiste);
@@ -25,6 +26,7 @@ dvd::dvd(int _nbrPiste, std::string _nomPiste,int _id, std::string _titre, std::
 	disponible = _disponible;
 	dureeEmprunt = _dureeEmprunt;
 	dateEmprunt = _dateEmprunt;
+	type = "DVD";
 }
 
 dvd::~dvd(){}

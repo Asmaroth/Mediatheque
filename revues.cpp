@@ -9,18 +9,19 @@ revues::revues()
 	collection = "inconnu";
 	resume = "non existant";
 	note = 0;
-	id = 0;
+	id = '0';
 	titre = "Aucun";
     auteur = "Inconnu";
     annee = -1;
     disponible = 2;
     dureeEmprunt = -1;
     dateEmprunt = 0;
+    type = "Revue";
 }
 
 revues::~revues(){}
 
-revues::revues(int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt, int _nbrPage, std::string _collection, std::string _resume, int _note, std::string _editeur, int _nbrArticle, std::string _nomArticle)
+revues::revues(std::string _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt, int _nbrPage, std::string _collection, std::string _resume, int _note, std::string _editeur, int _nbrArticle, std::string _nomArticle)
 {
 	editeur = _editeur;
 	nbrArticle = _nbrArticle;
@@ -36,6 +37,7 @@ revues::revues(int _id, std::string _titre, std::string _auteur, int _annee, int
 	disponible = _disponible;
 	dureeEmprunt = _dureeEmprunt;
 	dateEmprunt = _dateEmprunt;
+	type = "Revue";
 }
 
 void revues::setEditeur(std::string _editeur)
@@ -61,6 +63,10 @@ int revues::getNbrArticle()
  void revues::setNomArticle(std::string _nomArticle, int _idArticle)
  {
  	nomArticle[_idArticle] = _nomArticle;
+ }
+
+ void revues::setNomArticle (std::string _nomArticle){
+ 	nomArticle.push_back(_nomArticle);
  }
 
  std::string revues::getNomArticle(int _idArticle)
