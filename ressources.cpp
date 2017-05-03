@@ -95,8 +95,8 @@ void ressources::createLivre(std::string _buf, livre *lvr)
 	lvr->setDisponible(str2int(data[3]));
 	lvr->setDureeEmprunt(str2int(data[4]));
 	lvr->setDateEmprunt(str2int(data[5]));
-	lvr->setCollection(data[7]);
 	lvr->setPage(str2int(data[6]));
+	lvr->setCollection(data[7]);
 	lvr->setResume(data[8]);
 	lvr->setNote(str2int(data[9]));
 }

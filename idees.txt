@@ -24,3 +24,10 @@ divers :
 
 TODO avant la fin :
 	- renommé toutes les classes en mettant une majuscule au debut du nom de la classe + penser a changer les noms de fichiers correspondant + les appels à ces fichiers
+
+
+
+
+TODO NOW :
+	- Alexis : ressources.cpp : faire toutes les fonctions de load(file) + createType() associées
+	- Coco : loadClient() + revoir identifiants : mettre en string l'Id avec une lettre en premier pour identifier type "L4" pour le 4eme livre de la mediatheque
