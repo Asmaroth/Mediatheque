@@ -55,12 +55,11 @@ int main(){
 /*test ressource*/
 
 int main(){
-	ressources *res = new ressources();
+	/*ressources *res = new ressources();
 	res->load("livre.txt");
-	res->reset();
-	res->list();
-	//res->save("save.txt");
 	//res->reset();
-	delete res;
-	exit(EXIT_FAILURE);
+	//res->list();
+	//res->save("save.txt");
+	delete res;*/
+	exit(EXIT_SUCCESS);
 }
