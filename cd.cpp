@@ -73,6 +73,11 @@ void cd::setTitrePiste(std::string _titrePiste, int _idPiste)
 	titrePiste[_idPiste] = _titrePiste;
 }
 
+void cd::setTitrePiste(std::string _titrePiste)
+{
+	titrePiste.push_back(_titrePiste);
+}
+
 std::string cd::getTitrePiste(int _idPiste)
 {
 	return titrePiste[_idPiste];

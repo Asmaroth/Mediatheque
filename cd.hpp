@@ -1,7 +1,6 @@
 #ifndef CD__HPP
 #define CD__HPP
 
-#include "media.cpp"
 
 class cd : public media {
     // Attributes
@@ -17,7 +16,7 @@ class cd : public media {
     public:
 
         cd();
-        cd(int _duree, int _nbrPiste, std::string _maisonDisque, std::string _titrePiste, int _note,int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt);
+        cd(int _duree, int _nbrPiste, std::string _maisonDisque, std::string _titrePiste, int _note,std::string _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt);
         ~cd();
         void setDuree (int _duree);
         int getDuree ();
@@ -26,6 +25,7 @@ class cd : public media {
         void setMaisonDisque (std::string _maisonDisque);
         std::string getMaisonDisque ();
         void setTitrePiste (std::string _titrePiste, int _idPiste);
+        void setTitrePiste(std::string _titrePiste);
         std::string getTitrePiste (int _idPiste);
         std::string getTitre();
         void setNote (int _note);

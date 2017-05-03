@@ -133,26 +133,33 @@ void ressources::createRevues(std::string _buf, revues *rev)
 
 }
 
-/*void ressources::createCd(std::string _buf, cd *cd)
+void ressources::createCd(std::string _buf, cd *cd)
 {
 	std::string str;
-	std::string data[NBR_DATA_LIVRE];
+	std::string data[NBR_DATA_CD];
 	std::stringstream ss(_buf);
-	for (int i = 0 ; i < NBR_DATA_LIVRE ; i++){
+	for (int i = 0 ; i < NBR_DATA_CD ; i++){
 		getline(ss, str, ';');
 		data[i] = str;
 	}
-	cd->setId(0);
-	cd->setTitre(data[0]);
-	cd->setAuteur(data[1]);
-	cd->setAnnee(str2int(data[2]));
-	cd->setDisponible(str2int(data[3]));
-	cd->setDureeEmprunt(str2int(data[4]));
-	cd->setDateEmprunt(str2int(data[5]));
-	cd->setDuree(str2int(data[6]));
-	cd->setNbrPiste(str2int(data[7]);
-	cd->setMaisonDisque(data[8]);
-	cd->setTitrePiste(data[9]);
+	std::stringstream ss2(data[8]);
+	for (int i = 0 ; i < str2int(data[8]); i++)
+	{
+		getline(ss2, str , ',');
+		cd->setTitrePiste(str);
+	}
+
+	cd->setId(data[0]);
+	cd->setTitre(data[1]);
+	cd->setAuteur(data[2]);
+	cd->setAnnee(str2int(data[3]));
+	cd->setDisponible(str2int(data[4]));
+	cd->setDureeEmprunt(str2int(data[5]));
+	cd->setDateEmprunt(str2int(data[6]));
+	cd->setDuree(str2int(data[7]));
+	cd->setNbrPiste(str2int(data[8]));
+	cd->setMaisonDisque(data[9]);
+	//cd->setTitrePiste(data[10]);
 	cd->setNote(str2int(data[10]));
 }
 
@@ -176,7 +183,7 @@ void ressources::createDvd(std::string _buf, dvd *dvd)
 	dvd->setNbrPiste(str2int(data[7]);
 	dvd->setNomPiste(data[8]);
 }
-
+/*
 void ressources::createResNumerique(std::string _buf, resNumerique *resNum)
 {
 	std::string str;
@@ -270,14 +277,14 @@ void ressources::load(const char *filename)
 				mediaSave.push_back(rev);
 				nbrRessource++;
 				stock++;
-			}/*
+			}
 			else if(mediaType == 3){
 				//creation d'un cd 
 				std::cout << "Creation d'un cd." << std::endl;
-				cd *cd = new cd();
-				createCd(buf,cd);
-				medias.push_back(cd);
-				mediaSave.push_back(cd);
+				cd *CD = new cd();
+				createCd(buf,CD);
+				medias.push_back(CD);
+				mediaSave.push_back(CD);
 				nbrRessource++;
 				stock++;
 			}
@@ -285,13 +292,13 @@ void ressources::load(const char *filename)
 			{
 				//creation d'un dvd
 				std::cout << "Creation d'un dvd." << std::endl;
-				dvd *dvd = new dvd();
-				createDvd(buf,dvd);
-				medias.push_back(dvd);
-				mediaSave.push_back(dvd);
+				dvd *DVD = new dvd();
+				createDvd(buf,DVD);
+				medias.push_back(DVD);
+				mediaSave.push_back(DVD);
 				nbrRessource++;
 				stock++;
-			}
+			}/*
 			else if(mediaType == 5)
 			{
 				//creation d'une ResNumerique

@@ -10,6 +10,7 @@
 
 #define NBR_DATA_LIVRE 11
 #define NBR_DATA_REVUES 14
+#define NBR_DATA_CD 12
 
 class ressources {
     // Attributes
@@ -39,8 +40,8 @@ class ressources {
         std::string int2str(int nbr);
         void createLivre(std::string _buf, livre *lvr);
         void createRevues(std::string _buf, revues *rev);
-        //void createCd(std::string _buf, cd *cd);
-        //void createDvd(std::string _buf, dvd *dvd);
+        void createCd(std::string _buf, cd *cd);
+        void createDvd(std::string _buf, dvd *dvd);
         //void createResNumerique(std::string _buf, resNumerique *resNum);
         //void createVhs(std::string _buf, vhs *vhs);
         //void createPeinture(std::string _buf, peinture *ptr);
