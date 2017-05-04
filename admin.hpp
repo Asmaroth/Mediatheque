@@ -6,15 +6,15 @@
 class admin : public client {
     // Attributes
     protected :
-        string mdp;
+        std::string mdp;
     // Operations
     public :
-        void setMdp (string _mdp);
-        string getMdp ();
-        void add (string _type);
-        void info ();
-        void delete (int _id);
-        void reset ();
+        admin();
+        //admin(int _id, std::string _nom, std::string _prenom, std::string *_resReservee, media *_resRendue, std::string _resEmpruntee, int *_dateEmprunt, std::string _mdp);
+        ~admin();
+        void setMdp (std::string _mdp);
+        std::string getMdp ();
+        virtual void info();
 };
 
 #endif

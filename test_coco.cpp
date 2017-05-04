@@ -11,6 +11,7 @@
 #include <cstdlib>
 #include <string>	//std::string   std::to_string
 #include <stdlib.h>
+//#include <cstdio>
 
 
 /*
@@ -19,15 +20,7 @@ IMPORTANT :
 	Pour le moment on facilite les choses en intégrant les .cpp --> A CHANGER !!
 */
 
-/* Fichiers à inclure lorsque le makefile sera prêt
 #include "mediatheque.hpp"
-#include "media.hpp"
-#include "livre.hpp"
-#include "revue.hpp"
-*/
-
-//#include "mediatheque.cpp"
-
 #include "livre.hpp"
 #include "revues.hpp"
 #include "cd.hpp"
@@ -37,6 +30,9 @@ IMPORTANT :
 #include "peinture.hpp"
 #include "media.hpp"
 #include "ressources.hpp"
+#include "utilisateurs.hpp"
+#include "client.hpp"
+#include "admin.hpp"
 
 
 #include "media.cpp"
@@ -48,29 +44,10 @@ IMPORTANT :
 #include "resNumerique.cpp"
 #include "peinture.cpp"
 #include "ressources.cpp"
+#include "utilisateurs.cpp"
+#include "client.cpp"
+#include "admin.cpp"
 
-
-
-/* test mediatheque
-int main(){
-	mediatheque *med = new mediatheque();
-	med->info();
-	med->setNom("ENSEIRB-MATMECA");
-	med->info();
-	delete med;
-	exit(EXIT_SUCCESS);
-}
-*/
-
-//test revue
-/*int main(){
-	revues *rev = new revues();
-	rev->setCollection("Milles et une nuits");
-	rev->setTitre("Les aventures de Don Quichote");
-	rev->infoAdmin();
-	delete rev;
-	exit(EXIT_SUCCESS);
-}*/
 
 /*test ressource*/
 
@@ -83,8 +60,11 @@ int main(){
 	res->load("dvd.txt");
 	res->load("resNumerique.txt");
 	res->load("peinture.txt");
+	//res->list();
 	//res->reset();
-	//res->save("save.txt");
+	//res->list();
+	res->save("save.txt");
+	utilisateurs *uti = new utilisateurs("utilisateurs.txt");
 	delete res;
 	exit(EXIT_SUCCESS);
 }

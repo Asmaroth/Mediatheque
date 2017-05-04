@@ -1,28 +1,34 @@
 #ifndef UTILISATEURS__HPP
 #define UTILISATEURS__HPP
 
-#include "client.cpp"
-//#include "admin.cpp"
+#include "client.hpp"
+#include "admin.hpp"
 
 class utilisateurs {
     // Associations
     // Attributes
     private :
         std::vector<client*> clients;
-        //std::vector<admin*> admin;
+        std::vector<admin*> adm;
     protected :
-        std::vector<client*> nomUtilisateurs;
+        std::vector<client*> users;
     // Operations
     public :
     	utilisateurs(const char *filename);
     	~utilisateurs();
     	void createClient(std::string _buf, client *clt);
-    	void createAdmin(std::string _buf, client *adm);
-        //void setNomUtilisateur (std::string _nomUtilisateur);
-        std::string getNomUtilisateur ();
-        std::string getClient (std::vector<client*> _clients);
+    	void createAdmin(std::string _buf, admin *administrateur);
+        std::string getUsers ();
+        std::string getClient (); //(std::vector<client*> _clients) avant
+        std::string getClient(int _id);
         std::string getAdmin ();
+        std::string getAdmin(int _id);
         void info ();
+        void infoClient(int _id);
+        int verifIdClient(std::string idClient);
+        int verifMdp(std::string _mdp, int _id);
+        void addClient(client *clt);
+        void addAdmin(admin *administrateur);
 };
 
 #endif

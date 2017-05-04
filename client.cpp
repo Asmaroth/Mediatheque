@@ -12,16 +12,15 @@ void client::initTableau(std::string *tab, int taille){ //utile ??
 }*/
 
 client::client(){
-	id = 100;
+	id = "100";
     nom = "Inconnu";
     prenom = "Inconnu";
     initTableau(resReservee, LIMITE_RESERVATION);
-    resRendue;
     initTableau(resEmpruntee, LIMITE_EMPRUNT);
     initTableau(dateEmprunt, LIMITE_EMPRUNT);
 }
 
-client::client(int _id, std::string _nom, std::string _prenom, std::string *_resReservee, media *_resRendue, std::string _resEmpruntee, int *_dateEmprunt){
+/*client::client(std::string _id, std::string _nom, std::string _prenom, std::string *_resReservee, media *_resRendue, std::string *_resEmpruntee, int *_dateEmprunt){
 	std::string str;
 	std::stringstream ss1(_resReservee);
 	std::stringstream ss2(_resRendue);
@@ -41,15 +40,15 @@ client::client(int _id, std::string _nom, std::string _prenom, std::string *_res
     i = 0;
     while(getline(ss4, str, ','))
     	dateEmprunt[i++] = str;
-}
+}*/
 
 client::~client(){}
 
-void client::setId(int _id){
+void client::setId(std::string _id){
 	id = _id;
 }
 
-int client::getId (){
+std::string client::getId (){
 	return id;
 }
 
@@ -87,20 +86,20 @@ std::string client::getResReservee (int _idResReservee){
 	return resReservee[_idResReservee];
 }
 
-void client::setResRendue (std::string _resRendue){
+void client::setResRendue (media *_resRendue){
 	resRendue.push_back(_resRendue);
 }
 
 std::string client::getResRendue (){
 	std::string str;
 	for(int i = 0 ; i < resRendue.size() ; i++)
-		str = str + ", " + resRendue[i];
+		str = str + ", (" + resRendue[i]->getId() + ") " + resRendue[i]->getTitre();
 	str = str + ".";
 	return str;
 }
 
-std::string getResRendue (int _idResRendue){
-	return resRendue[_idResRendue];
+std::string client::getResRendue (int _idResRendue){
+	return "(" + resRendue[_idResRendue]->getId() + ") " + resRendue[_idResRendue]->getTitre();
 }
 
 void client::setResEmpruntee (std::string _resEmpruntee, int _idResEmpruntee){
@@ -140,9 +139,9 @@ std::string client::getDateEmprunt (int _idDateEmprunt){
 }
 
 void client::info (){
-	std::cout << "(" << id << ") " << nom << prenom << 
+	std::cout << "(" << id << ") " << nom << " " << prenom << " a :\n\temprunte : " << getResEmpruntee() << "\n\tle : " << getDateEmprunt() << "\n\trendu : " << getResRendue() << "\n\treserve : " << getResReservee() << std::endl;
 }
 
-void client::bye (); //devrait etre implémenté dans le main.cpp ?
+//void client::bye (); //devrait etre implémenté dans le main.cpp ?
 
-void client::load (std::string _file);
+//void client::load (std::string _file);

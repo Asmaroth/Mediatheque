@@ -4,7 +4,6 @@
 ressources::ressources()
 {
  nbrRessource = 0;
- typeRessource.push_back("aucun");
  stock = 0;
 }
 
@@ -13,32 +12,30 @@ ressources::~ressources(){ 	//ATTENTION ICI : mauvaise idée de faire ça ? Detr
 		delete medias[i];
 }
 
-ressources::ressources(int _nbrRessource , std::string _nomRessource , int _stock)
+ressources::ressources(int _nbrRessource , std::string _nomRessource , int _stock) //useless 
 {
  nbrRessource = _nbrRessource;
  typeRessource.push_back(_nomRessource);
  stock = _stock;
 }
 
-void ressources::setNbrRessource(int _nbrRessource)
+int ressources::getNbrRessource() 
 {
- nbrRessource = _nbrRessource; 
+ return medias.size();
 }
 
-int ressources::getNbrRessource()
-{
- return nbrRessource;
-}
-
-void ressources::setTypeRessource(std::string _nomRessource)
+void ressources::setTypeRessource(std::string _nomRessource) 
 {
  typeRessource.push_back( _nomRessource );
 } 
 
 std::string ressources::getTypeRessource()
 {
+	std::string str;
 	for ( int i = 0; i < typeRessource.size(); i++)
-  		return typeRessource[i];
+  		str = str + ", " + typeRessource[i];
+  	str = str + ".";
+  	return str;
 }
 
 void ressources::setStock(int _stock)
@@ -61,6 +58,8 @@ void ressources::list(){
 	if(medias.size() != 0)
 		for (int i = 0 ; i < medias.size() ; i++)
 			std:: cout << '(' << medias[i]->getId() << ") " << medias[i]->getType() << " : " << medias[i]->getTitre() << std::endl;
+	else
+		std::cout << "Aucun media repertorie." << std::endl;
 }
 
 int ressources::str2int(std::string str)
@@ -267,7 +266,7 @@ void ressources::load(const char *filename)
     	while (getline(myFile, buf)){
     		if (mediaType == 1){
     			//creation d'un livre
-    			std::cout << "Creation d'un livre." << std::endl;
+    			//std::cout << "Creation d'un livre." << std::endl;
     			livre *lvr = new livre();
     			createLivre(buf, lvr);
     			medias.push_back(lvr);
@@ -277,7 +276,7 @@ void ressources::load(const char *filename)
     		}
   			else if(mediaType == 2){
 				//creation d'une revue
-				std::cout << "Creation d'une revue." << std::endl;
+				//std::cout << "Creation d'une revue." << std::endl;
 				revues *rev = new revues();
 				createRevues(buf,rev);
 				medias.push_back(rev);
@@ -287,7 +286,7 @@ void ressources::load(const char *filename)
 			}
 			else if(mediaType == 3){
 				//creation d'un cd 
-				std::cout << "Creation d'un cd." << std::endl;
+				//std::cout << "Creation d'un cd." << std::endl;
 				cd *CD = new cd();
 				createCd(buf,CD);
 				medias.push_back(CD);
@@ -298,7 +297,7 @@ void ressources::load(const char *filename)
 			else if(mediaType == 4)
 			{
 				//creation d'un dvd
-				std::cout << "Creation d'un dvd." << std::endl;
+				//std::cout << "Creation d'un dvd." << std::endl;
 				dvd *DVD = new dvd();
 				createDvd(buf,DVD);
 				medias.push_back(DVD);
@@ -309,7 +308,7 @@ void ressources::load(const char *filename)
 			else if(mediaType == 5)
 			{
 				//creation d'une ResNumerique
-				std::cout << "Creation d'une Ressource Numerique." << std::endl;
+				//std::cout << "Creation d'une Ressource Numerique." << std::endl;
 				resNumerique *resNum = new resNumerique();
 				createResNumerique(buf,resNum);
 				medias.push_back(resNum);
@@ -320,7 +319,7 @@ void ressources::load(const char *filename)
 			else if(mediaType == 6 )
 			{
 				//creation d'une vhs
-				std::cout << "Creation d'une cassette vhs." << std::endl;
+				//std::cout << "Creation d'une cassette vhs." << std::endl;
 				vhs *VHS = new vhs();
 				createVhs(buf,VHS);
 				medias.push_back(VHS);
@@ -331,7 +330,7 @@ void ressources::load(const char *filename)
 			else if(mediaType == 7)
 			{
 				//creation d'une peinture
-				std::cout << "Creation d'une peinture." << std::endl;
+				//std::cout << "Creation d'une peinture." << std::endl;
 				peinture *ptr = new peinture();
 				createPeinture(buf,ptr);
 				medias.push_back(ptr);
@@ -342,7 +341,7 @@ void ressources::load(const char *filename)
 			else
 				std::cout << "Impossible de créer le media : " << buf << std::endl;
     	}
-    	list();
+    	//list();
     }
 
 }
@@ -362,7 +361,7 @@ void ressources::show(std::string _id){
 
 void ressources::save(const char *filename){
 	std::ifstream testFile(filename);
-	char choix = -1;
+	char choix = 0; 												//il y avait -1, normal ??
 	if(testFile.is_open()){
 		while (choix != 121 && choix != 110){ //121 = y 110 = n
 			std::cout << "Le fichier existe déjà, êtes vous sur de vouloir ecraser les données ? y/n : ";

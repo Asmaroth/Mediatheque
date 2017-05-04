@@ -33,7 +33,6 @@ class ressources {
     	ressources();
     	~ressources();
     	ressources(int _nbrRessource, std::string _nomRessource, int _stock);
-        void setNbrRessource (int _nbrRessource);
         int getNbrRessource ();
         void setTypeRessource (std::string _nomRessource);
         std::string getTypeRessource ();
