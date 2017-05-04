@@ -38,8 +38,27 @@ int main(){
 	std::string action;
 	std::cin >> action;
 	while(action.compare("connexion") != 0 && action.compare("inscription") != 0 && action.compare("aide") != 0 && action.compare("quitter") != 0){
-		std::cout << "Action incorrecte, merci de saisir une action parmi les suivantes : connection/inscription/aide/quitter" << std::endl;
+		std::cout << "Action incorrecte, merci de saisir une action parmi les suivantes : connexion/inscription/aide/quitter" << std::endl;
 		std::cin >> action;
+	}
+	if(action.compare("connexion") == 0){
+		std::string idClient;
+		std::cout << "N° identifiant : ";
+		std::cin >> idClient;
+		while(/*!verifIdClient(idClient)*/1){
+			std::cout << "Numéro d'identifiant incorrect, merci de reessayer : ";
+			std::cin >> idClient;
+		}
+	}
+	if(action.compare("inscription") == 0){
+
+	}
+	if(action.compare("aide") == 0){
+
+	}
+	if(action.compare("quitter") == 0){
+		std::cout << "Au revoir." << std::endl;
+		exit(EXIT_SUCCESS);
 	}
 	std::cout << "On a deja fait une bonne partie" << std::endl;
 	exit(EXIT_SUCCESS);
