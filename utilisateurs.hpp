@@ -29,6 +29,7 @@ class utilisateurs {
         int verifMdp(std::string _mdp, int _id);
         void addClient(client *clt);
         void addAdmin(admin *administrateur);
+        int getIdUtilisateur(std::string _id);
 };
 
 #endif

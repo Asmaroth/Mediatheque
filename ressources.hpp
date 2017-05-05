@@ -55,6 +55,9 @@ class ressources {
         void list();
         void deleteMedia(int _id);  //revoir par rapport a ID ?
         void reset();
+        void rechercheGene(std::string _str);
+        void rechercheType(std::string _str, int _type);
+        void rechercheChamp(std::string _str, int _type);
 };
 
 #endif

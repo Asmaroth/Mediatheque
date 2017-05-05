@@ -135,8 +135,8 @@ std::string utilisateurs::getAdmin(){ //possible de connaitre le type pour diff�
 
 void utilisateurs::info(){
 	std::string listeClients = getClient();
-	//std::string listeAdmin = getAdmin(admin);
-	std::cout << "Il y a " << clients.size() /*+ admin.size()*/ << " utilisateurs de la médiathèque, dont " << clients.size() << " clients et " << /*admin.size()*/ "TEST" << " administrateurs.\n" << listeClients <</* listeAdmin <<*/ std::endl;
+	std::string listeAdmin = getAdmin();
+	std::cout << "Il y a " << clients.size() + adm.size() << " utilisateurs de la médiathèque, dont " << clients.size() << " clients et " << adm.size() << " administrateurs.\n" << listeClients << listeAdmin << std::endl;
 }
 
 void utilisateurs::infoClient(int _id){
@@ -175,4 +175,12 @@ void utilisateurs::addClient(client *clt){
 void utilisateurs::addAdmin(admin *administrateur){
 	adm.push_back(administrateur);
 	users.push_back(administrateur);
+}
+
+int utilisateurs::getIdUtilisateur(std::string _id){
+	for (int i = 0 ; i < users.size() ; i++){
+		if(users[i]->getId().compare(_id) == 0)
+			return i;
+	}
+	return -1;
 }

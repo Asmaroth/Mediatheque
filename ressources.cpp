@@ -402,3 +402,13 @@ void ressources::reset(){
 	}
 	mediaSave.clear();
 }
+
+void ressources::rechercheGene(std::string _str){
+
+}
+void ressources::rechercheType(std::string _str, int _type){
+
+}
+void ressources::rechercheChamp(std::string _str, int _type){
+	
+}

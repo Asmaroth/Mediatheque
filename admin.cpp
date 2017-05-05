@@ -30,7 +30,7 @@ std::string admin::getMdp(){
 }
 
 void admin::info(){
-	std::cout << "(" << id << ") ADMIN" << nom << " " << prenom << std::endl;
+	std::cout << "(" << id << ") ADMIN " << nom << " " << prenom << std::endl;
 }
 
 
