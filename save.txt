@@ -1,16 +1,6 @@
-CD1; opening; multiple ;CD;2014;3;60;0;134254911
-CD2; holiday ; green day ;CD;2008;3;60;0;1330531660
-R1; Mille et une nuit ; Jean jacques goldman;Revue;2024;3;60;0;891304736;218; Planete bleu ; un jour ya un insecte qui nait avec mille patte et il perd une patte par jour donc il vavivre 1000 et une nuit ;3
-R2; une patte et un haricots ; michel pasquier ;Revue;1998;3;60;0;1986076788;94; la weed en folie ; c'est l'histoire d'une patte et d'un haricot et le haricot regarde la patte et lui dit tu veux pas me servir de patte je veux partir ;5
-R3; blanche fesse et les septs main ; bamako ;Revue;2012;3;60;0;1953784176;1598; Dousney ; tu es trop jeune je pense pour lire ce resume ;5
-L1; Eragon; Christopher PAOLINI ;Livre;2002;3;60;0;1702063717;694; L'Héritage ; Eragon trouve une pierre dans la foret, c'est un oeuf de dragon, il devient dragonnier et se bat pour renverser le despote au pouvoir en Alagaesia ayant renversé l'antique ordre des Dragonniers qui maintenaient la paix ;5
-L2; D'un Monde à l'Autre ; Pierre BOTTERO ;Livre;2003;3;60;0;544433508;200; La Quete d'Ewilan ; Camille est une jeune surdouée qui a la capacité de passer dans un monde parallèle grace au pouvoir de l'imagination. Elle se retrouve dans un monde fantastique avec comme objectif de sauver le peuple des hommes des Ts'liches et de retrouver ses parents. ;5
-L3; Les Chroniques de Corentin;Corentin BELLICAULT;Livre;2017;3;1;0;1696625257;1500; La vie de Dieu ; Coco en vacances a l'ENSEIRB ;500
-V1;tintin;Herge;VHS;2012;3;60;0;1229280078
-V2;autoroute racer; connais pas ;VHS;2010;3;60;0;-1015713948
-D1; twilight ; marc jaune ;DVD;2012;3;60;0;1852795252
-D2; R2; george lucas ;DVD;1998;3;60;0;-1023401867
-RN1; toto va a la plage; toto;Ressource Numerique;2012;3;60;0;251695441
-RN2; martine au tibet; martine;Ressource Numerique;2084;3;60;0;993015355
-P1; la joconde ; Leonard de vinci;Peinture;1486;3;60;0;909849403
-P2; david contre goliath; michael ange;Peinture;1525;3;60;0;1730176364
+R1; Mille et une nuit ; Jean jacques goldman;revue;2024;3;60;0;891304736;218; Planete bleu ; un jour ya un insecte qui nait avec mille patte et il perd une patte par jour donc il vavivre 1000 et une nuit ;3
+R2; une patte et un haricots ; michel pasquier ;revue;1998;3;60;0;1986076788;94; la weed en folie ; c'est l'histoire d'une patte et d'un haricot et le haricot regarde la patte et lui dit tu veux pas me servir de patte je veux partir ;5
+R3; blanche fesse et les septs main ; bamako ;revue;2012;3;60;0;1953784176;1598; Dousney ; tu es trop jeune je pense pour lire ce resume ;5
+L1;Eragon;Christopher PAOLINI;livre;2002;3;60;0;1920230688;694;L'Héritage;Eragon trouve une pierre dans la foret, c'est un oeuf de dragon, il devient dragonnier et se bat pour renverser le despote au pouvoir en Alagaesia ayant renversé l'antique ordre des Dragonniers qui maintenaient la paix;5
+L2;D'un Monde à l'Autre;Pierre BOTTERO;livre;2003;3;60;0;1667330145;200;La Quete d'Ewilan;Camille est une jeune surdouée qui a la capacité de passer dans un monde parallèle grace au pouvoir de l'imagination. Elle se retrouve dans un monde fantastique avec comme objectif de sauver le peuple des hommes des Ts'liches et de retrouver ses parents.;5
+RN2; martine au tibet; martine;ressourcenumerique;2084;3;60;0;1881175393

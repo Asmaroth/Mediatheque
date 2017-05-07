@@ -145,9 +145,36 @@ void recherche(ressources *res){
 		res->list();
 		std::cout << "Quelle action realiser :\n\t(1) Recherche sur les resultats trouves\n\t(2) Nouvelle recherche\n\t(3) Sauvegarder les resultats\n\t(4) Quitter" << std::endl;
 		std::cin >> typeRecherche;
-		//while()
-		std::cout << "Quel type de recherche souhaitez vous effectuer :\n\t(1) Recherche generale\n\t(2) Recherche par type\n\t(3) Recherche par champ\n\t(4) Quitter" << std::endl;
-		std::cin >> typeRecherche;
+		while(typeRecherche != 4){
+			while(typeRecherche != 1 && typeRecherche != 2 && typeRecherche != 3 && typeRecherche != 4){
+					std::cout << "Entree incorrecte, merci de reessayer :\n\t(1) Recherche sur les resultats trouves\n\t(2) Nouvelle recherche\n\t(3) Sauvegarder les resultats\n\t(4) Quitter" << std::endl;
+					std::cin >> typeRecherche;
+			}
+			if(typeRecherche == 1){
+				std::cout << "Recherche sur les resultats trouves." << std::endl;
+				break;
+			}
+			else if(typeRecherche == 2){
+				std::cout << "Nouvelle recherche" << std::endl;
+				res->restore();
+				break;
+			}
+			else if(typeRecherche == 3){
+				std::string saveName;
+				std::cout << "Sauvegarde des resultats. Merci d'entrer un nom de fichier de sauvegarde : ";
+				std::cin >> saveName;
+				res->save(saveName.c_str());
+				std::cout << "Quelle action realiser :\n\t(1) Recherche sur les resultats trouves\n\t(2) Nouvelle recherche\n\t(3) Sauvegarder les resultats\n\t(4) Quitter" << std::endl;
+				std::cin >> typeRecherche;
+			}
+		}
+		if(typeRecherche != 4){
+			std::cout << "Quel type de recherche souhaitez vous effectuer :\n\t(1) Recherche generale\n\t(2) Recherche par type\n\t(3) Recherche par champ\n\t(4) Quitter" << std::endl;
+			std::cin >> typeRecherche;
+		}
+		//else{
+		//break;
+		//}
 	}
 	std::cout << "Fin de la recherche.\n" << std::endl;
 }

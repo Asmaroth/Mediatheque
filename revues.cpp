@@ -37,7 +37,7 @@ revues::revues(std::string _id, std::string _titre, std::string _auteur, int _an
 	disponible = _disponible;
 	dureeEmprunt = _dureeEmprunt;
 	dateEmprunt = _dateEmprunt;
-	type = "Revue";
+	type = "revue";
 }
 
 void revues::setEditeur(std::string _editeur)

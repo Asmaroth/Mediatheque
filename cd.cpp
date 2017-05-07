@@ -15,7 +15,7 @@ cd::cd()
     disponible = 2;
     dureeEmprunt = -1;
     dateEmprunt = -1;
-    type = "CD";
+    type = "cd";
 
 }
 
@@ -33,7 +33,7 @@ cd::cd(int _duree, int _nbrPiste, std::string _maisonDisque, std::string _titreP
 	disponible = _disponible;
 	dureeEmprunt = _dureeEmprunt;
 	dateEmprunt = _dateEmprunt;
-	type = "CD";
+	type = "cd";
 }
 
 cd::~cd(){}
@@ -83,7 +83,7 @@ std::string cd::getTitrePiste(int _idPiste)
 	return titrePiste[_idPiste];
 }
 
-std::string cd::getTitre()
+std::string cd::getTitreAll()
 {
 	for ( int i = 0; i < titrePiste.size(); i++)
   		return titrePiste[i];

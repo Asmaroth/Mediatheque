@@ -58,6 +58,7 @@ class ressources {
         void rechercheGene(std::string _str);
         void rechercheType(std::string _str, int _type);
         void rechercheChamp(std::string _str, int _type);
+        void restore();
 };
 
 #endif

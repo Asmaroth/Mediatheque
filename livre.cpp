@@ -29,7 +29,7 @@ livre::livre(std::string _id, const char *_titre, const char *_auteur, int _anne
 	id = _id;
 	titre = _titre;
 	auteur = _auteur;
-	type = "Livre";
+	type = "livre";
 	annee = _annee;
 	disponible = _disponible;
 	dureeEmprunt = _dureeEmprunt;

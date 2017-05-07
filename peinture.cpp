@@ -11,7 +11,7 @@ peinture::peinture()
     disponible = 2;
     dureeEmprunt = -1;
     dateEmprunt = -1;
-    type = "Peinture";
+    type = "peinture";
 }
 
 peinture::peinture(int _hauteur, int _longueur,int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt)
@@ -25,7 +25,7 @@ peinture::peinture(int _hauteur, int _longueur,int _id, std::string _titre, std:
 	disponible = _disponible;
 	dureeEmprunt = _dureeEmprunt;
 	dateEmprunt = _dateEmprunt;
-	type = "Peinture";
+	type = "peinture";
 }
 
 peinture::~peinture(){}

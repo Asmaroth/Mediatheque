@@ -12,7 +12,7 @@ dvd::dvd()
     disponible = 2;
     dureeEmprunt = -1;
     dateEmprunt = -1;
-    type = "DVD";
+    type = "dvd";
 }
 
 dvd::dvd(int _nbrPiste, std::string _nomPiste,int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt)
@@ -26,7 +26,7 @@ dvd::dvd(int _nbrPiste, std::string _nomPiste,int _id, std::string _titre, std::
 	disponible = _disponible;
 	dureeEmprunt = _dureeEmprunt;
 	dateEmprunt = _dateEmprunt;
-	type = "DVD";
+	type = "dvd";
 }
 
 dvd::~dvd(){}

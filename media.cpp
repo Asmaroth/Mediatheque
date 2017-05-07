@@ -137,3 +137,91 @@ std::string media::infoToSave(){
 	std::string str = getId() + ';' + getTitre() + ';' + getAuteur() + ';' + getType() + ';' + int2str(getAnnee()) + ';' + int2str(getDisponible()) + ';' + int2str(getDureeEmprunt()) + ';' + int2str(getDateEmprunt()) + ';' + int2str(getIdClient());
 	return str;
 }
+
+int media::getPage (){
+
+}
+
+std::string media::getCollection (){
+
+}
+
+std::string media::getResume (){
+
+}
+
+int media::getNote (){
+
+}
+
+std::string media::getEditeur (){
+
+}
+
+int media::getNbrArticle (){
+
+}
+
+std::string media::getNomArticle (int _idArticle){
+
+}
+
+std::string media::getArticle(){
+
+}
+
+int media::getDuree (){
+
+}
+
+int media::getNbrPiste (){
+
+}
+
+std::string media::getMaisonDisque (){
+
+}
+
+std::string media::getTitrePiste (int _idPiste){
+
+}
+
+std::string media::getTitreAll(){
+
+}
+
+std::string media::getNomPiste (int _nbrPiste){
+
+}
+
+std::string media::getNomPiste (){
+
+}
+
+std::string media::getPiste(){
+
+}
+
+int media::getHauteur (){
+
+}
+
+int media::getLongueur (){
+
+}
+
+std::string media::getFormat (){
+
+}
+
+int media::getTaille (){
+
+}
+
+std::string media::getPath (){
+
+}
+
+std::string media::getMaisonProduction (){
+
+}

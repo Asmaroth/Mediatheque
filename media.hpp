@@ -50,6 +50,30 @@ class media {
         virtual void info();
         virtual void infoAdmin();
         virtual std::string infoToSave();
+        virtual int getPage ();
+        virtual std::string getCollection ();
+        virtual std::string getResume ();
+        virtual int getNote ();
+        virtual std::string getEditeur ();
+        virtual int getNbrArticle ();
+        virtual std::string getNomArticle (int _idArticle);
+        virtual std::string getArticle();
+        virtual int getDuree ();
+        virtual int getNbrPiste ();
+        virtual std::string getMaisonDisque ();
+        virtual std::string getTitrePiste (int _idPiste);
+        virtual std::string getTitreAll();
+        virtual std::string getNomPiste (int _nbrPiste);
+        virtual std::string getNomPiste ();
+        virtual std::string getPiste();
+        virtual int getHauteur ();
+        virtual int getLongueur ();
+        virtual std::string getFormat ();
+        virtual int getTaille ();
+        virtual std::string getPath ();
+        virtual std::string getMaisonProduction ();
+
+
 };
 
 #endif
