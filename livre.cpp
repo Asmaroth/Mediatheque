@@ -11,7 +11,7 @@ livre::livre()
 	id = "L0";
 	titre = "Aucun";
     auteur = "Inconnu";
-    type = "Livre";
+    type = "livre";
     annee = -1;
     disponible = 2;
     dureeEmprunt = -1;

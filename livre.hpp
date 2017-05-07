@@ -2,6 +2,7 @@
 #define LIVRE__HPP
 #include "media.hpp"
 
+#define NBR_ATTRIB_LIVRE 13
 
 class livre : public media {
     // Attributes

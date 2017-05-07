@@ -404,11 +404,24 @@ void ressources::reset(){
 }
 
 void ressources::rechercheGene(std::string _str){
-
+	int size = medias.size();
+	for (int i = 0 ; i < size ; i++){
+        if (medias[i]->getId().compare(_str) != 0 && medias[i]->getTitre().compare(_str) != 0 && medias[i]->getAuteur().compare(_str) != 0 && int2str(medias[i]->getAnnee()).compare(_str) != 0 && int2str(medias[i]->getAnnee()).compare(_str) != 0){
+        	medias.erase(medias.begin()+i);
+        }
+		if(medias[i]->getType().compare("livre") == 0 && int2str(medias[i]->getPage()).compare(_str) != 0 && medias[i]->getCollection().compare(_str) != 0 && medias[i]->getResume().find(_str) != 0 && int2str(medias[i]->getNote()).compare(_str) != 0){
+			medias.erase(medias.begin()+i);
+		}
+		else if(medias[i]->getType().compare("revue") == 0 && medias[i]->getEditeur().compare(_str) != 0 && (medias[i]->getNomArticle()).find_(str) != 0 && int2str(medias[i]->getNbrArticle()).compare(_str) != 0){
+			medias.erase(medias.begin()+i);
+		}
+	}
 }
+
 void ressources::rechercheType(std::string _str, int _type){
 
 }
+
 void ressources::rechercheChamp(std::string _str, int _type){
 	
 }

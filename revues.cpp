@@ -16,7 +16,7 @@ revues::revues()
     disponible = 2;
     dureeEmprunt = -1;
     dateEmprunt = 0;
-    type = "Revue";
+    type = "revue";
 }
 
 revues::~revues(){}
