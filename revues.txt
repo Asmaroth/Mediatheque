@@ -1,4 +1,4 @@
 (2) Listes des revues :
-R1; Mille et une nuit ; Jean jacques goldman; 2024 ; 3 ; 60 ; 0 ; 218 ; Planete bleu ; un jour ya un insecte qui nait avec mille patte et il perd une patte par jour donc il vavivre 1000 et une nuit ; 3 ; ZEF ; 3 ; jjj,kkk,lll
-R2; une patte et un haricots ; michel pasquier ; 1998 ; 3 ; 60 ; 0 ; 94 ; la weed en folie ; c'est l'histoire d'une patte et d'un haricot et le haricot regarde la patte et lui dit tu veux pas me servir de patte je veux partir ; 5 ; woodstock ; 3 ; poulet,lanfeust,troll
-R3; blanche fesse et les septs main ; bamako ; 2012 ; 3 ; 60 ; 0 ; 1598 ; Dousney ; tu es trop jeune je pense pour lire ce resume ; 5 ; AuPaysDesReves ; 3 ; comment etre doue, comment ne pas etre precosse, attention au yeux 
+R1;Mille et une nuit;Jean jacques goldman;2024;3;60;0;218;Planete bleu;un jour ya un insecte qui nait avec mille patte et il perd une patte par jour donc il va vivre 1000 et une nuit;3;ZEF;3;jjj,kkk,lll
+R2;une patte et un haricots;michel pasquier;1998;3;60;0;94;la weed en folie;c'est l'histoire d'une patte et d'un haricot et le haricot regarde la patte et lui dit tu veux pas me servir de patte je veux partir;5;woodstock;3;poulet,lanfeust,troll
+R3;blanche fesse et les septs main;bamako;2012;3;60;0;1598;Dousney;tu es trop jeune je pense pour lire ce resume;5;AuPaysDesReves;3;comment etre doue, comment ne pas etre precosse, attention au yeux

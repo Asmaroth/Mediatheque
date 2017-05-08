@@ -1,6 +1,6 @@
-R1; Mille et une nuit ; Jean jacques goldman;revue;2024;3;60;0;891304736;218; Planete bleu ; un jour ya un insecte qui nait avec mille patte et il perd une patte par jour donc il vavivre 1000 et une nuit ;3
-R2; une patte et un haricots ; michel pasquier ;revue;1998;3;60;0;1986076788;94; la weed en folie ; c'est l'histoire d'une patte et d'un haricot et le haricot regarde la patte et lui dit tu veux pas me servir de patte je veux partir ;5
-R3; blanche fesse et les septs main ; bamako ;revue;2012;3;60;0;1953784176;1598; Dousney ; tu es trop jeune je pense pour lire ce resume ;5
+R1;Mille et une nuit;Jean jacques goldman;revue;2024;3;60;0;891304736;218;Planete bleu;un jour ya un insecte qui nait avec mille patte et il perd une patte par jour donc il va vivre 1000 et une nuit;3
+R2;une patte et un haricots;michel pasquier;revue;1998;3;60;0;1986076788;94;la weed en folie;c'est l'histoire d'une patte et d'un haricot et le haricot regarde la patte et lui dit tu veux pas me servir de patte je veux partir;5
+R3;blanche fesse et les septs main;bamako;revue;2012;3;60;0;1953784176;1598;Dousney;tu es trop jeune je pense pour lire ce resume;5
 L1;Eragon;Christopher PAOLINI;livre;2002;3;60;0;1920230688;694;L'Héritage;Eragon trouve une pierre dans la foret, c'est un oeuf de dragon, il devient dragonnier et se bat pour renverser le despote au pouvoir en Alagaesia ayant renversé l'antique ordre des Dragonniers qui maintenaient la paix;5
 L2;D'un Monde à l'Autre;Pierre BOTTERO;livre;2003;3;60;0;1667330145;200;La Quete d'Ewilan;Camille est une jeune surdouée qui a la capacité de passer dans un monde parallèle grace au pouvoir de l'imagination. Elle se retrouve dans un monde fantastique avec comme objectif de sauver le peuple des hommes des Ts'liches et de retrouver ses parents.;5
-RN2; martine au tibet; martine;ressourcenumerique;2084;3;60;0;1881175393
+RN2;martine au tibet;martine;ressourcenumerique;2084;3;60;0;1881175393
