@@ -13,10 +13,10 @@ class peinture : public media {
         peinture();
         peinture(int _hauteur, int _longueur,int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt);
         ~peinture();
-        void setHauteur (int _hauteur);
-        int getHauteur ();
-        void setLongueur (int _longueur);
-        int getLongueur ();
+        virtual void setHauteur (int _hauteur);
+        virtual int getHauteur ();
+        virtual void setLongueur (int _longueur);
+        virtual int getLongueur ();
         virtual void info ();
 };
 

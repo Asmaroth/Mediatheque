@@ -1,3 +1,3 @@
-(5) liste des ressources numerique:
-RN1;toto va a la plage;toto;2012;3;60;0;PNG une;2080;Path\coucou\jeSuisLa
-RN2;martine au tibet;martine;2084;3;60;0;JPEG;1514;Path\camesaoul
+(5) liste des ressources numerique :
+N1;toto va a la plage;toto;2012;3;60;0;PNG une;2080;Path\coucou\jeSuisLa
+N2;martine au tibet;martine;2084;3;60;0;JPEG;1514;Path\camesaoul

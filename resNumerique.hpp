@@ -14,12 +14,12 @@ class resNumerique : public media {
         resNumerique();
         resNumerique( std::string _format, int _taille, std::string path,int _id, std::string _titre, std::string _auteur, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt);
         ~resNumerique();
-        void setFormat (std::string _format);
-        std::string getFormat ();
-        void setTaille (int _taille);
-        int getTaille ();
-        void setPath (std::string _path);
-        std::string getPath ();
+        virtual void setFormat (std::string _format);
+        virtual std::string getFormat ();
+        virtual void setTaille (int _taille);
+        virtual int getTaille ();
+        virtual void setPath (std::string _path);
+        virtual std::string getPath ();
         virtual void info ();
 };
 

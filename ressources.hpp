@@ -39,6 +39,7 @@ class ressources {
         void setStock (int _stock);
         int getStock ();
         void info ();
+        void info (int _id);
         int str2int(std::string str);
         std::string int2str(int nbr);
         void createLivre(std::string _buf, livre *lvr);
@@ -53,12 +54,16 @@ class ressources {
         void clear();
         void show(std::string _id); //revoir par rapport a ID ?
         void list();
-        void deleteMedia(int _id);  //revoir par rapport a ID ?
+        void deleteMedia(int _id, std::string _idMedia);  //revoir par rapport a ID ?
+        std::string addMedia(int _type);
+        void modifMedia(int _id, std::string _idMedia);
         void reset();
         void rechercheGene(std::string _str);
         void rechercheType(std::string _str, int _type);
         void rechercheChamp(std::string _str, int _type);
-        void restore();
+        int verifIdMedia(std::string idRessource);
+        int findLastPosition(std::string _type);
+        void saveEndOfFile(std::string filename, std::string str, const char *entete);
 };
 
 #endif

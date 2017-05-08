@@ -73,7 +73,27 @@ class media {
         virtual std::string getPath ();
         virtual std::string getMaisonProduction ();
 
-
+        virtual void setPage (int _nbrPage);
+        virtual void setCollection (std::string _collection);
+        virtual void setResume (std::string _resume);
+        virtual void setNote (int _note);
+        virtual void setEditeur (std::string _editeur);
+        virtual void setNbrArticle (int _nbrArticle);
+        virtual void setNomArticle (std::string _nomArticle, int _idArticle);
+        virtual void setNomArticle (std::string _nomArticle);
+        virtual void setDuree (int _duree);
+        virtual void setMaisonProduction (std::string _maisonProduction);
+        virtual void setNbrPiste (int _nbrPiste);
+        virtual void setNomPiste (std::string _nomPiste, int _nbrPiste);
+        virtual void setNomPiste(std::string _nomPiste);
+        virtual void setMaisonDisque (std::string _maisonDisque);
+        virtual void setTitrePiste (std::string _titrePiste, int _idPiste);
+        virtual void setTitrePiste(std::string _titrePiste);
+        virtual void setFormat (std::string _format);
+        virtual void setTaille (int _taille);
+        virtual void setPath (std::string _path);
+        virtual void setHauteur (int _hauteur);
+        virtual void setLongueur (int _longueur);
 };
 
 #endif

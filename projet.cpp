@@ -40,6 +40,16 @@
 #include "client.cpp"
 #include "admin.cpp"
 
+
+
+
+
+
+
+
+
+
+
 int connexion(utilisateurs *uti){
 	std::string idClient;
 	std::cout << "N° identifiant : ";
@@ -66,14 +76,67 @@ int connexion(utilisateurs *uti){
 	return id;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void infoRessource(ressources *res){
+	std::string idRessource;
+	int idMedia;
+	std::cout << "Merci d'entrer un N identifiant de media pour des informations specifiques. Un ID incorrect ou '1' affiche des informations generales sur l'ensemble des medias. Entrer '0' pour quitter." << std::endl;
+	std::cin >> idRessource;
+	while(idRessource.compare("0") != 0){
+		idMedia = res->verifIdMedia(idRessource);
+		if (idRessource.compare("1") == 0 || idMedia == 0){
+			res->info();
+			res->list();
+		}
+		else if(idMedia != 0){
+			//res->list(res->getIdRessource(idRessource));
+			res->info(idMedia - 1);
+		}
+		std::cout << "\nEntrer N identifiant pour des informations specifiques ou '1' pour des informations generales sur tous les medias. Entrer '0' pour quitter." << std::endl;
+		std::cin >> idRessource;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 void recherche(ressources *res){
 	int typeRecherche;
+	int flagRecherche = 0;
 	std::string strSearch;
-	std::cout << "Quel type de recherche souhaitez vous effectuer :\n\t(1) Recherche generale\n\t(2) Recherche par type\n\t(3) Recherche par champ\n\t(4) Quitter" << std::endl;
+	std::cout << "Quel type de recherche souhaitez vous effectuer :\n\t(1) Recherche generale\n\t(2) Recherche par type\n\t(3) Recherche par champ\n\t(4) Information sur les medias\n\t(5) Quitter" << std::endl;
 	std::cin >> typeRecherche;
-	while(typeRecherche != 4){
-		while(typeRecherche != 1 && typeRecherche != 2 && typeRecherche != 3){
-			std::cout << "Entree incorrecte, merci de reessayer :\n\t(1) Recherche generale\n\t(2) Recherche par type\n\t(3) Recherche par champ\n\t(4) Quitter" << std::endl;
+	while(typeRecherche != 5){
+		while(typeRecherche != 1 && typeRecherche != 2 && typeRecherche != 3 && typeRecherche != 4){
+			std::cout << "Entree incorrecte, merci de reessayer :\n\t(1) Recherche generale\n\t(2) Recherche par type\n\t(3) Recherche par champ\n\t(4) Information sur les medias\n\t(5) Quitter" << std::endl;
 			std::cin >> typeRecherche;
 		}
 		if(typeRecherche == 1){
@@ -82,33 +145,33 @@ void recherche(ressources *res){
 			res->rechercheGene(strSearch);
 		}
 		else if(typeRecherche == 2){
-			std::cout << "Recherche par type. Veuillez entrer le type a chercher :\n\t(1) Livre\n\t(2) Revue\n\t (3) VHS\n\t(4) DVD\n\t(5) CD\n\t(6) Ressource numerique\n\t(7) Peinture\n\t(8) Quitter" << std::endl;
+			std::cout << "Recherche par type. Veuillez entrer le type a chercher :\n\t(1) Livre\n\t(2) Revue\n\t(3) VHS\n\t(4) DVD\n\t(5) CD\n\t(6) Ressource numerique\n\t(7) Peinture\n\t(8) Quitter" << std::endl;
 			std::cin >> typeRecherche;
 			while(typeRecherche != 8){
 				while(typeRecherche != 1 && typeRecherche != 2 && typeRecherche != 3 && typeRecherche != 4 && typeRecherche != 5 && typeRecherche != 6 && typeRecherche != 7){
-					std::cout << "Entree incorrecte, merci de reessayer :\n\t(1) Livre\n\t(2) Revue\n\t (3) VHS\n\t(4) DVD\n\t(5) CD\n\t(6) Ressource numerique\n\t(7) Peinture\n\t(8) Quitter" << std::endl;
+					std::cout << "Entree incorrecte, merci de reessayer :\n\t(1) Livre\n\t(2) Revue\n\t(3) VHS\n\t(4) DVD\n\t(5) CD\n\t(6) Ressource numerique\n\t(7) Peinture\n\t(8) Quitter" << std::endl;
 					std::cin >> typeRecherche;
 				}
 				if(typeRecherche == 1){
-					std::cout << "Recherche parmi les livres.\nMot a rechercher :";
+					std::cout << "Recherche parmi les livres.\nMot a rechercher : ";
 				}
 				else if(typeRecherche == 2){
-					std::cout << "Recherche parmi les revues.\nMot a rechercher :";
+					std::cout << "Recherche parmi les revues.\nMot a rechercher : ";
 				}
 				else if(typeRecherche == 3){
-					std::cout << "Recherche parmi les VHS.\nMot a rechercher :";
+					std::cout << "Recherche parmi les VHS.\nMot a rechercher : ";
 				}
 				else if(typeRecherche == 4){
-					std::cout << "Recherche parmi les DVD.\nMot a rechercher :";
+					std::cout << "Recherche parmi les DVD.\nMot a rechercher : ";
 				}
 				else if(typeRecherche == 5){
-					std::cout << "Recherche parmi les CD.\nMot a rechercher :";
+					std::cout << "Recherche parmi les CD.\nMot a rechercher : ";
 				}
 				else if(typeRecherche == 6){
-					std::cout << "Recherche parmi les sessources numeriques.\nMot a rechercher :";
+					std::cout << "Recherche parmi les sessources numeriques.\nMot a rechercher : ";
 				}
 				else if(typeRecherche == 7){
-					std::cout << "Recherche parmi les peintures.\nMot a rechercher :";
+					std::cout << "Recherche parmi les peintures.\nMot a rechercher : ";
 				}
 				std::cin >> strSearch;
 				res->rechercheType(strSearch, typeRecherche);
@@ -117,67 +180,98 @@ void recherche(ressources *res){
 		}
 		else if(typeRecherche == 3){
 
-			std::cout << "Recherche par champ. Veuillez entrer le type a chercher :\n\t(1) ID\n\t(2) Titre\n\t (3) Auteur\n\t(4) Annee de parution\n\t(5) Quitter" << std::endl;
+			std::cout << "Recherche par champ. Veuillez entrer le type a chercher :\n\t(1) ID\n\t(2) Titre\n\t(3) Auteur\n\t(4) Annee de parution\n\t(5) Quitter" << std::endl;
 			std::cin >> typeRecherche;
 			while(typeRecherche != 5){
 				while(typeRecherche != 1 && typeRecherche != 2 && typeRecherche != 3 && typeRecherche != 4){
-					std::cout << "Entree incorrecte, merci de reessayer :\n\t(1) ID\n\t(2) Titre\n\t (3) Auteur\n\t(4) Annee de parution\n\t(5) Quitter" << std::endl;
+					std::cout << "Entree incorrecte, merci de reessayer :\n\t(1) ID\n\t(2) Titre\n\t(3) Auteur\n\t(4) Annee de parution\n\t(5) Quitter" << std::endl;
 					std::cin >> typeRecherche;
 				}
 				if(typeRecherche == 1){
-					std::cout << "Recherche sur les ID.\nID a rechercher :";
+					std::cout << "Recherche sur les ID.\nID a rechercher : ";
 				}
 				else if(typeRecherche == 2){
-					std::cout << "Recherche sur les titres.\nTitre a rechercher :";
+					std::cout << "Recherche sur les titres.\nTitre a rechercher : ";
 				}
 				else if(typeRecherche == 3){
-					std::cout << "Recherche sur les auteurs.\nNom a rechercher :";
+					std::cout << "Recherche sur les auteurs.\nNom a rechercher : ";
 				}
 				else if(typeRecherche == 4){
-					std::cout << "Recherche sur les annees de parution.\nAnnee a rechercher :";
+					std::cout << "Recherche sur les annees de parution.\nAnnee a rechercher : ";
 				}
 				std::cin >> strSearch;
 				res->rechercheChamp(strSearch, typeRecherche);
 				break;
 			}
 		}
-		std::cout << "Resultats de la recherche : " << std::endl;
-		res->list();
-		std::cout << "Quelle action realiser :\n\t(1) Recherche sur les resultats trouves\n\t(2) Nouvelle recherche\n\t(3) Sauvegarder les resultats\n\t(4) Quitter" << std::endl;
-		std::cin >> typeRecherche;
-		while(typeRecherche != 4){
-			while(typeRecherche != 1 && typeRecherche != 2 && typeRecherche != 3 && typeRecherche != 4){
-					std::cout << "Entree incorrecte, merci de reessayer :\n\t(1) Recherche sur les resultats trouves\n\t(2) Nouvelle recherche\n\t(3) Sauvegarder les resultats\n\t(4) Quitter" << std::endl;
-					std::cin >> typeRecherche;
-			}
-			if(typeRecherche == 1){
-				std::cout << "Recherche sur les resultats trouves." << std::endl;
-				break;
-			}
-			else if(typeRecherche == 2){
-				std::cout << "Nouvelle recherche" << std::endl;
-				res->restore();
-				break;
-			}
-			else if(typeRecherche == 3){
-				std::string saveName;
-				std::cout << "Sauvegarde des resultats. Merci d'entrer un nom de fichier de sauvegarde : ";
-				std::cin >> saveName;
-				res->save(saveName.c_str());
-				std::cout << "Quelle action realiser :\n\t(1) Recherche sur les resultats trouves\n\t(2) Nouvelle recherche\n\t(3) Sauvegarder les resultats\n\t(4) Quitter" << std::endl;
-				std::cin >> typeRecherche;
-			}
+		else if(typeRecherche == 4){
+			infoRessource(res);
+			//std::cout << "Quel type de recherche souhaitez vous effectuer :\n\t(1) Recherche generale\n\t(2) Recherche par type\n\t(3) Recherche par champ\n\t(4) Information sur les medias\n\t(5) Quitter" << std::endl;
+			//std::cin >> typeRecherche;
+			flagRecherche = 1;
 		}
-		if(typeRecherche != 4){
-			std::cout << "Quel type de recherche souhaitez vous effectuer :\n\t(1) Recherche generale\n\t(2) Recherche par type\n\t(3) Recherche par champ\n\t(4) Quitter" << std::endl;
+		if(typeRecherche != 4 && flagRecherche == 0){
+			std::cout << "Resultats de la recherche : " << std::endl;
+			res->list();
+			std::cout << "Quelle action realiser :\n\t(1) Recherche sur les resultats trouves\n\t(2) Nouvelle recherche\n\t(3) Sauvegarder les resultats\n\t(4) Information sur les medias\n\t(5) Quitter" << std::endl;
 			std::cin >> typeRecherche;
+			while(typeRecherche != 5){
+				while(typeRecherche != 1 && typeRecherche != 2 && typeRecherche != 3 && typeRecherche != 4){
+						std::cout << "Entree incorrecte, merci de reessayer :\n\t(1) Recherche sur les resultats trouves\n\t(2) Nouvelle recherche\n\t(3) Sauvegarder les resultats\n\t(4) Information sur les medias\n\t(5) Quitter" << std::endl;
+						std::cin >> typeRecherche;
+				}
+				if(typeRecherche == 1){
+					std::cout << "Recherche sur les resultats trouves." << std::endl;
+					break;
+				}
+				else if(typeRecherche == 2){
+					std::cout << "Nouvelle recherche" << std::endl;
+					res->clear();
+					break;
+				}
+				else if(typeRecherche == 3){
+					std::string saveName;
+					std::cout << "Sauvegarde des resultats. Merci d'entrer un nom de fichier de sauvegarde : ";
+					std::cin >> saveName;
+					res->save(saveName.c_str());
+					std::cout << "Quelle action realiser :\n\t(1) Recherche sur les resultats trouves\n\t(2) Nouvelle recherche\n\t(3) Sauvegarder les resultats\n\t(4) Information sur les medias\n\t(5) Quitter" << std::endl;
+					std::cin >> typeRecherche;
+				}
+				else if(typeRecherche == 4){
+					infoRessource(res);
+					std::cout << "Quelle action realiser :\n\t(1) Recherche sur les resultats trouves\n\t(2) Nouvelle recherche\n\t(3) Sauvegarder les resultats\n\t(4) Information sur les medias\n\t(5) Quitter" << std::endl;
+					std::cin >> typeRecherche;
+				}
+			}
+			res->clear();
 		}
-		//else{
-		//break;
-		//}
+		if(typeRecherche != 5){
+			std::cout << "Quel type de recherche souhaitez vous effectuer :\n\t(1) Recherche generale\n\t(2) Recherche par type\n\t(3) Recherche par champ\n\t(4) Information sur les medias\n\t(5) Quitter" << std::endl;
+			std::cin >> typeRecherche;
+			flagRecherche = 0;
+		}
+		else{
+			res->clear();
+		}
 	}
 	std::cout << "Fin de la recherche.\n" << std::endl;
+	res->clear();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 int main(){
@@ -222,14 +316,18 @@ int main(){
 		else if(action == 1){
 			int id = connexion(uti);
 			int choix;
+			int idMed;
+			std::string id2Delete;
+			std::string id2Modify;
+			std::string decision;
 			if (id < 0){ //droits admin
 				id = -id - 1;
 				std::cout << "Authentification reussie (compte Administrateur)." << std::endl
-						  << "Bonjour " << uti->getAdmin(id) << ", quelle action souhaitez vous realiser :\n\t(1) inscription\n\t(2) emprunt\n\t(3) reservation\n\t(4) retour\n\t(5) infoclient\n\t(6) recherche\n\t(7) quitter" << std::endl;
+						  << "Bonjour " << uti->getAdmin(id) << ", quelle action souhaitez vous realiser :\n\t(1) inscription\n\t(2) modification ressource\n\t(3) emprunt\n\t(4) reservation\n\t(5) retour\n\t(6) info client\n\t(7) info ressource\n\t(8) recherche\n\t(9) quitter" << std::endl;
 				std::cin >> choix;
-				while(choix != 7){
-					while(choix != 1 && choix != 2 && choix != 3 && choix != 4 && choix != 5 && choix != 6){
-						std::cout << "Choix incorrect, merci de reessayer :\n\t(1) inscription\n\t(2) emprunt\n\t(3) reservation\n\t(4) retour\n\t(5) infoclient\n\t(6) recherche\n\t(7) quitter" << std::endl;
+				while(choix != 9){
+					while(choix != 1 && choix != 2 && choix != 3 && choix != 4 && choix != 5 && choix != 6 && choix != 7 && choix != 8){
+						std::cout << "Choix incorrect, merci de reessayer :\n\t(1) inscription\n\t(2) modification ressource\n\t(3) emprunt\n\t(4) reservation\n\t(5) retour\n\t(6) info client\n\t(7) info ressource\n\t(8) recherche\n\t(9) quitter" << std::endl;
 						std::cin >> choix;
 					}
 					if(choix == 1){
@@ -308,16 +406,85 @@ int main(){
 						}
 					}
 					else if(choix == 2){
-						//emprunt
+						//modif ressource
+						std::cout << "Modification de ressource. Souhaitez-vous :\n\t(1) Ajouter une ressource\n\t(2) Supprimer une ressource\n\t(3) Modifier une ressource\n\t(4) Quitter" << std::endl;
+						std::cin >> choix;
+						while(choix != 4){
+							while(choix != 1 && choix != 2 && choix != 3){
+								std::cout << "Choix incorrect, merci de reessayer :\n\t(1) Ajouter une ressource\n\t(2) Supprimer une ressource\n\t(3) Modifier une ressource\n\t(4) Quitter" << std::endl;
+								std::cin >> choix;
+							}
+							if(choix == 1){
+								std::string newId;
+								std::cout << "Ajout d'une ressource.\nQuel type de ressource souhaitez vous ajouter :\n\t(1) Livre\n\t(2) Revue\n\t(3) VHS\n\t(4) DVD\n\t(5) CD\n\t(6) Ressource numerique\n\t(7) Peinture\n\t(8) Quitter" << std::endl;
+								std::cin >> choix;
+								while(choix != 8){
+									while(choix != 1 && choix != 2 && choix != 3 && choix != 4 && choix != 5 && choix != 6 && choix != 7){
+										std::cout << "Entree incorrecte, quel type de ressource souhaitez vous ajouter :\n\t(1) Livre\n\t(2) Revue\n\t(3) VHS\n\t(4) DVD\n\t(5) CD\n\t(6) Ressource numerique\n\t(7) Peinture\n\t(8) Quitter" << std::endl;
+										std::cin >> choix;
+									}
+									newId = res->addMedia(choix);
+									std::cout << "Nouveau media cree. Son identifiant est : (" << newId << ")." << std::endl;
+									choix = 8;
+								}
+							}
+							else if(choix == 2){
+								std::cout << "Suppression d'une ressource. Veuillez rentrer le numero d'identifiant de la ressource a supprimer : ";
+								std::cin >> id2Delete;
+								idMed = res->verifIdMedia(id2Delete);
+								if(idMed != 0){
+									std::cout << "Souhaitez vous vraiment supprimer la ressource suivante (o/n) : " << std::endl;
+									res->info(idMed - 1);
+									std::cin >> decision;
+									while(decision.compare("o") != 0 && decision.compare("n") != 0){
+										std::cout << "Entree incorrecte, merci de reessayer : Souhaitez vous vraiment supprimer la ressource suivante (o/n) : " << std::endl;
+										res->info(idMed - 1);
+									}
+									if(decision.compare("o") == 0){
+										res->deleteMedia(idMed, id2Delete);
+										std::cout << "Ressource supprimee." << std::endl;
+									}
+									else if(decision.compare("n") == 0){
+										std::cout << "Abandon de la suppression de media." << std::endl;
+									}
+								}
+							}
+							else if(choix == 3){
+								std::cout << "Modification d'une ressource. Veuillez rentrer le numero d'identifiant de la ressource a supprimer : ";
+								std::cin >> id2Modify;
+								idMed = res->verifIdMedia(id2Modify);
+								if(idMed != 0){
+									std::cout << "Souhaitez vous vraiment smodifier la ressource suivante (o/n) : " << std::endl;
+									res->info(idMed - 1);
+									std::cin >> decision;
+									while(decision.compare("o") != 0 && decision.compare("n") != 0){
+										std::cout << "Entree incorrecte, merci de reessayer : Souhaitez vous vraiment modifier la ressource suivante (o/n) : " << std::endl;
+										res->info(idMed - 1);
+									}
+									if(decision.compare("o") == 0){
+										res->modifMedia(idMed, id2Modify);
+										std::cout << "Ressource modifiee." << std::endl;
+									}
+									else if(decision.compare("n") == 0){
+										std::cout << "Abandon de la modification de media." << std::endl;
+									}
+								}
+							}
+							std::cout << "Quelle action souhaitez vous realiser :\n\t(1) Ajouter une ressource\n\t(2) Supprimer une ressource\n\t(3) Modifier une ressource\n\t(4) Quitter" << std::endl;
+							std::cin >> choix;
+						}
 					}
 					else if(choix == 3){
-						//reservation
+						//emprunt
 					}
 					else if(choix == 4){
-						//retour
+						//reservation
 					}
 					else if(choix == 5){
-						//infoclient
+						//retour
+					}
+					else if(choix == 6){
+						//info client
 						std::string idUtilisateur;
 						int idUser;
 						std::cout << "Merci d'entrer un N identifiant d'utilisateur pour des informations specifiques. Un ID incorrect ou '1' affiche des informations generales sur l'ensemble des utilisateurs. Entrer '0' pour quitter." << std::endl;
@@ -334,11 +501,15 @@ int main(){
 							std::cin >> idUtilisateur;
 						}
 					}
-					else if(choix == 6){
+					else if(choix == 7){
+						//info ressource
+						infoRessource(res);
+					}
+					else if(choix == 8){
 						//recherche
 						recherche(res);
 					}
-					std::cout << "Quelle action souhaitez vous realiser :\n\t(1) inscription\n\t(2) emprunt\n\t(3) reservation\n\t(4) retour\n\t(5) infoclient\n\t(6) recherche\n\t(7) quitter" << std::endl;
+					std::cout << "Quelle action souhaitez vous realiser :\n\t(1) inscription\n\t(2) modification ressource\n\t(3) emprunt\n\t(4) reservation\n\t(5) retour\n\t(6) info client\n\t(7) info ressource\n\t(8) recherche\n\t(9) quitter" << std::endl;
 					std::cin >> choix;
 				}
 				std::cout << "Au revoir " << uti->getAdmin(id) << ".\n" << std::endl;

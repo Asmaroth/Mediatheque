@@ -225,3 +225,89 @@ std::string media::getPath (){
 std::string media::getMaisonProduction (){
 
 }
+
+void media::setPage (int _nbrPage){
+
+}
+
+void media::setCollection (std::string _collection){
+
+}
+
+void media::setResume (std::string _resume){
+
+}
+
+void media::setNote (int _note){
+
+}
+
+void media::setEditeur (std::string _editeur){
+
+}
+
+void media::setNbrArticle (int _nbrArticle){
+
+}
+
+void media::setNomArticle (std::string _nomArticle, int _idArticle){
+
+}
+
+void media::setNomArticle (std::string _nomArticle){
+
+}
+
+void media::setDuree (int _duree){
+
+}
+
+void media::setMaisonProduction (std::string _maisonProduction){
+
+}
+
+void media::setNbrPiste (int _nbrPiste){
+
+}
+
+void media::setNomPiste (std::string _nomPiste, int _nbrPiste){
+
+}
+
+void media::setNomPiste(std::string _nomPiste){
+
+}
+
+
+void media::setMaisonDisque (std::string _maisonDisque){
+
+}
+
+void media::setTitrePiste (std::string _titrePiste, int _idPiste){
+
+}
+
+void media::setTitrePiste(std::string _titrePiste){
+
+}
+
+
+void media::setFormat (std::string _format){
+
+}
+
+void media::setTaille (int _taille){
+
+}
+
+void media::setPath (std::string _path){
+
+}
+
+void media::setHauteur (int _hauteur){
+
+}
+
+void media::setLongueur (int _longueur){
+
+}
