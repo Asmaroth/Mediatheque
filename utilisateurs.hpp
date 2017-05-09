@@ -30,6 +30,8 @@ class utilisateurs {
         void addClient(client *clt);
         void addAdmin(admin *administrateur);
         int getIdUtilisateur(std::string _id);
+        void effaceMemoire();
+        void reservation(int idClient, int idMedia);
 };
 
 #endif

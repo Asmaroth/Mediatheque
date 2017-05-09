@@ -276,23 +276,9 @@ void recherche(ressources *res){
 
 int main(){
 	mediatheque *mediath = new mediatheque("ENSEIRB-MATMECA");
-
 	ressources *res = new ressources();
-	res->load("cd.txt");
-	res->load("revues.txt");
-	res->load("livre.txt");
-	res->load("vhs.txt");
-	res->load("dvd.txt");
-	res->load("resNumerique.txt");
-	res->load("peinture.txt");
-
+	res->reload();
 	utilisateurs *uti = new utilisateurs("utilisateurs.txt");
-	/*
-
-	Creer la mediatheque, uploader les ressources et les clients
-
-	*/
-
 
 
 	std::cout 	<< "Bonjour et bienvenu dans le logiciel de gestion de ressources de la mediatheque " << mediath->getNom() << " . " << std::endl
@@ -317,9 +303,12 @@ int main(){
 			int id = connexion(uti);
 			int choix;
 			int idMed;
+			int idUser;
 			std::string id2Delete;
 			std::string id2Modify;
 			std::string decision;
+			std::string idClient;
+			std::string id2act;
 			if (id < 0){ //droits admin
 				id = -id - 1;
 				std::cout << "Authentification reussie (compte Administrateur)." << std::endl
@@ -407,11 +396,11 @@ int main(){
 					}
 					else if(choix == 2){
 						//modif ressource
-						std::cout << "Modification de ressource. Souhaitez-vous :\n\t(1) Ajouter une ressource\n\t(2) Supprimer une ressource\n\t(3) Modifier une ressource\n\t(4) Quitter" << std::endl;
+						std::cout << "Modification de ressource. Souhaitez-vous :\n\t(1) Ajouter une ressource\n\t(2) Supprimer une ressource\n\t(3) Modifier une ressource\n\t(4) Formater la base de donnee\n\t(5) Quitter" << std::endl;
 						std::cin >> choix;
-						while(choix != 4){
-							while(choix != 1 && choix != 2 && choix != 3){
-								std::cout << "Choix incorrect, merci de reessayer :\n\t(1) Ajouter une ressource\n\t(2) Supprimer une ressource\n\t(3) Modifier une ressource\n\t(4) Quitter" << std::endl;
+						while(choix != 5){
+							while(choix != 1 && choix != 2 && choix != 3 && choix != 4){
+								std::cout << "Choix incorrect, merci de reessayer :\n\t(1) Ajouter une ressource\n\t(2) Supprimer une ressource\n\t(3) Modifier une ressource\n\t(4) Formater la base de donnee\n\t(5) Quitter" << std::endl;
 								std::cin >> choix;
 							}
 							if(choix == 1){
@@ -470,18 +459,101 @@ int main(){
 									}
 								}
 							}
-							std::cout << "Quelle action souhaitez vous realiser :\n\t(1) Ajouter une ressource\n\t(2) Supprimer une ressource\n\t(3) Modifier une ressource\n\t(4) Quitter" << std::endl;
+							else if(choix == 4){
+								std::cout << "Souaitez-vous vraiment formater la base de donnee de la mediatheque ? Cette action est irreversible. (o/n) : ";
+								std::cin >> decision;
+								while(decision.compare("o") != 0 && decision.compare("n") != 0){
+									std::cout << "Entree incorrecte, merci de reessayer : souaitez-vous vraiment formater la base de donnee de la mediatheque ? Cette action est irreversible. (o/n) : ";
+									std::cin >> decision;
+								}
+								if(decision.compare("o") == 0){
+									res->reset();
+									std::cout << "La base de donnee a ete formate.\n" << std::endl;
+								}
+								else if(decision.compare("n") == 0){
+									std::cout << "Abandon du formatage de la base de donnee.\n" << std::endl;
+								}
+							}
+							std::cout << "Quelle action souhaitez vous realiser :\n\t(1) Ajouter une ressource\n\t(2) Supprimer une ressource\n\t(3) Modifier une ressource\n\t(4) Formater la base de donnee\n\t(5) Quitter" << std::endl;
 							std::cin >> choix;
 						}
 					}
 					else if(choix == 3){
 						//emprunt
+						std::cout << "Procedure d'emprunt d'un media. Identifier le client : ";
+						std::cin >> idClient;
+						idUser = uti->verifIdClient(idClient);
+						while(idUser <= 0 && idClient.compare("quitter") != 0){
+							std::cout << "Id client incorrect, merci de reessayer ou de quitter en rentrant 'quitter' : ";
+							std::cin >> idClient;
+							idUser = uti->verifIdClient(idClient);
+						}
+						std::cout << "Id media a emprunter : ";
+						std::cin >> id2act;
+						idMed = res->verifIdMedia(id2act);
+						while(idMed == 0 && id2act.compare("quitter") != 0){
+							std::cout << "Id incorrect, merci de reessayer ou de quitter en rentrant 'quitter' : ";
+							std::cin >> id2act;
+							idMed = res->verifIdMedia(id2act);
+						}
+						if(idMed == -1){
+							std::cout << "Le media demande est deja reserver. Merci de faire une autre demande ou d'annuler prealablement la reservation." << std::endl;
+						}
+						else if(idMed == -2){
+							std::cout << "Le media demande est deja emprunte. Merci de faire une autre demande ou de retourner prealablement le media." << std::endl;
+						}
+						else if(idMed == -3){
+							std::cout << "Le media demande est indisponible. Merci de faire une autre demande ou de rendre disponible prealablement le media." << std::endl;
+						}
+						else if(id2act.compare("quitter") == 0){
+							std::cout << "Abortion de la procedure d'emprunt.\n" << std::endl;
+						}
+						else{
+							std::cout << "Souhaitez vous vraiment emprunter le media suivant (o/n) :" << std::endl;
+							res->info(idMed-1);
+							std::cin >> decision;
+							while(decision.compare("o") != 0 && decision.compare("n") != 0){
+								std::cout << "Entree incorrecte, merci de reessayer : Souhaitez vous vraiment emprunter le media suivant (o/n) :" << std::endl;
+								res->info(idMed-1);
+								std::cin >> decision;
+							}
+							if(decision.compare("o") == 0){
+								uti->reservation(idUser-1, idMed-1);
+								std::cout << "Media reserve.\n" << std::endl;
+							}
+							else if(decision.compare("n") == 0){
+								std::cout << "Abortion de la procedure d'emprunt.\n" << std::endl;
+							}
+						}
 					}
 					else if(choix == 4){
 						//reservation
 					}
 					else if(choix == 5){
 						//retour
+						std::cout << "Procedure de retour de media. Identifier le client : ";
+						std::cin >> idClient;
+						idUser = uti->verifIdClient(idClient);
+						while(idUser <= 0 && idClient.compare("quitter") != 0){
+							std::cout << "Id client incorrect, merci de reessayer ou de quitter en rentrant 'quitter' : ";
+							std::cin >> idClient;
+							idUser = uti->verifIdClient(idClient);
+						}
+						/*std::cout << "Identifier la ressource a retourner : " << uti->getResEmpruntee() << std::endl;
+						std::cin >> id2act;
+						verifier les id de media
+						while()
+						std::cout << "Entree inco.."
+						std::cin >> id2act;
+						if(??.compare(id_1) == 0)
+							uti->retour(idUser-1, idMed-1);
+							std::cout << "Fin de la procedure de retour de media.\n" << std::endl;
+						else if(??.compare(id_2) == 0)
+							uti->retour(idUser-1, idMed-1);
+							std::cout << "Fin de la procedure de retour de media.\n" << std::endl;
+						else
+							std::cout << "Abortion de la procedure de retour de media.\n" << std::endl;
+						*/
 					}
 					else if(choix == 6){
 						//info client
@@ -517,12 +589,12 @@ int main(){
 			else if(id > 0){ //droits client
 				id = id - 1;
 				std::cout << "Authentification reussie (compte Client)." << std::endl
-						  << "Bonjour " << uti->getClient(id) << ", quelle action souhaitez vous realiser :\n\t(1) reservation\n\t(2) infoperso\n\t(3) recherche\n\t(4) quitter"  << std::endl;
+						  << "Bonjour " << uti->getClient(id) << ", quelle action souhaitez vous realiser :\n\t(1) reservation\n\t(2) infoperso\n\t(3) recherche\n\t(4) mettre a jour le contenu de la mediatheque\n\t(5) quitter"  << std::endl;
 				//uti->infoClient(id);
 				std::cin >> choix;
-				while(choix != 4){
-					while(choix != 1 && choix != 2 && choix != 3){
-						std::cout << "Choix incorrect, merci de reessayer :\n\t(1) reservation\n\t(2) infoperso\n\t(3) recherche\n\t(4) quitter" << std::endl;
+				while(choix != 5){
+					while(choix != 1 && choix != 2 && choix != 3 && choix != 4){
+						std::cout << "Choix incorrect, merci de reessayer :\n\t(1) reservation\n\t(2) infoperso\n\t(3) recherche\n\t(4) mettre a jour le contenu de la mediatheque\n\t(5) quitter" << std::endl;
 						std::cin >> choix;
 					}
 					if(choix == 1){
@@ -536,7 +608,10 @@ int main(){
 						//recherche
 						recherche(res);
 					}
-					std::cout << "Quelle action souhaitez vous realiser :\n\t(1) reservation\n\t(2) infoperso\n\t(3) recherche\n\t(4) quitter"  << std::endl;
+					else if(choix == 4){
+						res->reload();
+					}
+					std::cout << "Quelle action souhaitez vous realiser :\n\t(1) reservation\n\t(2) infoperso\n\t(3) recherche\n\t(4) mettre a jour le contenu de la mediatheque\n\t(5) quitter"  << std::endl;
 					std::cin >> choix;
 				}
 				std::cout << "Au revoir " << uti->getClient(id) << ".\n" << std::endl;
@@ -556,5 +631,9 @@ int main(){
 		std::cin >> action;
 	}
 	std::cout << "Fin du programme." << std::endl;
+	res->effaceMemoire();
+	uti->effaceMemoire();
+	delete res;
+	delete uti;
 	exit(EXIT_SUCCESS);
 }

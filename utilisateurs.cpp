@@ -20,11 +20,11 @@ void utilisateurs::createClient(std::string _buf, client *clt){
 	clt->setPrenom(data[2]);
 	for (int i = 0 ; i < LIMITE_RESERVATION ; i++){
 		getline(ssReservee, str, ',');
-		clt->setResReservee (str, i);
+		clt->setResReservee (data[0] + str, i);
 	}
 	for (int i = 0 ; i < LIMITE_EMPRUNT ; i++){
 		getline(ssEmpruntee, str, ',');
-		clt->setResEmpruntee (str, i);
+		clt->setResEmpruntee (data[0] + str, i);
 	}
 	for (int i = 0 ; i < LIMITE_EMPRUNT ; i++){
 		getline(ssDate, str, ',');
@@ -183,4 +183,17 @@ int utilisateurs::getIdUtilisateur(std::string _id){
 			return i;
 	}
 	return -1;
+}
+
+void utilisateurs::effaceMemoire(){
+	for (int i = 0 ; i < users.size() ; i++){
+		delete users[i];
+	}
+	clients.clear();
+	adm.clear();
+	users.clear();
+}
+
+void utilisateurs::reservation(int idClient, int idMedia){
+
 }

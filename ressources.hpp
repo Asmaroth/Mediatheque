@@ -50,8 +50,10 @@ class ressources {
         void createVhs(std::string _buf, vhs *vhs);
         void createPeinture(std::string _buf, peinture *ptr);
         void load(const char *filename);
+        void reload();
         void save(const char *filename);
         void clear();
+        void effaceMemoire();
         void show(std::string _id); //revoir par rapport a ID ?
         void list();
         void deleteMedia(int _id, std::string _idMedia);  //revoir par rapport a ID ?

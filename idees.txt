@@ -28,6 +28,23 @@ TODO avant la fin :
 
 
 
-TODO NOW :
-	- Alexis : ressources.cpp : faire toutes les fonctions de load(file) + createType() associées
-	- Coco : loadClient() + revoir identifiants : mettre en string l'Id avec une lettre en premier pour identifier type "L4" pour le 4eme livre de la mediatheque
+
+
+
+TODO derniere seance :
+	- negocier avec le prof
+	- ajouter la possibilité de faire une recherche uniquement sur les medias présents dans la bibliothèque (en enlevant ceux empruntés (et réservés ?))
+
+
+
+Negociation avec le prof :
+	- phase d'authentification : si echoue alors client -> obsolete car identification des clients : ok ?
+	- interraction en mode "graphique", l'utilisateur n'a pas directement accès aux fonctions demandées par le cachier des charges : ok ?
+	- ajouter la recherche sur les medias reserves ?
+	- en compte client, on a le droit de faire une reservation: ok ?
+
+
+Idee pour le reload automatique :
+	- ajouter dans le .txt la date et l'heure de derniere modification
+	- apres chaque commande en mode client, checker si un fichier a été modifié en comparant la date de derniere modification
+	- si fichier modifié, utiliser reload()

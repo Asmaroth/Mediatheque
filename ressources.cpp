@@ -7,10 +7,7 @@ ressources::ressources()
  stock = 0;
 }
 
-ressources::~ressources(){ 	//ATTENTION ICI : mauvaise idée de faire ça ? Detruit bien toutes les ressources a l'interieur, mais est-ce que ca detruit l'objet ressource lui meme ????
-	for (int i = 0 ; i < medias.size() ; i++)
-		delete medias[i];
-}
+ressources::~ressources(){}
 
 ressources::ressources(int _nbrRessource , std::string _nomRessource , int _stock) //useless 
 {
@@ -346,6 +343,16 @@ void ressources::load(const char *filename)
     myFile.close();
 }
 
+void ressources::reload(){
+	load("cd.txt");
+	load("revues.txt");
+	load("livre.txt");
+	load("vhs.txt");
+	load("dvd.txt");
+	load("resNumerique.txt");
+	load("peinture.txt");
+}
+
 void ressources::show(std::string _id){
 	int flag = 0;
 	for (int i = 0 ; i < medias.size() ; i++){
@@ -383,6 +390,15 @@ void ressources::save(const char *filename){
 
 void ressources::clear(){
 	medias.swap(mediaSave);
+}
+
+void ressources::effaceMemoire(){
+	for (int i = 0 ; i < medias.size() ; i++){
+		delete medias[i];
+		stock--;
+	}
+	medias.clear();
+	mediaSave.clear();
 }
 
 void ressources::deleteMedia(int _id, std::string _idMedia){
@@ -807,12 +823,24 @@ void ressources::modifMedia(int _id, std::string _idMedia){
 void ressources::reset(){
 	for (int i = 0 ; i < medias.size() ; i++){
 		delete medias[i];
+		stock--;
 	}
 	medias.clear();
-	for (int i = 0 ; i < mediaSave.size() ; i++){
-		delete mediaSave[i];
-	}
 	mediaSave.clear();
+	std::ofstream deleteLivre("livre.txt");
+	deleteLivre.close();
+	std::ofstream deleteRevue("revues.txt");
+	deleteRevue.close();
+	std::ofstream deleteVhs("vhs.txt");
+	deleteVhs.close();
+	std::ofstream deleteDvd("dvd.txt");
+	deleteDvd.close();
+	std::ofstream deleteCd("cd.txt");
+	deleteCd.close();
+	std::ofstream deleteResNum("resNumerique.txt");
+	deleteResNum.close();
+	std::ofstream deletePeinture("peinture.txt");
+	deletePeinture.close();
 }
 
 void ressources::rechercheGene(std::string _str){
@@ -910,8 +938,16 @@ void ressources::rechercheChamp(std::string _str, int _type){
 
 int ressources::verifIdMedia(std::string idRessource){
 	for (int i = 0 ; i < medias.size() ; i++){
-		if(idRessource.compare(medias[i]->getId()) == 0)
-			return i+1;
+		if(idRessource.compare(medias[i]->getId()) == 0){
+			if(medias[i]->getDisponible() == 3)
+				return i+1;
+			else if(medias[i]->getDisponible() == 0)
+				return -1;
+			else if(medias[i]->getDisponible() == 1)
+				return -2;
+			else if(medias[i]->getDisponible() == 2)
+				return -3;
+		}
 	}
 	return 0;
 }
