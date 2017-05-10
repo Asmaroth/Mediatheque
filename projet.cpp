@@ -299,7 +299,9 @@ void reservation(int idClient, ressources *res, utilisateurs *uti){
 		std::cout << "Media reserve.\n" << std::endl;
 	}
 	else if(id2.compare("0") == 0 && res->getDisponible(idMed-1) == 3){
-
+		uti->reservation(idClient, res->infoPrincipales(idMed-1), 1);
+		res->reservation(uti->getIdClient(idClient), idMed-1);
+		std::cout << "Media reserve.\n" << std::endl;
 	}
 	else
 		std::cout << "La limite maximale de media pouvant etre reservee est atteinte. Merci d'annuler une reservation avant d'en faire une autre." << std::endl;
