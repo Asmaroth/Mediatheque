@@ -19,12 +19,12 @@ class media {
         int disponible;     //0 = réservé, 1 = emprunté, 2 = non disponible (utile ?), 3 = disponible
         int dureeEmprunt;
         int dateEmprunt;
-        int idClient;
+        std::string idClient;
         int version;
     // Operations
     public:
         media();
-        media(std::string _id, std::string _titre, std::string _auteur, std::string _type, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt);
+        media(std::string _id, std::string _titre, std::string _auteur, std::string _type, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt,std::string _idClient);
         ~media();
         void reserver ();
         void emprunter ();
@@ -45,8 +45,8 @@ class media {
         int getDureeEmprunt ();
         void setDateEmprunt (int _dateEmprunt);
         int getDateEmprunt ();
-        void setIdClient(int _idClient);
-        int getIdClient();
+        void setIdClient(std::string _idClient);
+        std::string getIdClient();
         std::string int2str(int nbr);
         int getVersion();
         void setVersion(int _version);
