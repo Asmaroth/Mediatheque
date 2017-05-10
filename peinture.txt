@@ -1,3 +1,3 @@
-(7) liste des peintures : 
+(7) liste des peintures, version :1
 P1;la joconde;Leonard de vinci;1486;3;60;0;40;25
 P2;david contre goliath;michael ange;1525;3;60;0;180;210

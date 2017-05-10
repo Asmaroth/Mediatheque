@@ -66,6 +66,7 @@ class ressources {
         int verifIdMedia(std::string idRessource);
         int findLastPosition(std::string _type);
         void saveEndOfFile(std::string filename, std::string str, const char *entete);
+        void checkVersion();
 };
 
 #endif
