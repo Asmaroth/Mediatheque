@@ -44,13 +44,13 @@ class ressources {
         std::string infoPrincipales(int _id);
         int str2int(std::string str);
         std::string int2str(int nbr);
-        void createLivre(std::string _buf, livre *lvr);
-        void createRevues(std::string _buf, revues *rev);
-        void createCd(std::string _buf, cd *cd);
-        void createDvd(std::string _buf, dvd *dvd);
-        void createResNumerique(std::string _buf, resNumerique *resNum);
-        void createVhs(std::string _buf, vhs *vhs);
-        void createPeinture(std::string _buf, peinture *ptr);
+        void createLivre(std::string _buf, livre *lvr, std::string version);
+        void createRevues(std::string _buf, revues *rev, std::string version);
+        void createCd(std::string _buf, cd *cd, std::string version);
+        void createDvd(std::string _buf, dvd *dvd, std::string version);
+        void createResNumerique(std::string _buf, resNumerique *resNum, std::string version);
+        void createVhs(std::string _buf, vhs *vhs, std::string version);
+        void createPeinture(std::string _buf, peinture *ptr, std::string version);
         void incrVersion(const char *filename);
         void load(const char *filename);
         void reload();
@@ -60,6 +60,7 @@ class ressources {
         void show(std::string _id); //revoir par rapport a ID ?
         void list();
         void deleteMedia(int _id, std::string _idMedia);  //revoir par rapport a ID ?
+        void deleteType(std::string type);
         std::string addMedia(int _type);
         void modifMedia(int _id, std::string _idMedia);
         void reset();

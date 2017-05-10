@@ -76,21 +76,33 @@ std::string ressources::int2str(int nbr)
 	return ss.str();
 }
 
-void ressources::createLivre(std::string _buf, livre *lvr)
+void ressources::deleteType(std::string type){
+	std::string str;
+	for(int i = 0 ; i < medias.size() ; i++){
+		str = medias[i]->getId();
+		str = str[0];
+		if(str.compare(type) == 0){
+			delete medias[i];
+			medias.erase(medias.begin() + i);
+			mediaSave.erase(mediaSave.begin() + i);
+			i--;
+			stock--;
+		}
+	}
+}
+
+void ressources::createLivre(std::string _buf, livre *lvr, std::string version)
 {
 	std::string str;
-	std::string version;
 	std::string buffer;
 	std::string data[NBR_DATA_LIVRE];
 	std::stringstream ss(_buf);
-	std::getline(ss, buffer,':');
-	std::getline(ss,buffer,' ');
-	version = buffer;
-
 	for (int i = 0 ; i < NBR_DATA_LIVRE ; i++){
 		getline(ss, str, ';');
 		data[i] = str;
 	}
+	if(version.compare("100") == 0)
+		version = "1";
 	lvr->setVersion(version);
 	lvr->setId(data[0]);
 	lvr->setTitre(data[1]);
@@ -106,17 +118,11 @@ void ressources::createLivre(std::string _buf, livre *lvr)
 }
 
 
-void ressources::createRevues(std::string _buf, revues *rev)
+void ressources::createRevues(std::string _buf, revues *rev, std::string version)
 {
 	std::string str;
-	std::string version;
-	std::string buffer;
 	std::string data[NBR_DATA_REVUES];
 	std::stringstream ss(_buf);
-	std::getline(ss, buffer,':');
-	std::getline(ss,buffer,' ');
-	version = buffer;
-
 	for (int i = 0 ; i < NBR_DATA_REVUES ; i++){
 		getline(ss, str, ';');
 		data[i] = str;
@@ -127,6 +133,8 @@ void ressources::createRevues(std::string _buf, revues *rev)
 		getline(ss2,str,',');
 		rev->setNomArticle(str);
 	}
+	if(version.compare("100") == 0)
+		version = "1";
 	rev->setVersion(version);
 	rev->setId(data[0]);
 	rev->setTitre(data[1]);
@@ -144,17 +152,11 @@ void ressources::createRevues(std::string _buf, revues *rev)
 
 }
 
-void ressources::createCd(std::string _buf, cd *cd)
+void ressources::createCd(std::string _buf, cd *cd, std::string version)
 {
 	std::string str;
-	std::string version;
-	std::string buffer;
 	std::string data[NBR_DATA_CD];
 	std::stringstream ss(_buf);
-	std::getline(ss, buffer,':');
-	std::getline(ss,buffer,' ');
-	version = buffer;
-
 	for (int i = 0 ; i < NBR_DATA_CD ; i++){
 		getline(ss, str, ';');
 		data[i] = str;
@@ -166,7 +168,7 @@ void ressources::createCd(std::string _buf, cd *cd)
 		cd->setTitrePiste(str);
 	}
 	if(version.compare("100") == 0)
-		version = "1" ;
+		version = "1";
 	cd->setVersion(version);
 	cd->setId(data[0]);
 	cd->setTitre(data[1]);
@@ -182,17 +184,11 @@ void ressources::createCd(std::string _buf, cd *cd)
 	cd->setNote(str2int(data[10]));
 }
 
-void ressources::createDvd(std::string _buf, dvd *dvd)
+void ressources::createDvd(std::string _buf, dvd *dvd, std::string version)
 {
 	std::string str;
-	std::string version;
-	std::string buffer;
 	std::string data[NBR_DATA_DVD];
 	std::stringstream ss(_buf);
-	std::getline(ss, buffer,':');
-	std::getline(ss,buffer,' ');
-	version = buffer;
-
 	for (int i = 0 ; i < NBR_DATA_DVD ; i++){
 		getline(ss, str, ';');
 		data[i] = str;
@@ -203,6 +199,8 @@ void ressources::createDvd(std::string _buf, dvd *dvd)
 		getline(ss2, str , ',');
 		dvd->setNomPiste(str);
 	}
+	if(version.compare("100") == 0)
+		version = "1";
 	dvd->setVersion(version);
 	dvd->setId(data[0]);
 	dvd->setTitre(data[1]);
@@ -217,21 +215,17 @@ void ressources::createDvd(std::string _buf, dvd *dvd)
 	dvd->setNbrPiste(str2int(data[10]));
 }
 
-void ressources::createResNumerique(std::string _buf, resNumerique *resNum)
+void ressources::createResNumerique(std::string _buf, resNumerique *resNum, std::string version)
 {
 	std::string str;
-	std::string version;
-	std::string buffer;
 	std::string data[NBR_DATA_RESNUM];
 	std::stringstream ss(_buf);
-	std::getline(ss, buffer,':');
-	std::getline(ss,buffer,' ');
-	version = buffer;
-
 	for (int i = 0 ; i < NBR_DATA_RESNUM ; i++){
 		getline(ss, str, ';');
 		data[i] = str;
 	}
+	if(version.compare("100") == 0)
+		version = "1";
 	resNum->setVersion(version);
 	resNum->setId(data[0]);
 	resNum->setTitre(data[1]);
@@ -245,21 +239,17 @@ void ressources::createResNumerique(std::string _buf, resNumerique *resNum)
 	resNum->setPath(data[9]);
 }
 
-void ressources::createVhs(std::string _buf, vhs *vhs)
+void ressources::createVhs(std::string _buf, vhs *vhs, std::string version)
 {
 	std::string str;
-	std::string version;
-	std::string buffer;
 	std::string data[NBR_DATA_VHS];
 	std::stringstream ss(_buf);
-	std::getline(ss, buffer,':');
-	std::getline(ss,buffer,' ');
-	version = buffer;
-
 	for (int i = 0 ; i < NBR_DATA_VHS ; i++){
 		getline(ss, str, ';');
 		data[i] = str;
 	}
+	if(version.compare("100") == 0)
+		version = "1";
 	vhs->setVersion(version);
 	vhs->setId(data[0]);
 	vhs->setTitre(data[1]);
@@ -273,22 +263,17 @@ void ressources::createVhs(std::string _buf, vhs *vhs)
 	vhs->setNote(str2int(data[9]));
 }
 
-void ressources::createPeinture(std::string _buf, peinture *ptr)
+void ressources::createPeinture(std::string _buf, peinture *ptr, std::string version)
 {
 	std::string str;
-	std::string version;
-	std::string buffer;
 	std::string data[NBR_DATA_PTR];
 	std::stringstream ss(_buf);
-	std::getline(ss, buffer,':');
-	std::getline(ss,buffer,' ');
-	version = buffer;
-
 	for (int i = 0 ; i < NBR_DATA_PTR ; i++){
 		getline(ss, str, ';');
 		data[i] = str;
 	}
-
+	if(version.compare("100") == 0)
+		version = "1";
 	ptr->setVersion(version);
 	ptr->setId(data[0]);
 	ptr->setTitre(data[1]);
@@ -313,13 +298,28 @@ void ressources::load(const char *filename)
     else{
     	getline(myFile, buf, ':');
     	mediaType = buf[1] - 48;
-    	getline(myFile, version, ' ');
+    	getline(myFile, version);
+    	if(mediaType == 1)
+    		deleteType("L");
+    	else if(mediaType == 2)
+    		deleteType("R");
+    	else if(mediaType == 3)
+    		deleteType("C");
+    	else if(mediaType == 4)
+    		deleteType("D");
+    	else if(mediaType == 5)
+    		deleteType("N");
+    	else if(mediaType == 6)
+    		deleteType("V");
+    	else if(mediaType == 7)
+    		deleteType("P");
+
     	while (getline(myFile, buf)){
     		if (mediaType == 1){
     			//creation d'un livre
     			//std::cout << "Creation d'un livre." << std::endl;
     			livre *lvr = new livre();
-    			createLivre(buf, lvr);
+    			createLivre(buf, lvr, version);
     			medias.push_back(lvr);
     			mediaSave.push_back(lvr);
     			nbrRessource++;
@@ -329,7 +329,7 @@ void ressources::load(const char *filename)
 				//creation d'une revue
 				//std::cout << "Creation d'une revue." << std::endl;
 				revues *rev = new revues();
-				createRevues(buf,rev);
+				createRevues(buf,rev, version);
 				medias.push_back(rev);
 				mediaSave.push_back(rev);
 				nbrRessource++;
@@ -339,7 +339,7 @@ void ressources::load(const char *filename)
 				//creation d'un cd 
 				//std::cout << "Creation d'un cd." << std::endl;
 				cd *CD = new cd();
-				createCd(buf,CD);
+				createCd(buf,CD, version);
 				medias.push_back(CD);
 				mediaSave.push_back(CD);
 				nbrRessource++;
@@ -350,7 +350,7 @@ void ressources::load(const char *filename)
 				//creation d'un dvd
 				//std::cout << "Creation d'un dvd." << std::endl;
 				dvd *DVD = new dvd();
-				createDvd(buf,DVD);
+				createDvd(buf,DVD, version);
 				medias.push_back(DVD);
 				mediaSave.push_back(DVD);
 				nbrRessource++;
@@ -361,7 +361,7 @@ void ressources::load(const char *filename)
 				//creation d'une ResNumerique
 				//std::cout << "Creation d'une Ressource Numerique." << std::endl;
 				resNumerique *resNum = new resNumerique();
-				createResNumerique(buf,resNum);
+				createResNumerique(buf,resNum, version);
 				medias.push_back(resNum);
 				mediaSave.push_back(resNum);
 				nbrRessource++;
@@ -372,7 +372,7 @@ void ressources::load(const char *filename)
 				//creation d'une vhs
 				//std::cout << "Creation d'une cassette vhs." << std::endl;
 				vhs *VHS = new vhs();
-				createVhs(buf,VHS);
+				createVhs(buf,VHS, version);
 				medias.push_back(VHS);
 				mediaSave.push_back(VHS);
 				nbrRessource++;
@@ -383,7 +383,7 @@ void ressources::load(const char *filename)
 				//creation d'une peinture
 				//std::cout << "Creation d'une peinture." << std::endl;
 				peinture *ptr = new peinture();
-				createPeinture(buf,ptr);
+				createPeinture(buf,ptr, version);
 				medias.push_back(ptr);
 				mediaSave.push_back(ptr);
 				nbrRessource++;
@@ -397,7 +397,17 @@ void ressources::load(const char *filename)
     myFile.close();
 }
 
+void ressources::effaceMemoire(){
+	for (int i = 0 ; i < medias.size() ; i++){
+		delete medias[i];
+		stock--;
+	}
+	medias.clear();
+	mediaSave.clear();
+}
+
 void ressources::reload(){
+	effaceMemoire();
 	load("cd.txt");
 	load("revues.txt");
 	load("livre.txt");
@@ -444,15 +454,6 @@ void ressources::save(const char *filename){
 
 void ressources::clear(){
 	medias.swap(mediaSave);
-}
-
-void ressources::effaceMemoire(){
-	for (int i = 0 ; i < medias.size() ; i++){
-		delete medias[i];
-		stock--;
-	}
-	medias.clear();
-	mediaSave.clear();
 }
 
 void ressources::deleteMedia(int _id, std::string _idMedia){
@@ -504,32 +505,33 @@ int ressources::findLastPosition(std::string _type){
 			return i;
 		}
 	}
-	return medias.size() - 1;
+	return medias.size();
 }
 
 void ressources::incrVersion(const char *filename)
 {
 	std::ifstream myFile(filename);
-	std::ifstream testFile(filename);
 	std::ofstream tempFile("temporary.txt");
 	std::string buf;
 	int version;
-	if(testFile.is_open())
+	if(myFile.is_open())
 	{
 		getline(myFile,buf,':');
 		tempFile << buf << ":";
-		getline(myFile,buf,' ');
+		getline(myFile,buf);
 		version = str2int(buf) + 1;
-		tempFile << int2str(version) << std::endl;
+		tempFile << int2str(version);
 		while(getline(myFile, buf)){
-			tempFile << buf;
+			tempFile << std::endl << buf;
 		}
 		myFile.close();
 		tempFile.close();
+		remove(filename);
 		rename("temporary.txt", filename);
 	}
 	else 
 		std::cout << "impossible d'ouvrir le fichier : " << filename << std::endl;
+
 }
 
 void ressources::saveEndOfFile(std::string filename, std::string str, const char *entete){
@@ -541,18 +543,16 @@ void ressources::saveEndOfFile(std::string filename, std::string str, const char
 	testFile.close();
 	std::ofstream myFile(filename.c_str(), std::ios::out |std::ios::app);
 	if(flag == 1){
-		myFile << entete << std::endl;
+		myFile << entete;
 	}
 	myFile << std::endl << str;
 	myFile.close();
 	incrVersion(filename.c_str());
-}	
+}
 
 
 std::string ressources::addMedia(int _type){
 	std::string name;
-
-
 	int pos;
 	std::string id;
 	std::string newId;
@@ -569,7 +569,7 @@ std::string ressources::addMedia(int _type){
 	std::cout << "\t- Annee de parution : ";
 	std::getline (std::cin,str);
 	buf = buf + ";" + str + ";3;60;-1";
-	if(_type == 1){
+	if(_type == 1 || _type == 2){
 		std::cout << "\t- Nombre de pages : ";
 		std::getline (std::cin,str);
 		buf = buf + ";" + str;
@@ -601,11 +601,10 @@ std::string ressources::addMedia(int _type){
 			}
 			newId = "R" + int2str(str2int(newId) + 1);
 			buf = newId + buf;
-			createRevues(buf, med);
-			medias.insert(medias.begin() + pos, med);
-			mediaSave.insert(mediaSave.begin() + pos, med);
+			createRevues(buf, med, "0");
 			str = type + ".txt";
 			saveEndOfFile(str, buf, "(2) Listes des revues :");
+			load("revues.txt");
 		}
 		else{
 			type = "livre";
@@ -617,14 +616,14 @@ std::string ressources::addMedia(int _type){
 			}
 			newId = "L" + int2str(str2int(newId) + 1);
 			buf = newId + buf;
-			createLivre(buf, med);
-			medias.insert(medias.begin() + pos, med);
-			mediaSave.insert(mediaSave.begin() + pos, med);
+			createLivre(buf, med, "0");
+			std::cout << "test\n\n" << std::endl;
 			str = type + ".txt";
 			saveEndOfFile(str, buf, "(1) Liste des Livres :");
+			load("livre.txt");
 		}
 	}
-	else if(_type == 3){
+	else if(_type == 3 || _type == 4){
 		std::cout << "\t- Duree : ";
 		std::getline (std::cin,str);
 		buf = buf + ";" + str;
@@ -650,11 +649,10 @@ std::string ressources::addMedia(int _type){
 			}
 			newId = "D" + int2str(str2int(newId) + 1);
 			buf = newId + buf;
-			createDvd(buf, med);
-			medias.insert(medias.begin() + pos, med);
-			mediaSave.insert(mediaSave.begin() + pos, med);
+			createDvd(buf, med, "0");
 			str = type + ".txt";
 			saveEndOfFile(str, buf, "(4) liste des DVD :");
+			load("dvd.txt");
 		}
 		else{
 			type = "vhs";
@@ -666,11 +664,10 @@ std::string ressources::addMedia(int _type){
 			}
 			newId = "V" + int2str(str2int(newId) + 1);
 			buf = newId + buf;
-			createVhs(buf, med);
-			medias.insert(medias.begin() + pos, med);
-			mediaSave.insert(mediaSave.begin() + pos, med);
+			createVhs(buf, med, "0");
 			str = type + ".txt";
 			saveEndOfFile(str, buf, "(6) liste des vhs :");
+			load("vhs.txt");
 		}
 	}
 	else if(_type == 5){
@@ -698,11 +695,10 @@ std::string ressources::addMedia(int _type){
 		}
 		newId = "C" + int2str(str2int(newId) + 1);
 		buf = newId + buf;
-		createCd(buf, med);
-		medias.insert(medias.begin() + pos, med);
-		mediaSave.insert(mediaSave.begin() + pos, med);
+		createCd(buf, med, "0");
 		str = type + ".txt";
 		saveEndOfFile(str, buf, "(3) liste de cd :");
+		load("cd.txt");
 	}
 	else if(_type == 6){
 		type = "ressourcenumerique";
@@ -723,11 +719,10 @@ std::string ressources::addMedia(int _type){
 		}
 		newId = "N" + int2str(str2int(newId) + 1);
 		buf = newId + buf;
-		createResNumerique(buf, med);
-		medias.insert(medias.begin() + pos, med);
-		mediaSave.insert(mediaSave.begin() + pos, med);
+		createResNumerique(buf, med, "0");
 		str = type + ".txt";
 		saveEndOfFile(str, buf, "(5) liste des ressources numerique :");
+		load("resNumerique.txt");
 	}
 	else if(_type == 7){
 		type = "peinture";
@@ -745,11 +740,10 @@ std::string ressources::addMedia(int _type){
 		}
 		newId = "P" + int2str(str2int(newId) + 1);
 		buf = newId + buf;
-		createPeinture(buf, med);
-		medias.insert(medias.begin() + pos, med);
-		mediaSave.insert(mediaSave.begin() + pos, med);
+		createPeinture(buf, med, "0");
 		str = type + ".txt";
 		saveEndOfFile(str, buf, "(7) liste des peintures : ");
+		load("peinture.txt");
 	}
 	nbrRessource++;
 	stock++;
@@ -1018,6 +1012,7 @@ void ressources::rechercheChamp(std::string _str, int _type){
 
 int ressources::verifIdMedia(std::string idRessource){
 	for (int i = 0 ; i < medias.size() ; i++){
+		std::cout << medias[i]->getId() << std::endl;
 		if(idRessource.compare(medias[i]->getId()) == 0){
 			if(medias[i]->getDisponible() == 3)
 				return i+1;

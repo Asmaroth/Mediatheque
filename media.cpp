@@ -127,7 +127,7 @@ void media::info(){
 		str = "indisponible";
 	else
 		str = "disponible";
-	std::cout << "(" << id << ") " << titre << ", de " << auteur << " est paru en " << annee << ". Il est actuellement " << str << "." << std::endl;
+	std::cout << "(" << id << ") " << titre << ", de " << auteur << " est paru en " << annee << ". Il est actuellement " << str << ". Version " << version << std::endl;
 }
 
 void media::infoAdmin(){
