@@ -27,6 +27,7 @@ class ressources {
         std::vector<std::string> typeRessource;
         int nbrRessource; //utile ?
         int stock;
+
     // Operations
     public:
 
@@ -50,6 +51,7 @@ class ressources {
         void createResNumerique(std::string _buf, resNumerique *resNum);
         void createVhs(std::string _buf, vhs *vhs);
         void createPeinture(std::string _buf, peinture *ptr);
+        void incrVersion(const char *filename);
         void load(const char *filename);
         void reload();
         void save(const char *filename);

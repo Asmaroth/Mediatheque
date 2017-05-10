@@ -51,6 +51,7 @@ void ressources::info()
 		  	  << "Elles sont de type : " << getTypeRessource() << "." << std::endl;
 }
 
+
 void ressources::list(){
 	if(medias.size() != 0)
 		for (int i = 0 ; i < medias.size() ; i++)
@@ -78,12 +79,19 @@ std::string ressources::int2str(int nbr)
 void ressources::createLivre(std::string _buf, livre *lvr)
 {
 	std::string str;
+	std::string version;
+	std::string buffer;
 	std::string data[NBR_DATA_LIVRE];
 	std::stringstream ss(_buf);
+	std::getline(ss, buffer,':');
+	std::getline(ss,buffer,' ');
+	version = buffer;
+
 	for (int i = 0 ; i < NBR_DATA_LIVRE ; i++){
 		getline(ss, str, ';');
 		data[i] = str;
 	}
+	lvr->setVersion(version);
 	lvr->setId(data[0]);
 	lvr->setTitre(data[1]);
 	lvr->setAuteur(data[2]);
@@ -101,8 +109,14 @@ void ressources::createLivre(std::string _buf, livre *lvr)
 void ressources::createRevues(std::string _buf, revues *rev)
 {
 	std::string str;
+	std::string version;
+	std::string buffer;
 	std::string data[NBR_DATA_REVUES];
 	std::stringstream ss(_buf);
+	std::getline(ss, buffer,':');
+	std::getline(ss,buffer,' ');
+	version = buffer;
+
 	for (int i = 0 ; i < NBR_DATA_REVUES ; i++){
 		getline(ss, str, ';');
 		data[i] = str;
@@ -113,6 +127,7 @@ void ressources::createRevues(std::string _buf, revues *rev)
 		getline(ss2,str,',');
 		rev->setNomArticle(str);
 	}
+	rev->setVersion(version);
 	rev->setId(data[0]);
 	rev->setTitre(data[1]);
 	rev->setAuteur(data[2]);
@@ -132,8 +147,14 @@ void ressources::createRevues(std::string _buf, revues *rev)
 void ressources::createCd(std::string _buf, cd *cd)
 {
 	std::string str;
+	std::string version;
+	std::string buffer;
 	std::string data[NBR_DATA_CD];
 	std::stringstream ss(_buf);
+	std::getline(ss, buffer,':');
+	std::getline(ss,buffer,' ');
+	version = buffer;
+
 	for (int i = 0 ; i < NBR_DATA_CD ; i++){
 		getline(ss, str, ';');
 		data[i] = str;
@@ -144,7 +165,9 @@ void ressources::createCd(std::string _buf, cd *cd)
 		getline(ss2, str , ',');
 		cd->setTitrePiste(str);
 	}
-
+	if(version.compare("100") == 0)
+		version = "1" ;
+	cd->setVersion(version);
 	cd->setId(data[0]);
 	cd->setTitre(data[1]);
 	cd->setAuteur(data[2]);
@@ -162,8 +185,14 @@ void ressources::createCd(std::string _buf, cd *cd)
 void ressources::createDvd(std::string _buf, dvd *dvd)
 {
 	std::string str;
+	std::string version;
+	std::string buffer;
 	std::string data[NBR_DATA_DVD];
 	std::stringstream ss(_buf);
+	std::getline(ss, buffer,':');
+	std::getline(ss,buffer,' ');
+	version = buffer;
+
 	for (int i = 0 ; i < NBR_DATA_DVD ; i++){
 		getline(ss, str, ';');
 		data[i] = str;
@@ -174,6 +203,7 @@ void ressources::createDvd(std::string _buf, dvd *dvd)
 		getline(ss2, str , ',');
 		dvd->setNomPiste(str);
 	}
+	dvd->setVersion(version);
 	dvd->setId(data[0]);
 	dvd->setTitre(data[1]);
 	dvd->setAuteur(data[2]);
@@ -190,12 +220,19 @@ void ressources::createDvd(std::string _buf, dvd *dvd)
 void ressources::createResNumerique(std::string _buf, resNumerique *resNum)
 {
 	std::string str;
+	std::string version;
+	std::string buffer;
 	std::string data[NBR_DATA_RESNUM];
 	std::stringstream ss(_buf);
+	std::getline(ss, buffer,':');
+	std::getline(ss,buffer,' ');
+	version = buffer;
+
 	for (int i = 0 ; i < NBR_DATA_RESNUM ; i++){
 		getline(ss, str, ';');
 		data[i] = str;
 	}
+	resNum->setVersion(version);
 	resNum->setId(data[0]);
 	resNum->setTitre(data[1]);
 	resNum->setAuteur(data[2]);
@@ -211,12 +248,19 @@ void ressources::createResNumerique(std::string _buf, resNumerique *resNum)
 void ressources::createVhs(std::string _buf, vhs *vhs)
 {
 	std::string str;
+	std::string version;
+	std::string buffer;
 	std::string data[NBR_DATA_VHS];
 	std::stringstream ss(_buf);
+	std::getline(ss, buffer,':');
+	std::getline(ss,buffer,' ');
+	version = buffer;
+
 	for (int i = 0 ; i < NBR_DATA_VHS ; i++){
 		getline(ss, str, ';');
 		data[i] = str;
 	}
+	vhs->setVersion(version);
 	vhs->setId(data[0]);
 	vhs->setTitre(data[1]);
 	vhs->setAuteur(data[2]);
@@ -232,12 +276,20 @@ void ressources::createVhs(std::string _buf, vhs *vhs)
 void ressources::createPeinture(std::string _buf, peinture *ptr)
 {
 	std::string str;
+	std::string version;
+	std::string buffer;
 	std::string data[NBR_DATA_PTR];
 	std::stringstream ss(_buf);
+	std::getline(ss, buffer,':');
+	std::getline(ss,buffer,' ');
+	version = buffer;
+
 	for (int i = 0 ; i < NBR_DATA_PTR ; i++){
 		getline(ss, str, ';');
 		data[i] = str;
 	}
+
+	ptr->setVersion(version);
 	ptr->setId(data[0]);
 	ptr->setTitre(data[1]);
 	ptr->setAuteur(data[2]);
@@ -253,13 +305,15 @@ void ressources::load(const char *filename)
 {
     std::string buf;
 	std::ifstream myFile(filename);
+	std::string version;
 	int mediaType;
     if(!myFile.is_open()){
     	std::cout << "Can't read file : " << filename << std::endl;
     }
     else{
-    	getline(myFile, buf);
+    	getline(myFile, buf, ':');
     	mediaType = buf[1] - 48;
+    	getline(myFile, version, ' ');
     	while (getline(myFile, buf)){
     		if (mediaType == 1){
     			//creation d'un livre
@@ -453,6 +507,31 @@ int ressources::findLastPosition(std::string _type){
 	return medias.size() - 1;
 }
 
+void ressources::incrVersion(const char *filename)
+{
+	std::ifstream myFile(filename);
+	std::ifstream testFile(filename);
+	std::ofstream tempFile("temporary.txt");
+	std::string buf;
+	int version;
+	if(testFile.is_open())
+	{
+		getline(myFile,buf,':');
+		tempFile << buf << ":";
+		getline(myFile,buf,' ');
+		version = str2int(buf) + 1;
+		tempFile << int2str(version) << std::endl;
+		while(getline(myFile, buf)){
+			tempFile << buf;
+		}
+		myFile.close();
+		tempFile.close();
+		rename("temporary.txt", filename);
+	}
+	else 
+		std::cout << "impossible d'ouvrir le fichier : " << filename << std::endl;
+}
+
 void ressources::saveEndOfFile(std::string filename, std::string str, const char *entete){
 	std::ifstream testFile(filename.c_str());
 	int flag = 0;
@@ -466,6 +545,7 @@ void ressources::saveEndOfFile(std::string filename, std::string str, const char
 	}
 	myFile << std::endl << str;
 	myFile.close();
+	incrVersion(filename.c_str());
 }	
 
 

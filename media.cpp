@@ -140,14 +140,23 @@ std::string media::infoToSave(){
 	return str;
 }
 
+int media::str2int(std::string str)
+{
+	int result;
+	std::stringstream ss(str);
+	if(!(ss>>result))
+		return 0;
+	return result;
+}
+
 int media::getVersion()
 {
 	return version;
 }
 
-void media::setVersion(int _version)
+void media::setVersion(std::string _version)
 {
-	version = _version;
+	version = str2int(_version);
 }
 
 int media::getPage (){
