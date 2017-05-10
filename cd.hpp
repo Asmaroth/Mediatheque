@@ -31,6 +31,7 @@ class cd : public media {
         virtual void setNote (int _note);
         virtual int getNote ();
         void info ();
+        virtual std::string infoToSave();
 };
 
 #endif

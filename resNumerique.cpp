@@ -68,3 +68,8 @@ void resNumerique::info ()
 	std::cout << "Cette ressource Numerique a pour format " << getFormat() << " et est de taille " << getTaille()<< std::endl
 			  << "Son chemin est " << getPath() << std::endl;
 }
+
+std::string resNumerique::infoToSave(){
+    std::string str = getId() + ';' + getTitre() + ';' + getAuteur()  + ';' + int2str(getAnnee()) + ';' + int2str(getDisponible()) + ';' + int2str(getDureeEmprunt()) + ';' + int2str(getDateEmprunt()) + ';' /*+ int2str(getIdClient()) + ';'*/ + getFormat() + ';' + int2str(getTaille()) + ';' + getPath();
+    return str;
+}

@@ -18,6 +18,7 @@ class peinture : public media {
         virtual void setLongueur (int _longueur);
         virtual int getLongueur ();
         virtual void info ();
+        virtual std::string infoToSave();
 };
 
 #endif

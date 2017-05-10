@@ -54,3 +54,8 @@ void peinture::info ()
 {
 	std::cout << "Cette peinture est de " << getHauteur() << " m de hauteur et " << getLongueur() << "m de longueur." << std::endl;
 }
+
+std::string peinture::infoToSave(){
+    std::string str = getId() + ';' + getTitre() + ';' + getAuteur()  + ';' + int2str(getAnnee()) + ';' + int2str(getDisponible()) + ';' + int2str(getDureeEmprunt()) + ';' + int2str(getDateEmprunt()) + ';' /*+ int2str(getIdClient()) + ';'*/ + int2str(getHauteur()) + ';' + int2str(getLongueur());
+    return str;
+}

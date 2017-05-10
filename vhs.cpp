@@ -68,3 +68,8 @@ void vhs::info ()
         std::cout << "Cette cassette dure " << getDuree() << " et est produit par " << getMaisonProduction() << std::endl
               << "Sa note est de " << getNote() << std::endl;
 }
+
+std::string vhs::infoToSave(){
+    std::string str = getId() + ';' + getTitre() + ';' + getAuteur()  + ';' + int2str(getAnnee()) + ';' + int2str(getDisponible()) + ';' + int2str(getDureeEmprunt()) + ';' + int2str(getDateEmprunt()) + ';' /*+ int2str(getIdClient()) + ';'*/ + int2str(getDuree()) + ';' + getMaisonProduction() + ';' + int2str(getNote());
+    return str;
+}

@@ -30,6 +30,7 @@ class revues : public livre {
         virtual std::string getArticle();
         virtual void info ();
         virtual void infoAdmin();
+        virtual std::string infoToSave();
 };
 
 #endif

@@ -106,3 +106,8 @@ void cd::info()
 		  	  << " Le cd a pour note " << getNote() << std::endl;
 
 }
+
+std::string cd::infoToSave(){
+	std::string str = getId() + ';' + getTitre() + ';' + getAuteur()  + ';' + int2str(getAnnee()) + ';' + int2str(getDisponible()) + ';' + int2str(getDureeEmprunt()) + ';' + int2str(getDateEmprunt()) + ';' /*+ int2str(getIdClient()) + ';'*/ + int2str(getDuree()) + ';' + int2str(getNbrPiste()) + ';' + getMaisonDisque() + ';' + getTitreAll() + ';' + int2str(getNote());
+	return str;
+}

@@ -134,7 +134,7 @@ void media::infoAdmin(){
 }
 
 std::string media::infoToSave(){
-	std::string str = getId() + ';' + getTitre() + ';' + getAuteur() + ';' + getType() + ';' + int2str(getAnnee()) + ';' + int2str(getDisponible()) + ';' + int2str(getDureeEmprunt()) + ';' + int2str(getDateEmprunt()) + ';' + int2str(getIdClient());
+	std::string str = getId() + ';' + getTitre() + ';' + getAuteur()  + ';' + int2str(getAnnee()) + ';' + int2str(getDisponible()) + ';' + int2str(getDureeEmprunt()) + ';' + int2str(getDateEmprunt()) + ';' + int2str(getIdClient());
 	return str;
 }
 

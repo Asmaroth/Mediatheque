@@ -110,6 +110,6 @@ void livre::infoAdmin()
 }
 
 std::string livre::infoToSave(){
-	std::string str = getId() + ';' + getTitre() + ';' + getAuteur() + ';' + getType() + ';' + int2str(getAnnee()) + ';' + int2str(getDisponible()) + ';' + int2str(getDureeEmprunt()) + ';' + int2str(getDateEmprunt()) + ';' + int2str(getIdClient()) + ';' + int2str(getPage()) + ';' + getCollection() + ';' + getResume() + ';' + int2str(getNote());
+	std::string str = getId() + ';' + getTitre() + ';' + getAuteur()  + ';' + int2str(getAnnee()) + ';' + int2str(getDisponible()) + ';' + int2str(getDureeEmprunt()) + ';' + int2str(getDateEmprunt()) + ';' + int2str(getIdClient()) + ';' + int2str(getPage()) + ';' + getCollection() + ';' + getResume() + ';' + int2str(getNote());
 	return str;
 }

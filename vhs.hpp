@@ -23,6 +23,7 @@ class vhs : public media {
         virtual void setNote (int _note);
         virtual int getNote ();
         virtual void info ();
+        virtual std::string infoToSave();
 };
 
 #endif

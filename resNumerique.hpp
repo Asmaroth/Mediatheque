@@ -21,6 +21,7 @@ class resNumerique : public media {
         virtual void setPath (std::string _path);
         virtual std::string getPath ();
         virtual void info ();
+        virtual std::string infoToSave();
 };
 
 #endif

@@ -21,6 +21,7 @@ class dvd : public vhs {
         virtual std::string getNomPiste (int _nbrPiste);
         virtual std::string getPiste();
         virtual void info ();
+        virtual std::string infoToSave();
 };
 
 #endif

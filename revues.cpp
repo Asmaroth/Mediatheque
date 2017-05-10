@@ -93,3 +93,8 @@ void revues::infoAdmin()
 	std::cout << "Cette revue est produite par " << getEditeur() << " et contient " << getNbrArticle() << " Article(s)." << std::endl
 		  	  << "Le nom des articles est : " << getArticle() << std::endl;
 }
+
+std::string revues::infoToSave(){
+    std::string str = getId() + ';' + getTitre() + ';' + getAuteur()  + ';' + int2str(getAnnee()) + ';' + int2str(getDisponible()) + ';' + int2str(getDureeEmprunt()) + ';' + int2str(getDateEmprunt()) + ';' /*+ int2str(getIdClient()) + ';'*/ + int2str(getPage()) + ';' + getCollection() + ';' + getResume() + ';' + int2str(getNote()) + ';' + getEditeur() + ';' + int2str(getNbrArticle()) + ';' + getArticle();
+    return str;
+}
