@@ -955,3 +955,16 @@ int ressources::verifIdMedia(std::string idRessource){
 void ressources::info (int _id){
 	medias[_id]->info();
 }
+
+int ressources::getDisponible(int idMedia){
+	return medias[idMedia]->getDisponible();
+}
+
+std::string ressources::infoPrincipales(int _id){
+	return "(" + medias[_id]->getId() + ") " + medias[_id]->getTitre();
+}
+
+void ressources::reservation(std::string str, int idMedia){
+	medias[idMedia]->setDisponible(0);
+	medias[idMedia]->setIdClient(str);
+}

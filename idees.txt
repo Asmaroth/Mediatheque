@@ -39,7 +39,7 @@ TODO derniere seance :
 
 Negociation avec le prof :
 	- phase d'authentification : si echoue alors client -> obsolete car identification des clients : ok ?
-	- interraction en mode "graphique", l'utilisateur n'a pas directement accès aux fonctions demandées par le cachier des charges : ok ?
+	- interraction en mode "graphique", l'utilisateur n'a pas directement accès aux fonctions demandées par le cachier des charges : OK
 	- ajouter la recherche sur les medias reserves ?
 	- en compte client, on a le droit de faire une reservation: ok ?
 
@@ -48,3 +48,22 @@ Idee pour le reload automatique :
 	- ajouter dans le .txt la date et l'heure de derniere modification
 	- apres chaque commande en mode client, checker si un fichier a été modifié en comparant la date de derniere modification
 	- si fichier modifié, utiliser reload()
+
+
+
+
+
+
+Soutenance :
+Mardi 16 : ordre de passage a definir
+consignes :
+	- duree : XX min de pressentation + XX min de questions
+	- format : client(le prof)/Dev+Vendeur (nous)
+			   slides + demo
+
+
+Rapport : 15 à 9h
+Consignes : lisez bien le poly, ne ratez rien.
+
+
+passage a 11h -> 11h20

@@ -9,9 +9,10 @@ media::media(){
     disponible = 2;
     dureeEmprunt = -1;
     dateEmprunt = 0;
+    idClient = "0";
 }
 
-media::media(std::string _id, std::string _titre, std::string _auteur, std::string _type, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt){
+media::media(std::string _id, std::string _titre, std::string _auteur, std::string _type, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt, std::string _idClient){
 	id = _id;
 	titre = _titre;
 	auteur = _auteur;
@@ -20,6 +21,7 @@ media::media(std::string _id, std::string _titre, std::string _auteur, std::stri
 	disponible = _disponible;
 	dureeEmprunt = _dureeEmprunt;
 	dateEmprunt = _dateEmprunt;
+	idClient = _idClient;
 }
 
 media::~media(){};
@@ -100,11 +102,11 @@ int media::getDateEmprunt (){
 	return dateEmprunt;
 }
 
-void media::setIdClient(int _idClient){
+void media::setIdClient(std::string _idClient){
 	idClient = _idClient;
 }
 
-int media::getIdClient(){
+std::string media::getIdClient(){
 	return idClient;
 }
 
@@ -134,7 +136,7 @@ void media::infoAdmin(){
 }
 
 std::string media::infoToSave(){
-	std::string str = getId() + ';' + getTitre() + ';' + getAuteur()  + ';' + int2str(getAnnee()) + ';' + int2str(getDisponible()) + ';' + int2str(getDureeEmprunt()) + ';' + int2str(getDateEmprunt()) + ';' + int2str(getIdClient());
+	std::string str = getId() + ';' + getTitre() + ';' + getAuteur()  + ';' + int2str(getAnnee()) + ';' + int2str(getDisponible()) + ';' + int2str(getDureeEmprunt()) + ';' + int2str(getDateEmprunt()) + ';' + getIdClient();
 	return str;
 }
 

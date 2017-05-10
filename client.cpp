@@ -112,6 +112,8 @@ std::string client::getResEmpruntee (){
 		str = str + resEmpruntee[i];
 		if (i + 1 < LIMITE_EMPRUNT)
 			str = str + ", ";
+		else
+			str = str + ".";
 	}
 	return str;
 }

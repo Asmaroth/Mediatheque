@@ -32,6 +32,11 @@ class utilisateurs {
         int getIdUtilisateur(std::string _id);
         void effaceMemoire();
         void reservation(int idClient, int idMedia);
+        std::string getResEmpruntee(int idClient);
+        std::string getResReservee(int idClient);
+        void retour(int idUser, int idMedia);
+        void reservation(int idUser, std::string media, int pos);
+        std::string getIdClient(int _id);
 };
 
 #endif

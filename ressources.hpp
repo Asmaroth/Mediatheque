@@ -8,13 +8,13 @@
 #include <fstream>
 
 
-#define NBR_DATA_LIVRE 11
-#define NBR_DATA_REVUES 14
-#define NBR_DATA_CD 12
-#define NBR_DATA_VHS 10
-#define NBR_DATA_DVD 12
-#define NBR_DATA_RESNUM 10
-#define NBR_DATA_PTR 9
+#define NBR_DATA_LIVRE 12
+#define NBR_DATA_REVUES 15
+#define NBR_DATA_CD 13
+#define NBR_DATA_VHS 11
+#define NBR_DATA_DVD 13
+#define NBR_DATA_RESNUM 11
+#define NBR_DATA_PTR 10
 
 class ressources {
     // Attributes
@@ -40,6 +40,7 @@ class ressources {
         int getStock ();
         void info ();
         void info (int _id);
+        std::string infoPrincipales(int _id);
         int str2int(std::string str);
         std::string int2str(int nbr);
         void createLivre(std::string _buf, livre *lvr);
@@ -66,6 +67,8 @@ class ressources {
         int verifIdMedia(std::string idRessource);
         int findLastPosition(std::string _type);
         void saveEndOfFile(std::string filename, std::string str, const char *entete);
+        int getDisponible(int idMedia);
+        void reservation(std::string str, int idMedia);
 };
 
 #endif

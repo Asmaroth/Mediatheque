@@ -274,6 +274,60 @@ void recherche(ressources *res){
 
 
 
+void reservation(int idClient, ressources *res, utilisateurs *uti){
+	std::string id2res;
+	std::string id1;
+	std::string id2;
+	int idMed;
+
+	std::cout << "Identifier le media a reserver : ";
+	std::cin >> id2res;
+	idMed = res->verifIdMedia(id2res);
+	while(idMed == 0 && id2res.compare("quitter") != 0){
+		std::cout << "Entree incorrecte, merci de reessayer. Identifier le media a reserver : ";
+		std::cin >> id2res;
+		idMed = res->verifIdMedia(id2res);
+	}
+	std::stringstream idResReservee(uti->getResReservee(idClient-1));
+	getline(idResReservee, id1, '(');
+	getline(idResReservee, id1, ')');
+	getline(idResReservee, id2, '(');
+	getline(idResReservee, id2, ')');
+	if(id1.compare("0") == 0 && res->getDisponible(idMed-1) == 3){
+		uti->reservation(idClient, res->infoPrincipales(idMed-1), 0);
+		res->reservation(uti->getIdClient(idClient), idMed-1);
+		std::cout << "Media reserve.\n" << std::endl;
+	}
+	else if(id2.compare("0") == 0 && res->getDisponible(idMed-1) == 3){
+
+	}
+	else
+		std::cout << "La limite maximale de media pouvant etre reservee est atteinte. Merci d'annuler une reservation avant d'en faire une autre." << std::endl;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 int main(){
 	mediatheque *mediath = new mediatheque("ENSEIRB-MATMECA");
 	ressources *res = new ressources();
@@ -309,6 +363,7 @@ int main(){
 			std::string decision;
 			std::string idClient;
 			std::string id2act;
+			std::string resEmpruntees;
 			if (id < 0){ //droits admin
 				id = -id - 1;
 				std::cout << "Authentification reussie (compte Administrateur)." << std::endl
@@ -528,6 +583,15 @@ int main(){
 					}
 					else if(choix == 4){
 						//reservation
+						std::cout << "Procedure de reservation de media. Identifier le client : ";
+						std::cin >> idClient;
+						idUser = uti->verifIdClient(idClient);
+						while(idUser <= 0 && idClient.compare("quitter") != 0){
+							std::cout << "Id client incorrect, merci de reessayer ou de quitter en rentrant 'quitter' : ";
+							std::cin >> idClient;
+							idUser = uti->verifIdClient(idClient);
+						}
+						reservation(idUser-1, res, uti);
 					}
 					else if(choix == 5){
 						//retour
@@ -539,21 +603,30 @@ int main(){
 							std::cin >> idClient;
 							idUser = uti->verifIdClient(idClient);
 						}
-						/*std::cout << "Identifier la ressource a retourner : " << uti->getResEmpruntee() << std::endl;
+						std::stringstream idResEmpruntee(uti->getResEmpruntee(idUser-1));
+						std::string id1;
+						std::string id2;
+						getline(idResEmpruntee, id1, '(');
+						getline(idResEmpruntee, id1, ')');
+						getline(idResEmpruntee, id2, '(');
+						getline(idResEmpruntee, id2, ')');
+						std::cout << "Identifier la ressource a retourner : " << uti->getResEmpruntee(idUser-1) << std::endl;
 						std::cin >> id2act;
-						verifier les id de media
-						while()
-						std::cout << "Entree inco.."
-						std::cin >> id2act;
-						if(??.compare(id_1) == 0)
+						while(id2act.compare(id1) != 0 && id2act.compare(id2) != 0 && id2act.compare("quitter") != 0){
+							std::cout << "Entree incorrecte, merci de reessayer.\nIdentifier la ressource a retourner ou annuler la demande en rentrant 'quitter' : " << uti->getResEmpruntee(idUser-1) << std::endl;
+							std::cin >> id2act;
+						}
+						if(id2act.compare(id1) == 0){
 							uti->retour(idUser-1, idMed-1);
-							std::cout << "Fin de la procedure de retour de media.\n" << std::endl;
-						else if(??.compare(id_2) == 0)
+							std::cout << "Media retourne.\n" << std::endl;
+						}
+						else if(id2act.compare(id2) == 0){
 							uti->retour(idUser-1, idMed-1);
-							std::cout << "Fin de la procedure de retour de media.\n" << std::endl;
-						else
-							std::cout << "Abortion de la procedure de retour de media.\n" << std::endl;
-						*/
+							std::cout << "Media retourne.\n" << std::endl;
+						}
+						else if(id2act.compare("quitter") == 0){
+							std::cout << "Abortion de la procedure de retour de media\n" << std::endl;
+						}
 					}
 					else if(choix == 6){
 						//info client
@@ -599,6 +672,7 @@ int main(){
 					}
 					if(choix == 1){
 						//reservation
+						reservation(id, res, uti);
 					}
 					else if(choix == 2){
 						//infoperso

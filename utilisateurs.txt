@@ -1,3 +1,3 @@
-101;DUPONT;JEAN;ERAGON Tome 3, ERAGON Tome 4;ERAGON Tome 1, Les quetes d'Ewilan Tome 1;ERAGON Tome 2, Les quetes d'Ewilan Tome 2;01012017,01012017
-001;BELLICAULT;CORENTIN;aucune;aucune;aucune;0;aaaaaaaa
-102;LEMONNIER;ALEXIS;aucune;aucune;aucune;0
+101;DUPONT;JEAN;(L1)Eragon,(0)aucun;(0)aucun,(0)aucun;(L2)D'un Monde à l'Autre,(0)aucun;01012017,01012017
+001;BELLICAULT;CORENTIN;(0)aucun;(0)aucun;(0)aucun;0,0;aaaaaaaa
+102;LEMONNIER;ALEXIS;(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0
