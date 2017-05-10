@@ -288,23 +288,26 @@ void reservation(int idClient, ressources *res, utilisateurs *uti){
 		std::cin >> id2res;
 		idMed = res->verifIdMedia(id2res);
 	}
-	std::stringstream idResReservee(uti->getResReservee(idClient-1));
-	getline(idResReservee, id1, '(');
-	getline(idResReservee, id1, ')');
-	getline(idResReservee, id2, '(');
-	getline(idResReservee, id2, ')');
-	if(id1.compare("0") == 0 && res->getDisponible(idMed-1) == 3){
-		uti->reservation(idClient, res->infoPrincipales(idMed-1), 0);
-		res->reservation(uti->getIdClient(idClient), idMed-1);
-		std::cout << "Media reserve.\n" << std::endl;
+	if(id2res.compare("quitter") != 0){
+		std::stringstream idResReservee(uti->getResReservee(idClient));
+		getline(idResReservee, id1, '(');
+		getline(idResReservee, id1, ')');
+		getline(idResReservee, id2, '(');
+		getline(idResReservee, id2, ')');
+		if(id1.compare("0") == 0 && res->getDisponible(idMed-1) == 3){
+			uti->reservation(idClient, res->infoPrincipales(idMed-1), 0);
+			res->reservation(uti->getIdClient(idClient), idMed-1);
+			std::cout << "Media reserve. position 1\n" << std::endl;
+		}
+		else if(id2.compare("0") == 0 && res->getDisponible(idMed-1) == 3){
+			uti->reservation(idClient, res->infoPrincipales(idMed-1), 1);
+			res->reservation(uti->getIdClient(idClient), idMed-1);
+			std::cout << "Media reserve. position 2\n" << std::endl;
+		}
+		else
+			std::cout << "La limite maximale de media pouvant etre reservee est atteinte. Merci d'annuler une reservation avant d'en faire une autre." << std::endl;
 	}
-	else if(id2.compare("0") == 0 && res->getDisponible(idMed-1) == 3){
-		uti->reservation(idClient, res->infoPrincipales(idMed-1), 1);
-		res->reservation(uti->getIdClient(idClient), idMed-1);
-		std::cout << "Media reserve.\n" << std::endl;
-	}
-	else
-		std::cout << "La limite maximale de media pouvant etre reservee est atteinte. Merci d'annuler une reservation avant d'en faire une autre." << std::endl;
+
 }
 
 
