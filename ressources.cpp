@@ -956,6 +956,7 @@ void ressources::info (int _id){
 	medias[_id]->info();
 }
 
+
 int ressources::getDisponible(int idMedia){
 	return medias[idMedia]->getDisponible();
 }
@@ -967,4 +968,95 @@ std::string ressources::infoPrincipales(int _id){
 void ressources::reservation(std::string str, int idMedia){
 	medias[idMedia]->setDisponible(0);
 	medias[idMedia]->setIdClient(str);
+}
+
+void ressources::checkVersion()
+{
+	std::string buf;
+	std::string id;
+	int version;
+	int set[7] = {-1,-1,-1,-1,-1,-1,-1};
+	std::ifstream fileLivre("livre.txt");
+	getline(fileLivre,buf,':');
+	getline(fileLivre,buf,' ');
+	version = str2int(buf);
+
+	for ( int i = 0 ; i < medias.size(); i++)
+	{
+		id = medias[i]->getId();
+		id = id[0];
+		if(id.compare("L") == 0)
+			set[0] = i;
+		if(id.compare("C") == 0)
+			set[1] = i;
+		if(id.compare("D") == 0)
+			set[2] = i;
+		if(id.compare("R") == 0)
+			set[3] = i;
+		if(id.compare("N") == 0)
+			set[4] = i;
+		if(id.compare("P") == 0)
+			set[5] = i;
+		if(id.compare("V") == 0)
+			set[6] = i;
+	} 
+
+	for (int i = 0 ; i<7 ; i++ )
+	{
+		if( set[0] != -1)
+		{
+			if ( version != medias[set[0]]->getVersion())
+				load("livre.txt");
+		}
+		else
+			load("livre.txt");
+
+		if(set[1] != -1)
+		{
+			if ( version != medias[set[1]]->getVersion())
+				load("cd.txt");			
+		}
+		else
+			load("cd.txt");
+
+		if(set[2] != -1)
+		{
+			if ( version != medias[set[2]]->getVersion())
+				load("dvd.txt");			
+		}
+		else
+			load("dvd.txt");
+
+		if(set[3] != -1)
+		{
+			if ( version != medias[set[3]]->getVersion())
+				load("revues.txt");			
+		}
+		else
+			load("resvues.txt");
+
+		if(set[4] != -1)
+		{
+			if ( version != medias[set[4]]->getVersion())
+				load("resNumerique.txt");			
+		}
+		else
+			load("resNumerique.txt");
+
+		if(set[5] != -1)
+		{
+			if ( version != medias[set[5]]->getVersion())
+				load("peinture.txt");			
+		}
+		else
+			load("peinture.txt");
+
+		if(set[6] != -1)
+		{
+			if ( version != medias[set[6]]->getVersion())
+				load("vhs.txt");			
+		}
+		else
+			load("vhs.txt");
+	}
 }

@@ -69,6 +69,7 @@ class ressources {
         void saveEndOfFile(std::string filename, std::string str, const char *entete);
         int getDisponible(int idMedia);
         void reservation(std::string str, int idMedia);
+        void checkVersion();
 };
 
 #endif

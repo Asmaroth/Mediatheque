@@ -140,6 +140,16 @@ std::string media::infoToSave(){
 	return str;
 }
 
+int media::getVersion()
+{
+	return version;
+}
+
+void media::setVersion(int _version)
+{
+	version = _version;
+}
+
 int media::getPage (){
 
 }

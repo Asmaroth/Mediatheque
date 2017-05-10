@@ -10,7 +10,7 @@
 
 class media {
     // Attributes
-    protected :
+    protected:
         std::string id;
         std::string titre;
         std::string auteur;
@@ -20,8 +20,10 @@ class media {
         int dureeEmprunt;
         int dateEmprunt;
         std::string idClient;
+        int version;
+
     // Operations
-    public :
+    public:
         media();
         media(std::string _id, std::string _titre, std::string _auteur, std::string _type, int _annee, int _disponible, int _dureeEmprunt, int _dateEmprunt, std::string _idClient);
         ~media();
@@ -47,6 +49,8 @@ class media {
         void setIdClient(std::string _idClient);
         std::string getIdClient();
         std::string int2str(int nbr);
+        int getVersion();
+        void setVersion(int _version);
         virtual void info();
         virtual void infoAdmin();
         virtual std::string infoToSave();
