@@ -101,18 +101,20 @@ void infoRessource(ressources *res, int userIsClient){
 		if(userIsClient)
 			res->checkVersion();
 		idMedia = res->verifIdMedia(idRessource);
+		std::cout << "test\n";
 		if (idRessource.compare("1") == 0 || idMedia == 0){
+			std::cout << "test\n";
 			res->info();
+			std::cout << "test\n";
 			res->list();
+			std::cout << "test\n";
 		}
 		else if(idMedia != 0){
-			//res->list(res->getIdRessource(idRessource));
 			res->info(idMedia - 1);
 		}
 		std::cout << "\nEntrer N identifiant pour des informations specifiques ou '1' pour des informations generales sur tous les medias. Entrer '0' pour quitter." << std::endl;
 		std::cin >> idRessource;
 	}
-
 }
 
 
@@ -304,32 +306,38 @@ void reservation(int idClient, ressources *res, utilisateurs *uti, int userIsCli
 		res->checkVersion();
 	idMed = res->verifIdMedia(id2res);
 	while(idMed == 0 && id2res.compare("quitter") != 0){
-		std::cout << "Entree incorrecte, merci de reessayer. Identifier le media a reserver : ";
+		std::cout << "Entree incorrecte, merci de reessayer ou de rentrer 'quitter' pour revenir au menu precedent. Identifier le media a reserver : ";
 		std::cin >> id2res;
 		if(userIsClient)
 			res->checkVersion();
 		idMed = res->verifIdMedia(id2res);
 	}
-	if(id2res.compare("quitter") != 0){
-		std::stringstream idResReservee(uti->getResReservee(idClient));
-		getline(idResReservee, id1, '(');
-		getline(idResReservee, id1, ')');
-		getline(idResReservee, id2, '(');
-		getline(idResReservee, id2, ')');
-		if(id1.compare("0") == 0 && res->getDisponible(idMed-1) == 3){
-			uti->reservation(idClient, res->infoPrincipales(idMed-1), 0);
-			res->reservation(uti->getIdClient(idClient), idMed-1);
-			std::cout << "Media reserve. position 1\n" << std::endl;
+	if(idMed > 0){
+		idMed = idMed - 1;
+		if(id2res.compare("quitter") != 0){
+			std::stringstream idResReservee(uti->getResReservee(idClient));
+			getline(idResReservee, id1, '(');
+			getline(idResReservee, id1, ')');
+			getline(idResReservee, id2, '(');
+			getline(idResReservee, id2, ')');
+			if(id1.compare("0") == 0){
+				uti->reservation(idClient, res->infoPrincipales(idMed), 0);
+				res->reservation(uti->getIdClient(idClient), idMed);
+				std::cout << "Media reserve. position 1\n" << std::endl;
+			}
+			else if(id2.compare("0") == 0){
+				uti->reservation(idClient, res->infoPrincipales(idMed), 1);
+				res->reservation(uti->getIdClient(idClient), idMed);
+				std::cout << "Media reserve. position 2\n" << std::endl;
+			}
+			else{
+				std::cout << "La limite maximale de media pouvant etre reservee est atteinte. Merci d'annuler une reservation avant d'en faire une autre." << std::endl;
+			}
 		}
-		else if(id2.compare("0") == 0 && res->getDisponible(idMed-1) == 3){
-			uti->reservation(idClient, res->infoPrincipales(idMed-1), 1);
-			res->reservation(uti->getIdClient(idClient), idMed-1);
-			std::cout << "Media reserve. position 2\n" << std::endl;
-		}
-		else
-			std::cout << "La limite maximale de media pouvant etre reservee est atteinte. Merci d'annuler une reservation avant d'en faire une autre." << std::endl;
 	}
-
+	else{
+		std::cout << "Le media n'est pas disponible actuellement.\n" << std::endl;
+	}
 }
 
 
@@ -394,86 +402,104 @@ int main(){
 			if (id < 0){ //droits admin
 				id = -id - 1;
 				std::cout << "Authentification reussie (compte Administrateur)." << std::endl
-						  << "Bonjour " << uti->getAdmin(id) << ", quelle action souhaitez vous realiser :\n\t(1) inscription\n\t(2) modification ressource\n\t(3) emprunt\n\t(4) reservation\n\t(5) retour\n\t(6) info client\n\t(7) info ressource\n\t(8) recherche\n\t(9) quitter" << std::endl;
+						  << "Bonjour " << uti->getAdmin(id) << ", quelle action souhaitez vous realiser :\n\t(1) modification utilisateur\n\t(2) modification ressource\n\t(3) emprunt\n\t(4) reservation\n\t(5) retour\n\t(6) info client\n\t(7) info ressource\n\t(8) recherche\n\t(9) quitter" << std::endl;
 				std::cin >> choix;
 				while(choix != 9){
 					while(choix != 1 && choix != 2 && choix != 3 && choix != 4 && choix != 5 && choix != 6 && choix != 7 && choix != 8){
-						std::cout << "Choix incorrect, merci de reessayer :\n\t(1) inscription\n\t(2) modification ressource\n\t(3) emprunt\n\t(4) reservation\n\t(5) retour\n\t(6) info client\n\t(7) info ressource\n\t(8) recherche\n\t(9) quitter" << std::endl;
+						std::cout << "Choix incorrect, merci de reessayer :\n\t(1) modification utilisateur\n\t(2) modification ressource\n\t(3) emprunt\n\t(4) reservation\n\t(5) retour\n\t(6) info client\n\t(7) info ressource\n\t(8) recherche\n\t(9) quitter" << std::endl;
 						std::cin >> choix;
 					}
 					if(choix == 1){
-						//inscription nouveau client ou administrateur
-						int typeAjout;
-						std::string str;
-						std::cout << "Procedure d'ajout d'un utilisateur. Souhaitez vous :\n\t(1) ajouter un client\n\t(2) ajouter un administrateur\n\t(3) quitter" << std::endl;
-						std::cin >> typeAjout;
-						while(typeAjout != 3){
-							while(typeAjout != 1 && typeAjout != 2){
-								std::cout << "Entree incorrecte, merci de reessayer :\n\t(1) ajouter un client\n\t(2) ajouter un administrateur\n\t(3) quitter" << std::endl;
+						//modification utilisateur
+						std::cout << "Que souhaitez-vous faire :\n\t(1) Ajout d'un utilisateur\n\t(2) Suppression d'un utilisateur\n\t(3) Modification des donnees d'un utilisateur\n\t(4) quitter" << std::endl;
+						std::cin >> choix;
+						while(choix != 4){
+							while(choix != 1 && choix != 2 && choix != 3){
+								std::cout << "Entree incorrecte, merci de reessayer. Que souhaitez-vous faire :\n\t(1) Ajout d'un utilisateur\n\t(2) Suppression d'un utilisateur\n\t(3) Modification des donnees d'un utilisateur\n\t(4) quitter" << std::endl;
+								std::cin >> choix;
+							}
+							if(choix == 1){
+								int typeAjout;
+								std::string str;
+								std::cout << "Procedure d'ajout d'un utilisateur. Souhaitez vous :\n\t(1) ajouter un client\n\t(2) ajouter un administrateur\n\t(3) quitter" << std::endl;
 								std::cin >> typeAjout;
-							}
-							if(typeAjout == 1){
-								//ajout client
-								client *clt = new client();
-								std::cout << "Merci de rentrer les informations suivantes (en majuscule, sans espace ni caractere special) :\n\tNom : ";
-								std::cin >> str;
-								clt->setNom(str);
-								std::cout <<"\tPrenom : ";
-								std::cin >> str;
-								clt->setPrenom(str);
-								std::cout << "Confirmez vous l'enregistrement du client (y/n) : " << clt->getNom() << " " << clt->getPrenom() << ".\t";
-								std::cin >> str;
-								while(str.compare("y") != 0 && str.compare("n") != 0){
-									std::cout << "Entree incorrecte, merci de reessayer (y/n) : ";
-									std::cin >> str;
-								}
-								if(str.compare("y") == 0){
-									uti->addClient(clt);
-									std::cout << "Ajout du client confirme.\n" << std::endl; 
-									//addUser(clt);
-								}
-								else if(str.compare("n") == 0){
-									std::cout << "Client non confirme, abortion de la procedure d'ajout d'utilisateur.\n" << std::endl;
-								}
-								break;
-							}
-							else if(typeAjout == 2){
-								//ajout admin
-								admin *adm = new admin();
-								std::cout << "Merci de rentrer les informations suivantes (en majuscule, sans espace ni caractere special) :\n\tNom : ";
-								std::cin >> str;
-								adm->setNom(str);
-								std::cout <<"\tPrenom : ";
-								std::cin >> str;
-								adm->setPrenom(str);
-								std::cout <<"\tMot de passe (8 caracteres) : ";
-								std::cin >> str;
-								while(str.size() != 8){
-									std::cout << "Mot de passe incorrect. Merci de saisir un mot de passe a 8 caracteres : ";
-									std::cin >> str;
-								}
-								adm->setMdp(str);
-								std::cout << "Confirmez vous l'enregistrement de l'administrateur (y/n) : " << adm->getNom() << " " << adm->getPrenom() << ".\t";
-								std::cin >> str;
-								while(str.compare("y") != 0 && str.compare("n") != 0){
-									std::cout << "Entree incorrecte, merci de reessayer (y/n) : ";
-									std::cin >> str;
-								}
-								if(str.compare("y") == 0){
-									uti->addAdmin(adm);
-									std::cout << "Ajout de l'administrateur confirme.\n" << std::endl; 
-									//addUser(adm);
-								}
-								else if(str.compare("n") == 0){
-									std::cout << "Client non confirme, abortion de la procedure d'ajout d'utilisateur.\n" << std::endl;
-								}
+								while(typeAjout != 3){
+									while(typeAjout != 1 && typeAjout != 2){
+										std::cout << "Entree incorrecte, merci de reessayer :\n\t(1) ajouter un client\n\t(2) ajouter un administrateur\n\t(3) quitter" << std::endl;
+										std::cin >> typeAjout;
+									}
+									if(typeAjout == 1){
+										//ajout client
+										client *clt = new client();
+										std::cout << "Merci de rentrer les informations suivantes (en majuscule, sans espace ni caractere special) :\n\tNom : ";
+										std::cin >> str;
+										clt->setNom(str);
+										std::cout <<"\tPrenom : ";
+										std::cin >> str;
+										clt->setPrenom(str);
+										std::cout << "Confirmez vous l'enregistrement du client (y/n) : " << clt->getNom() << " " << clt->getPrenom() << ".\t";
+										std::cin >> str;
+										while(str.compare("y") != 0 && str.compare("n") != 0){
+											std::cout << "Entree incorrecte, merci de reessayer (y/n) : ";
+											std::cin >> str;
+										}
+										if(str.compare("y") == 0){
+											uti->addClient(clt);
+											std::cout << "Ajout du client confirme.\n" << std::endl; 
+											//addUser(clt);
+										}
+										else if(str.compare("n") == 0){
+											std::cout << "Client non confirme, abortion de la procedure d'ajout d'utilisateur.\n" << std::endl;
+										}
+										break;
+									}
+									else if(typeAjout == 2){
+										//ajout admin
+										admin *adm = new admin();
+										std::cout << "Merci de rentrer les informations suivantes (en majuscule, sans espace ni caractere special) :\n\tNom : ";
+										std::cin >> str;
+										adm->setNom(str);
+										std::cout <<"\tPrenom : ";
+										std::cin >> str;
+										adm->setPrenom(str);
+										std::cout <<"\tMot de passe (8 caracteres) : ";
+										std::cin >> str;
+										while(str.size() != 8){
+											std::cout << "Mot de passe incorrect. Merci de saisir un mot de passe a 8 caracteres : ";
+											std::cin >> str;
+										}
+										adm->setMdp(str);
+										std::cout << "Confirmez vous l'enregistrement de l'administrateur (y/n) : " << adm->getNom() << " " << adm->getPrenom() << ".\t";
+										std::cin >> str;
+										while(str.compare("y") != 0 && str.compare("n") != 0){
+											std::cout << "Entree incorrecte, merci de reessayer (y/n) : ";
+											std::cin >> str;
+										}
+										if(str.compare("y") == 0){
+											uti->addAdmin(adm);
+											std::cout << "Ajout de l'administrateur confirme.\n" << std::endl; 
+											//addUser(adm);
+										}
+										else if(str.compare("n") == 0){
+											std::cout << "Client non confirme, abortion de la procedure d'ajout d'utilisateur.\n" << std::endl;
+										}
 
-								break;
+										break;
+									}
+								}
+								if(typeAjout == 3){
+									//quitter
+									std::cout << "Abortion de la procedure d'ajout d'utilisateur.\n" << std::endl;
+								}
 							}
-						}
-						if(typeAjout == 3){
-							//quitter
-							std::cout << "Abortion de la procedure d'ajout d'utilisateur.\n" << std::endl;
+							else if(choix == 2){
+
+							}
+							else if(choix == 3){
+
+							}
+							std::cout << "Que souhaitez-vous faire :\n\t(1) Ajout d'un utilisateur\n\t(2) Suppression d'un utilisateur\n\t(3) Modification des donnees d'un utilisateur\n\t(4) quitter" << std::endl;
+							std::cin >> choix;
 						}
 					}
 					else if(choix == 2){
@@ -562,6 +588,7 @@ int main(){
 					}
 					else if(choix == 3){
 						//emprunt
+						int isAvailable;
 						std::cout << "Procedure d'emprunt d'un media. Identifier le client : ";
 						std::cin >> idClient;
 						idUser = uti->verifIdClient(idClient);
@@ -578,13 +605,14 @@ int main(){
 							std::cin >> id2act;
 							idMed = res->verifIdMedia(id2act);
 						}
-						if(idMed == -1){
+						isAvailable = res->verifDispo(idMed);
+						if(isAvailable == -1){
 							std::cout << "Le media demande est deja reserver. Merci de faire une autre demande ou d'annuler prealablement la reservation." << std::endl;
 						}
-						else if(idMed == -2){
+						else if(isAvailable == -2){
 							std::cout << "Le media demande est deja emprunte. Merci de faire une autre demande ou de retourner prealablement le media." << std::endl;
 						}
-						else if(idMed == -3){
+						else if(isAvailable == -3){
 							std::cout << "Le media demande est indisponible. Merci de faire une autre demande ou de rendre disponible prealablement le media." << std::endl;
 						}
 						else if(id2act.compare("quitter") == 0){
