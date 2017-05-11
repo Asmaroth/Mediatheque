@@ -463,6 +463,69 @@ int main(){
 								}
 							}
 							else if(choix == 2){
+								int typeSupp;
+								int id2suppr;
+								std::string decision ;
+								std::string client2suppr ;
+								std::string str;
+								std::cout << "Procedure de supression d'un utilisateur. Rentrez l'identifiant de l'utilisateur a supprimer : ";
+								std::cin >> client2suppr;
+								id2suppr = uti->verifIdClient(client2suppr);
+								std::cout << id2suppr << std::endl;
+								while( id2suppr == 0 || client2suppr.compare("quitter") == 0)
+								{
+									std::cout << "Entree incorrecte, merci de réssayer ou de rentrer 'quitter' pour annuler la procedure. Procedure de supression d'un utilisateur. Rentrez l'identifiant de l'utilisateur a supprimer : ";
+									std::cin >> client2suppr;
+									id2suppr = uti->verifIdClient(client2suppr);
+								}
+								if (id2suppr > 0 )
+								{
+									id2suppr = id2suppr - 1 ;
+									std::cout << "Voulez vous vraiment supprimer le client suivant (o/n) : " << std::endl;
+									uti->infoClient(id2suppr);
+									std::cin >> decision ;
+									while( decision.compare("o") != 0 && decision.compare("n") != 0 )
+									{
+										std::cout << "Entree incorrecte, merci de réssayer. Voulez vous vraiment supprimer le client suivant (o/n) : " << std::endl;
+										std::cin >> decision ;
+									}
+									if( decision.compare("o") == 0)
+									{
+										std::cout << "Client en cours de suppression..." << std::endl;
+										uti->deleteClient(id2suppr, client2suppr);
+										std::cout << "Client supprimer." << std::endl;
+									}
+									else 
+									{
+										std::cout << "Abandon de la procedure de suppression du client.\n" << std::endl;
+									}
+								}
+								else 
+								{
+									id2suppr = -id2suppr + 1 ;
+									std::cout << id2suppr << std::endl;
+									std::cout << "Voulez vous vraiment supprimer l'administrateur suivant (o/n) : " << std::endl;
+									uti->infoClient(id2suppr);
+									std::cin >> decision ;
+									while( decision.compare("o") != 0 && decision.compare("n") != 0 )
+									{
+										std::cout << "Entree incorrecte, merci de réssayer. Voulez vous vraiment supprimer l'administrateur suivant (o/n) : " << std::endl;
+										std::cin >> decision ;
+									}
+									if( decision.compare("o") == 0)
+									{
+										std::cout << "Administrateur en cours de suppression..." << std::endl;
+										uti->deleteAdmin(id2suppr, client2suppr);
+										std::cout << "Administrateur supprimer." << std::endl;
+									}
+									else 
+									{
+										std::cout << "Abandon de la procedure de suppression de l'administrateur.\n" << std::endl;
+									}
+
+								}
+
+
 
 							}
 							else if(choix == 3){
@@ -677,7 +740,7 @@ int main(){
 						//recherche
 						recherche(res);
 					}
-					std::cout << "Quelle action souhaitez vous realiser :\n\t(1) inscription\n\t(2) modification ressource\n\t(3) emprunt\n\t(4) reservation\n\t(5) retour\n\t(6) info client\n\t(7) info ressource\n\t(8) recherche\n\t(9) quitter" << std::endl;
+					std::cout << "Quelle action souhaitez vous realiser :\n\t(1) modification utilisateur\n\t(2) modification ressource\n\t(3) emprunt\n\t(4) reservation\n\t(5) retour\n\t(6) info client\n\t(7) info ressource\n\t(8) recherche\n\t(9) quitter" << std::endl;
 					std::cin >> choix;
 				}
 				std::cout << "Au revoir " << uti->getAdmin(id) << ".\n" << std::endl;

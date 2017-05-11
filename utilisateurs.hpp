@@ -7,13 +7,13 @@
 class utilisateurs {
     // Associations
     // Attributes
-    private :
+    private:
         std::vector<client*> clients;
         std::vector<admin*> adm;
-    protected :
+    protected:
         std::vector<client*> users;
     // Operations
-    public :
+    public:
     	utilisateurs(const char *filename);
     	~utilisateurs();
     	void createClient(std::string _buf, client *clt);
@@ -37,6 +37,10 @@ class utilisateurs {
         void retour(int idUser, int idMedia);
         void reservation(int idUser, std::string media, int pos);
         std::string getIdClient(int _id);
+        void deleteAdmin(int _idAdmin, std::string admin2suppr);
+        void deleteClient(int _idClient, std::string client2suppr);
+        int getIdAdmin(std::string _id);
+        int getIdClient(std::string _id);
 };
 
 #endif

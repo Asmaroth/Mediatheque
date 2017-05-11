@@ -185,6 +185,94 @@ int utilisateurs::getIdUtilisateur(std::string _id){
 	return -1;
 }
 
+
+int utilisateurs::getIdClient(std::string _id){
+	for (int i = 0 ; i < clients.size() ; i++){
+		if(clients[i]->getId().compare(_id) == 0)
+			return i;
+	}
+	return -1;
+}
+
+
+int utilisateurs::getIdAdmin(std::string _id){
+	for (int i = 0 ; i < adm.size() ; i++){
+		if(adm[i]->getId().compare(_id) == 0)
+			return i;
+	}
+	return -1;
+}
+
+void utilisateurs::deleteAdmin(int _idAdmin, std::string admin2suppr)
+{
+	std::cout << adm.size() << std::endl;
+	if(0 <= _idAdmin && _idAdmin - 1 <= adm.size()){
+	delete users[_idAdmin];
+	users.erase(users.begin() + _idAdmin);
+	adm.erase(adm.begin() + getIdAdmin(admin2suppr));
+	std::string filename;
+	std::string id;
+	std::string buf;
+	filename = "utilisateurs.txt";
+	std::ifstream myFile(filename.c_str());
+	std::ofstream tempFile("temporary.txt");
+	if(!myFile.is_open() && !tempFile.is_open()){
+	    	std::cout << "Can't read file : " << filename << std::endl;
+	    }
+	else{
+    	while (getline(myFile, buf)){
+    		std::stringstream ss(buf);
+    		getline(ss, id, ';');
+    		if(id.compare(admin2suppr) != 0){
+    			tempFile << buf << std::endl;
+    			}
+    		}
+		}
+	myFile.close();
+	tempFile.close();
+	remove(filename.c_str());
+	rename("temporary.txt", filename.c_str());
+}
+	else
+		std::cout << "Impossible de detruire l'administrateur " << admin2suppr << std::endl;
+}
+
+
+void utilisateurs::deleteClient(int _idClient, std::string client2suppr)
+{
+	if(0 <= _idClient && _idClient <= clients.size()){
+	delete users[_idClient];
+	users.erase(users.begin() + _idClient);
+	clients.erase(clients.begin() + getIdClient(client2suppr));
+	std::string id;
+	std::string filename;
+	std::string buf;
+	filename = "utilisateurs.txt";
+	std::ifstream myFile(filename.c_str());
+	std::ofstream tempFile("temporary.txt");
+	if(!myFile.is_open() && !tempFile.is_open()){
+	    	std::cout << "Can't read file : " << filename << std::endl;
+	    }
+	else{
+    	while (getline(myFile, buf)){
+    		std::stringstream ss(buf);
+    		getline(ss, id, ';');
+    		if(id.compare(client2suppr) != 0){
+    			tempFile << buf << std::endl;
+    			}
+    		}
+		}
+	myFile.close();
+	tempFile.close();
+	remove(filename.c_str());
+	rename("temporary.txt", filename.c_str());
+	}
+	else
+		std::cout << "Impossible de detruire le client " << client2suppr << std::endl;
+
+}
+
+
 void utilisateurs::effaceMemoire(){
 	for (int i = 0 ; i < users.size() ; i++){
 		delete users[i];
@@ -218,3 +306,4 @@ void utilisateurs::reservation(int idUser, std::string media, int pos){
 std::string utilisateurs::getIdClient(int _id){
 	return users[_id]->getId();
 }
+
