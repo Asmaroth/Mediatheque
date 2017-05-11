@@ -181,6 +181,10 @@ std::string utilisateurs::getAdmin(int _id){
 	return adm[_id]->getNom() + " " + adm[_id]->getPrenom();
 }
 
+std::string utilisateurs::getAdminNbr(int _id){
+	return adm[_id]->getId();
+}
+
 void utilisateurs::addClient(client *clt){
 	std::string newId = clients[clients.size()-1]->getId();
 	newId = newId.substr(1);
@@ -231,14 +235,14 @@ int utilisateurs::getIdAdmin(std::string _id){
 	return -1;
 }
 
-void utilisateurs::deleteAdmin(int _idAdmin, std::string admin2suppr)
+void utilisateurs::deleteAdmin(int _idAdmin, std::string admin2suppr, std::string idUti)
 {
-	if( adm.size() == 1)
+	if( adm.size() == 1 || admin2suppr.compare(idUti) == 0)
 	{
-		std::cout << "Impossible de supprimer cet administrateur. Il est necessaire d'avoir au moins un administrateur." << std::endl;
+		std::cout << "Impossible de supprimer cet administrateur. Il est necessaire d'avoir au moins un administrateur ou la suppression de son propre compte est impossible." << std::endl;
 	}
 	else{
-	if(0 <= _idAdmin && _idAdmin - 1 <= adm.size()){
+	if(0 <= _idAdmin && _idAdmin <= adm.size()){
 	delete users[_idAdmin];
 	users.erase(users.begin() + _idAdmin);
 	adm.erase(adm.begin() + getIdAdmin(admin2suppr));
@@ -264,6 +268,7 @@ void utilisateurs::deleteAdmin(int _idAdmin, std::string admin2suppr)
 	tempFile.close();
 	remove(filename.c_str());
 	rename("temporary.txt", filename.c_str());
+	std::cout << "Administrateur supprime." << std::endl;
 }
 	else
 		std::cout << "Impossible de detruire l'administrateur " << admin2suppr << std::endl;
@@ -299,6 +304,7 @@ void utilisateurs::deleteClient(int _idClient, std::string client2suppr)
 	tempFile.close();
 	remove(filename.c_str());
 	rename("temporary.txt", filename.c_str());
+	std::cout << "Client supprimer." << std::endl;
 	}
 	else
 		std::cout << "Impossible de detruire le client " << client2suppr << std::endl;
