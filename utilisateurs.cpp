@@ -194,7 +194,7 @@ void utilisateurs::effaceMemoire(){
 	users.clear();
 }
 
-void utilisateurs::reservation(int idClient, int idMedia){
+void utilisateurs::emprunt(int idClient, int idMedia){
 
 }
 
