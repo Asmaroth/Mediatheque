@@ -234,7 +234,11 @@ int utilisateurs::getIdAdmin(std::string _id){
 
 void utilisateurs::deleteAdmin(int _idAdmin, std::string admin2suppr)
 {
-	std::cout << adm.size() << std::endl;
+	if( adm.size() == 1)
+	{
+		std::cout << "Impossible de supprimer cet administrateur. Il est necessaire d'avoir au moins un administrateur." << std::endl;
+	}
+	else{
 	if(0 <= _idAdmin && _idAdmin - 1 <= adm.size()){
 	delete users[_idAdmin];
 	users.erase(users.begin() + _idAdmin);
@@ -264,6 +268,7 @@ void utilisateurs::deleteAdmin(int _idAdmin, std::string admin2suppr)
 }
 	else
 		std::cout << "Impossible de detruire l'administrateur " << admin2suppr << std::endl;
+	}
 }
 
 
