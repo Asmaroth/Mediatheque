@@ -218,7 +218,6 @@ int utilisateurs::getIdUtilisateur(std::string _id){
 	return -1;
 }
 
-
 int utilisateurs::getIdClient(std::string _id){
 	for (int i = 0 ; i < clients.size() ; i++){
 		if(clients[i]->getId().compare(_id) == 0)
