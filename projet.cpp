@@ -372,86 +372,104 @@ int main(){
 			if (id < 0){ //droits admin
 				id = -id - 1;
 				std::cout << "Authentification reussie (compte Administrateur)." << std::endl
-						  << "Bonjour " << uti->getAdmin(id) << ", quelle action souhaitez vous realiser :\n\t(1) inscription\n\t(2) modification ressource\n\t(3) emprunt\n\t(4) reservation\n\t(5) retour\n\t(6) info client\n\t(7) info ressource\n\t(8) recherche\n\t(9) quitter" << std::endl;
+						  << "Bonjour " << uti->getAdmin(id) << ", quelle action souhaitez vous realiser :\n\t(1) modification utilisateur\n\t(2) modification ressource\n\t(3) emprunt\n\t(4) reservation\n\t(5) retour\n\t(6) info client\n\t(7) info ressource\n\t(8) recherche\n\t(9) quitter" << std::endl;
 				std::cin >> choix;
 				while(choix != 9){
 					while(choix != 1 && choix != 2 && choix != 3 && choix != 4 && choix != 5 && choix != 6 && choix != 7 && choix != 8){
-						std::cout << "Choix incorrect, merci de reessayer :\n\t(1) inscription\n\t(2) modification ressource\n\t(3) emprunt\n\t(4) reservation\n\t(5) retour\n\t(6) info client\n\t(7) info ressource\n\t(8) recherche\n\t(9) quitter" << std::endl;
+						std::cout << "Choix incorrect, merci de reessayer :\n\t(1) modification utilisateur\n\t(2) modification ressource\n\t(3) emprunt\n\t(4) reservation\n\t(5) retour\n\t(6) info client\n\t(7) info ressource\n\t(8) recherche\n\t(9) quitter" << std::endl;
 						std::cin >> choix;
 					}
 					if(choix == 1){
-						//inscription nouveau client ou administrateur
-						int typeAjout;
-						std::string str;
-						std::cout << "Procedure d'ajout d'un utilisateur. Souhaitez vous :\n\t(1) ajouter un client\n\t(2) ajouter un administrateur\n\t(3) quitter" << std::endl;
-						std::cin >> typeAjout;
-						while(typeAjout != 3){
-							while(typeAjout != 1 && typeAjout != 2){
-								std::cout << "Entree incorrecte, merci de reessayer :\n\t(1) ajouter un client\n\t(2) ajouter un administrateur\n\t(3) quitter" << std::endl;
+						//modification utilisateur
+						std::cout << "Que souhaitez-vous faire :\n\t(1) Ajout d'un utilisateur\n\t(2) Suppression d'un utilisateur\n\t(3) Modification des donnees d'un utilisateur\n\t(4) quitter" << std::endl;
+						std::cin >> choix;
+						while(choix != 4){
+							while(choix != 1 && choix != 2 && choix != 3){
+								std::cout << "Entree incorrecte, merci de reessayer. Que souhaitez-vous faire :\n\t(1) Ajout d'un utilisateur\n\t(2) Suppression d'un utilisateur\n\t(3) Modification des donnees d'un utilisateur\n\t(4) quitter" << std::endl;
+								std::cin >> choix;
+							}
+							if(choix == 1){
+								int typeAjout;
+								std::string str;
+								std::cout << "Procedure d'ajout d'un utilisateur. Souhaitez vous :\n\t(1) ajouter un client\n\t(2) ajouter un administrateur\n\t(3) quitter" << std::endl;
 								std::cin >> typeAjout;
-							}
-							if(typeAjout == 1){
-								//ajout client
-								client *clt = new client();
-								std::cout << "Merci de rentrer les informations suivantes (en majuscule, sans espace ni caractere special) :\n\tNom : ";
-								std::cin >> str;
-								clt->setNom(str);
-								std::cout <<"\tPrenom : ";
-								std::cin >> str;
-								clt->setPrenom(str);
-								std::cout << "Confirmez vous l'enregistrement du client (y/n) : " << clt->getNom() << " " << clt->getPrenom() << ".\t";
-								std::cin >> str;
-								while(str.compare("y") != 0 && str.compare("n") != 0){
-									std::cout << "Entree incorrecte, merci de reessayer (y/n) : ";
-									std::cin >> str;
-								}
-								if(str.compare("y") == 0){
-									uti->addClient(clt);
-									std::cout << "Ajout du client confirme.\n" << std::endl; 
-									//addUser(clt);
-								}
-								else if(str.compare("n") == 0){
-									std::cout << "Client non confirme, abortion de la procedure d'ajout d'utilisateur.\n" << std::endl;
-								}
-								break;
-							}
-							else if(typeAjout == 2){
-								//ajout admin
-								admin *adm = new admin();
-								std::cout << "Merci de rentrer les informations suivantes (en majuscule, sans espace ni caractere special) :\n\tNom : ";
-								std::cin >> str;
-								adm->setNom(str);
-								std::cout <<"\tPrenom : ";
-								std::cin >> str;
-								adm->setPrenom(str);
-								std::cout <<"\tMot de passe (8 caracteres) : ";
-								std::cin >> str;
-								while(str.size() != 8){
-									std::cout << "Mot de passe incorrect. Merci de saisir un mot de passe a 8 caracteres : ";
-									std::cin >> str;
-								}
-								adm->setMdp(str);
-								std::cout << "Confirmez vous l'enregistrement de l'administrateur (y/n) : " << adm->getNom() << " " << adm->getPrenom() << ".\t";
-								std::cin >> str;
-								while(str.compare("y") != 0 && str.compare("n") != 0){
-									std::cout << "Entree incorrecte, merci de reessayer (y/n) : ";
-									std::cin >> str;
-								}
-								if(str.compare("y") == 0){
-									uti->addAdmin(adm);
-									std::cout << "Ajout de l'administrateur confirme.\n" << std::endl; 
-									//addUser(adm);
-								}
-								else if(str.compare("n") == 0){
-									std::cout << "Client non confirme, abortion de la procedure d'ajout d'utilisateur.\n" << std::endl;
-								}
+								while(typeAjout != 3){
+									while(typeAjout != 1 && typeAjout != 2){
+										std::cout << "Entree incorrecte, merci de reessayer :\n\t(1) ajouter un client\n\t(2) ajouter un administrateur\n\t(3) quitter" << std::endl;
+										std::cin >> typeAjout;
+									}
+									if(typeAjout == 1){
+										//ajout client
+										client *clt = new client();
+										std::cout << "Merci de rentrer les informations suivantes (en majuscule, sans espace ni caractere special) :\n\tNom : ";
+										std::cin >> str;
+										clt->setNom(str);
+										std::cout <<"\tPrenom : ";
+										std::cin >> str;
+										clt->setPrenom(str);
+										std::cout << "Confirmez vous l'enregistrement du client (y/n) : " << clt->getNom() << " " << clt->getPrenom() << ".\t";
+										std::cin >> str;
+										while(str.compare("y") != 0 && str.compare("n") != 0){
+											std::cout << "Entree incorrecte, merci de reessayer (y/n) : ";
+											std::cin >> str;
+										}
+										if(str.compare("y") == 0){
+											uti->addClient(clt);
+											std::cout << "Ajout du client confirme.\n" << std::endl; 
+											//addUser(clt);
+										}
+										else if(str.compare("n") == 0){
+											std::cout << "Client non confirme, abortion de la procedure d'ajout d'utilisateur.\n" << std::endl;
+										}
+										break;
+									}
+									else if(typeAjout == 2){
+										//ajout admin
+										admin *adm = new admin();
+										std::cout << "Merci de rentrer les informations suivantes (en majuscule, sans espace ni caractere special) :\n\tNom : ";
+										std::cin >> str;
+										adm->setNom(str);
+										std::cout <<"\tPrenom : ";
+										std::cin >> str;
+										adm->setPrenom(str);
+										std::cout <<"\tMot de passe (8 caracteres) : ";
+										std::cin >> str;
+										while(str.size() != 8){
+											std::cout << "Mot de passe incorrect. Merci de saisir un mot de passe a 8 caracteres : ";
+											std::cin >> str;
+										}
+										adm->setMdp(str);
+										std::cout << "Confirmez vous l'enregistrement de l'administrateur (y/n) : " << adm->getNom() << " " << adm->getPrenom() << ".\t";
+										std::cin >> str;
+										while(str.compare("y") != 0 && str.compare("n") != 0){
+											std::cout << "Entree incorrecte, merci de reessayer (y/n) : ";
+											std::cin >> str;
+										}
+										if(str.compare("y") == 0){
+											uti->addAdmin(adm);
+											std::cout << "Ajout de l'administrateur confirme.\n" << std::endl; 
+											//addUser(adm);
+										}
+										else if(str.compare("n") == 0){
+											std::cout << "Client non confirme, abortion de la procedure d'ajout d'utilisateur.\n" << std::endl;
+										}
 
-								break;
+										break;
+									}
+								}
+								if(typeAjout == 3){
+									//quitter
+									std::cout << "Abortion de la procedure d'ajout d'utilisateur.\n" << std::endl;
+								}
 							}
-						}
-						if(typeAjout == 3){
-							//quitter
-							std::cout << "Abortion de la procedure d'ajout d'utilisateur.\n" << std::endl;
+							else if(choix == 2){
+
+							}
+							else if(choix == 3){
+
+							}
+							std::cout << "Que souhaitez-vous faire :\n\t(1) Ajout d'un utilisateur\n\t(2) Suppression d'un utilisateur\n\t(3) Modification des donnees d'un utilisateur\n\t(4) quitter" << std::endl;
+							std::cin >> choix;
 						}
 					}
 					else if(choix == 2){
