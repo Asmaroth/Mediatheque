@@ -141,6 +141,22 @@ void utilisateurs::infoClient(int _id){
 	users[_id]->info();
 }
 
+int utilisateurs::str2int(std::string str)
+{
+	int result;
+	std::stringstream ss(str);
+	if(!(ss>>result))
+		return 0;
+	return result;
+}
+
+std::string utilisateurs::int2str(int nbr)
+{
+	std::stringstream ss;
+	ss << nbr;
+	return ss.str();
+}
+
 int utilisateurs::verifIdClient(std::string idClient){
 	for (int i = 0 ; i < clients.size() ; i++){
 		if(idClient.compare(clients[i]->getId()) == 0)
@@ -166,13 +182,28 @@ std::string utilisateurs::getAdmin(int _id){
 }
 
 void utilisateurs::addClient(client *clt){
+	std::string newId = clients[clients.size()-1]->getId();
+	newId = newId.substr(1);
+	newId = "1" + int2str(str2int(newId) + 1);	clt->setId(newId);
 	clients.push_back(clt);
 	users.push_back(clt);
+	std::ofstream myFile("utilisateurs.txt", std::ios::out | std::ios::app);
+	std::string info2save = newId + ";" + clt->getNom() + ";" + clt->getPrenom() + ";(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0";
+	myFile << std::endl << info2save;
+	myFile.close();
 }
 
 void utilisateurs::addAdmin(admin *administrateur){
+	std::string newId = adm[adm.size()-1]->getId();
+	newId = newId.substr(1);
+	newId = "0" + int2str(str2int(newId) + 1);
+	administrateur->setId(newId);
 	adm.push_back(administrateur);
 	users.push_back(administrateur);
+	std::ofstream myFile("utilisateurs.txt", std::ios::out | std::ios::app);
+	std::string info2save = newId + ";" + administrateur->getNom() + ";" + administrateur->getPrenom() + ";(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0;" + administrateur->getMdp();
+	myFile << std::endl << info2save;
+	myFile.close();
 }
 
 int utilisateurs::getIdUtilisateur(std::string _id){
@@ -222,7 +253,7 @@ void utilisateurs::deleteAdmin(int _idAdmin, std::string admin2suppr)
     		std::stringstream ss(buf);
     		getline(ss, id, ';');
     		if(id.compare(admin2suppr) != 0){
-    			tempFile << buf << std::endl;
+    			tempFile << std::endl << buf;
     			}
     		}
 		}

@@ -41,6 +41,8 @@ class utilisateurs {
         void deleteClient(int _idClient, std::string client2suppr);
         int getIdAdmin(std::string _id);
         int getIdClient(std::string _id);
+        int str2int(std::string str);
+        std::string int2str(int nbr);
 };
 
 #endif

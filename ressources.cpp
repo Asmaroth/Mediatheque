@@ -870,20 +870,20 @@ void ressources::modifMedia(int _id, std::string _idMedia){
 	filename = type + ".txt";
 	std::ifstream myFile(filename.c_str());
 	std::ofstream tempFile("temporary.txt");
-	   if(!myFile.is_open() && !tempFile.is_open()){
-	    std::cout << "Can't read file : " << type << ".txt" << std::endl;
+	   if(!myFile.is_open() || !tempFile.is_open()){
+	    std::cout << "Can't read file : " << type << ".txt or write in 'temporary.txt'" << std::endl;
 	   }
 	   else{
 	    getline(myFile, str);
-	    tempFile << str << std::endl;
+	    tempFile << str;
     	while (getline(myFile, str)){
     		std::stringstream ss(str);
     		getline(ss, id, ';');
     		if(id.compare(_idMedia) != 0){
-    			tempFile << str << std::endl;
+    			tempFile << std::endl << str;
     		}
     		else{
-    			tempFile << medias[_id-1]->infoToSave() << std::endl;
+    			tempFile << std::endl << medias[_id-1]->infoToSave();
     		}
     	}
 	}
@@ -1043,6 +1043,8 @@ std::string ressources::infoPrincipales(int _id){
 void ressources::reservation(std::string str, int idMedia){
 	medias[idMedia]->setDisponible(0);
 	medias[idMedia]->setIdClient(str);
+	//venir enregistrer les changements dans le .txt
+
 }
 
 void ressources::checkVersion()
