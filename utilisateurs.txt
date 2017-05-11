@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 11;DUPONT;JEAN;ERAGON Tome 3, ERAGON Tome 4;ERAGON Tome 1, Les quetes d'Ewilan Tome 1;ERAGON Tome 2, Les quetes d'Ewilan Tome 2;01012017,01012017
 12;LEMONNIER;ALEXIS;(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0
 13;BOUET;LOLA;(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0
 02;GALLOT;LOUIS;(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0;bbbbbbbb
 03;BELLICAULT;Corentin;(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0;aaaaaaaa
+=======
+11;DUPONT;JEAN;(L2)D'un Monde à l'Autre,(0)aucun;(0)aucun,(0)aucun;(L3)Les Chroniques de Corentin,(0)aucun;01/01/2017,0
+12;LEMONNIER;ALEXIS;(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0
+13;BOUET;LOLA;(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0
+02;GALLOT;LOUIS;(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0;bbbbbbbb
+03;BELLICAULT;Corentin;(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0;aaaaaaaa
+>>>>>>> ac8b6e205f3beb4e0b3df083c9339dcea739f5b7
