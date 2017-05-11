@@ -99,18 +99,20 @@ void infoRessource(ressources *res){
 	std::cin >> idRessource;
 	while(idRessource.compare("0") != 0){
 		idMedia = res->verifIdMedia(idRessource);
+		std::cout << "test\n";
 		if (idRessource.compare("1") == 0 || idMedia == 0){
+			std::cout << "test\n";
 			res->info();
+			std::cout << "test\n";
 			res->list();
+			std::cout << "test\n";
 		}
 		else if(idMedia != 0){
-			//res->list(res->getIdRessource(idRessource));
 			res->info(idMedia - 1);
 		}
 		std::cout << "\nEntrer N identifiant pour des informations specifiques ou '1' pour des informations generales sur tous les medias. Entrer '0' pour quitter." << std::endl;
 		std::cin >> idRessource;
 	}
-
 }
 
 
@@ -284,30 +286,36 @@ void reservation(int idClient, ressources *res, utilisateurs *uti){
 	std::cin >> id2res;
 	idMed = res->verifIdMedia(id2res);
 	while(idMed == 0 && id2res.compare("quitter") != 0){
-		std::cout << "Entree incorrecte, merci de reessayer. Identifier le media a reserver : ";
+		std::cout << "Entree incorrecte, merci de reessayer ou de rentrer 'quitter' pour revenir au menu precedent. Identifier le media a reserver : ";
 		std::cin >> id2res;
 		idMed = res->verifIdMedia(id2res);
 	}
-	if(id2res.compare("quitter") != 0){
-		std::stringstream idResReservee(uti->getResReservee(idClient));
-		getline(idResReservee, id1, '(');
-		getline(idResReservee, id1, ')');
-		getline(idResReservee, id2, '(');
-		getline(idResReservee, id2, ')');
-		if(id1.compare("0") == 0 && res->getDisponible(idMed-1) == 3){
-			uti->reservation(idClient, res->infoPrincipales(idMed-1), 0);
-			res->reservation(uti->getIdClient(idClient), idMed-1);
-			std::cout << "Media reserve. position 1\n" << std::endl;
+	if(idMed > 0){
+		idMed = idMed - 1;
+		if(id2res.compare("quitter") != 0){
+			std::stringstream idResReservee(uti->getResReservee(idClient));
+			getline(idResReservee, id1, '(');
+			getline(idResReservee, id1, ')');
+			getline(idResReservee, id2, '(');
+			getline(idResReservee, id2, ')');
+			if(id1.compare("0") == 0){
+				uti->reservation(idClient, res->infoPrincipales(idMed), 0);
+				res->reservation(uti->getIdClient(idClient), idMed);
+				std::cout << "Media reserve. position 1\n" << std::endl;
+			}
+			else if(id2.compare("0") == 0){
+				uti->reservation(idClient, res->infoPrincipales(idMed), 1);
+				res->reservation(uti->getIdClient(idClient), idMed);
+				std::cout << "Media reserve. position 2\n" << std::endl;
+			}
+			else{
+				std::cout << "La limite maximale de media pouvant etre reservee est atteinte. Merci d'annuler une reservation avant d'en faire une autre." << std::endl;
+			}
 		}
-		else if(id2.compare("0") == 0 && res->getDisponible(idMed-1) == 3){
-			uti->reservation(idClient, res->infoPrincipales(idMed-1), 1);
-			res->reservation(uti->getIdClient(idClient), idMed-1);
-			std::cout << "Media reserve. position 2\n" << std::endl;
-		}
-		else
-			std::cout << "La limite maximale de media pouvant etre reservee est atteinte. Merci d'annuler une reservation avant d'en faire une autre." << std::endl;
 	}
-
+	else{
+		std::cout << "Le media n'est pas disponible actuellement.\n" << std::endl;
+	}
 }
 
 
@@ -558,6 +566,7 @@ int main(){
 					}
 					else if(choix == 3){
 						//emprunt
+						int isAvailable;
 						std::cout << "Procedure d'emprunt d'un media. Identifier le client : ";
 						std::cin >> idClient;
 						idUser = uti->verifIdClient(idClient);
@@ -574,13 +583,14 @@ int main(){
 							std::cin >> id2act;
 							idMed = res->verifIdMedia(id2act);
 						}
-						if(idMed == -1){
+						isAvailable = res->verifDispo(idMed);
+						if(isAvailable == -1){
 							std::cout << "Le media demande est deja reserver. Merci de faire une autre demande ou d'annuler prealablement la reservation." << std::endl;
 						}
-						else if(idMed == -2){
+						else if(isAvailable == -2){
 							std::cout << "Le media demande est deja emprunte. Merci de faire une autre demande ou de retourner prealablement le media." << std::endl;
 						}
-						else if(idMed == -3){
+						else if(isAvailable == -3){
 							std::cout << "Le media demande est indisponible. Merci de faire une autre demande ou de rendre disponible prealablement le media." << std::endl;
 						}
 						else if(id2act.compare("quitter") == 0){

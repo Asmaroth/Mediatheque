@@ -73,6 +73,7 @@ class ressources {
         int getDisponible(int idMedia);
         void reservation(std::string str, int idMedia);
         void checkVersion();
+        int verifDispo(int idMedia);
 };
 
 #endif

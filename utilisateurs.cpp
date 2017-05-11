@@ -211,7 +211,6 @@ void utilisateurs::retour(int idUser, int idMedia){
 }
 
 void utilisateurs::reservation(int idUser, std::string media, int pos){
-	std::string str;
 	users[idUser]->setResReservee(media, pos);
 }
 

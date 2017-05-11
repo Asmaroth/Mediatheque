@@ -1012,19 +1012,20 @@ void ressources::rechercheChamp(std::string _str, int _type){
 
 int ressources::verifIdMedia(std::string idRessource){
 	for (int i = 0 ; i < medias.size() ; i++){
-		std::cout << medias[i]->getId() << std::endl;
 		if(idRessource.compare(medias[i]->getId()) == 0){
-			if(medias[i]->getDisponible() == 3)
-				return i+1;
-			else if(medias[i]->getDisponible() == 0)
-				return -1;
-			else if(medias[i]->getDisponible() == 1)
-				return -2;
-			else if(medias[i]->getDisponible() == 2)
-				return -3;
+			return i+1;
 		}
 	}
 	return 0;
+}
+
+int ressources::verifDispo(int idMedia){
+	if(medias[idMedia]->getDisponible() == 0)
+		return -1;
+	else if(medias[idMedia]->getDisponible() == 1)
+		return -2;
+	else if(medias[idMedia]->getDisponible() == 2)
+		return -3;
 }
 
 void ressources::info (int _id){
