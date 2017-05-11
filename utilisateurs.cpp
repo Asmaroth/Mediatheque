@@ -282,7 +282,7 @@ void utilisateurs::effaceMemoire(){
 	users.clear();
 }
 
-void utilisateurs::reservation(int idClient, int idMedia){
+void utilisateurs::emprunt(int idClient, int idMedia){
 
 }
 
@@ -299,7 +299,6 @@ void utilisateurs::retour(int idUser, int idMedia){
 }
 
 void utilisateurs::reservation(int idUser, std::string media, int pos){
-	std::string str;
 	users[idUser]->setResReservee(media, pos);
 }
 

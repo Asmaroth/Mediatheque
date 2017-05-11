@@ -31,7 +31,7 @@ class utilisateurs {
         void addAdmin(admin *administrateur);
         int getIdUtilisateur(std::string _id);
         void effaceMemoire();
-        void reservation(int idClient, int idMedia);
+        void emprunt(int idClient, int idMedia);
         std::string getResEmpruntee(int idClient);
         std::string getResReservee(int idClient);
         void retour(int idUser, int idMedia);
