@@ -546,7 +546,6 @@ int main(){
 									{
 										std::cout << "Abandon de la procedure de suppression de l'administrateur.\n" << std::endl;
 									}
-
 								}
 
 
