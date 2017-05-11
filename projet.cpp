@@ -386,6 +386,7 @@ int main(){
 		}
 		else if(action == 1){
 			int id = connexion(uti);
+			std::string idUti = uti->getAdminNbr(-id-1);
 			int choix;
 			int idMed;
 			int idUser;
@@ -518,7 +519,6 @@ int main(){
 									{
 										std::cout << "Client en cours de suppression..." << std::endl;
 										uti->deleteClient(id2suppr, client2suppr);
-										std::cout << "Client supprimer." << std::endl;
 									}
 									else 
 									{
@@ -527,9 +527,9 @@ int main(){
 								}
 								else 
 								{
-									id2suppr = -id2suppr + 1 ;
+									id2suppr = -id2suppr - 1 ;
 									std::cout << "Voulez vous vraiment supprimer l'administrateur suivant (o/n) : " << std::endl;
-									uti->infoClient(id2suppr);
+									uti->infoClient(uti->getIdUtilisateur(client2suppr));
 									std::cin >> decision ;
 									while( decision.compare("o") != 0 && decision.compare("n") != 0 )
 									{
@@ -539,8 +539,7 @@ int main(){
 									if( decision.compare("o") == 0)
 									{
 										std::cout << "Administrateur en cours de suppression..." << std::endl;
-										uti->deleteAdmin(id2suppr, client2suppr);
-										std::cout << "Administrateur supprimer." << std::endl;
+										uti->deleteAdmin(id2suppr, client2suppr,idUti);
 									}
 									else 
 									{

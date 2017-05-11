@@ -37,12 +37,13 @@ class utilisateurs {
         void retour(int idUser, int idMedia);
         void reservation(int idUser, std::string media, int pos);
         std::string getIdClient(int _id);
-        void deleteAdmin(int _idAdmin, std::string admin2suppr);
+        void deleteAdmin(int _idAdmin, std::string admin2suppr, std::string idUti);
         void deleteClient(int _idClient, std::string client2suppr);
         int getIdAdmin(std::string _id);
         int getIdClient(std::string _id);
         int str2int(std::string str);
         std::string int2str(int nbr);
+        std::string getAdminNbr(int _id);
 };
 
 #endif

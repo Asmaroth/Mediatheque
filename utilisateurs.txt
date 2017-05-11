@@ -1,5 +1,5 @@
 11;DUPONT;JEAN;ERAGON Tome 3, ERAGON Tome 4;ERAGON Tome 1, Les quetes d'Ewilan Tome 1;ERAGON Tome 2, Les quetes d'Ewilan Tome 2;01012017,01012017
-01;BELLICAULT;CORENTIN;(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0;aaaaaaaa
 12;LEMONNIER;ALEXIS;(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0
 13;BOUET;LOLA;(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0
-02;GALLOT;LOUIS;(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0;azertyui
+02;GALLOT;LOUIS;(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0;bbbbbbbb
+03;BELLICAULT;Corentin;(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0;aaaaaaaa
