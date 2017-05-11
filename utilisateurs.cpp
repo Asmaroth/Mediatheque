@@ -76,6 +76,7 @@ utilisateurs::utilisateurs(const char *filename){
     	std::cout << "Can't read file : " << filename <<std::endl;
     }
     else{
+    	getline(myFile, buf);
     	while (getline(myFile, buf)){
     		if (buf[0] == '1'){
     			//creation du client
@@ -186,28 +187,46 @@ std::string utilisateurs::getAdminNbr(int _id){
 }
 
 void utilisateurs::addClient(client *clt){
-	std::string newId = clients[clients.size()-1]->getId();
-	newId = newId.substr(1);
-	newId = "1" + int2str(str2int(newId) + 1);	clt->setId(newId);
+	std::string newId;
+	if(clients.size() == 0)
+		newId = "11";
+	else{
+		newId = clients[clients.size()-1]->getId();
+		newId = newId.substr(1);
+		newId = "1" + int2str(str2int(newId) + 1);	clt->setId(newId);
+	}
 	clients.push_back(clt);
 	users.push_back(clt);
 	std::ofstream myFile("utilisateurs.txt", std::ios::out | std::ios::app);
-	std::string info2save = newId + ";" + clt->getNom() + ";" + clt->getPrenom() + ";(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0";
-	myFile << std::endl << info2save;
-	myFile.close();
+	if(myFile.is_open()){
+		std::string info2save = newId + ";" + clt->getNom() + ";" + clt->getPrenom() + ";(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0";
+		myFile << std::endl << info2save;
+		myFile.close();
+	}
+	else
+		std::cout << "Impossible d'ouvrir le fichier utilisateurs.txt." << std::endl;
 }
 
 void utilisateurs::addAdmin(admin *administrateur){
-	std::string newId = adm[adm.size()-1]->getId();
-	newId = newId.substr(1);
-	newId = "0" + int2str(str2int(newId) + 1);
+	std::string newId;
+	if(adm.size() == 0)
+		newId = "01";
+	else{
+		newId = adm[adm.size()-1]->getId();
+		newId = newId.substr(1);
+		newId = "0" + int2str(str2int(newId) + 1);
+	}
 	administrateur->setId(newId);
 	adm.push_back(administrateur);
 	users.push_back(administrateur);
 	std::ofstream myFile("utilisateurs.txt", std::ios::out | std::ios::app);
-	std::string info2save = newId + ";" + administrateur->getNom() + ";" + administrateur->getPrenom() + ";(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0;" + administrateur->getMdp();
-	myFile << std::endl << info2save;
-	myFile.close();
+	if(myFile.is_open()){
+		std::string info2save = newId + ";" + administrateur->getNom() + ";" + administrateur->getPrenom() + ";(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0;" + administrateur->getMdp();
+		myFile << std::endl << info2save;
+		myFile.close();
+	}
+	else
+		std::cout << "Impossible d'ouvrir le fichier utilisateurs.txt." << std::endl;
 }
 
 int utilisateurs::getIdUtilisateur(std::string _id){
@@ -253,9 +272,11 @@ void utilisateurs::deleteAdmin(int _idAdmin, std::string admin2suppr, std::strin
 	std::ifstream myFile(filename.c_str());
 	std::ofstream tempFile("temporary.txt");
 	if(!myFile.is_open() && !tempFile.is_open()){
-	    	std::cout << "Can't read file : " << filename << std::endl;
+	    	std::cout << "Can't read file : " << filename << " ou de creer un temporary.txt." << std::endl;
 	    }
 	else{
+		getline(myFile, buf);
+		tempFile << buf;
     	while (getline(myFile, buf)){
     		std::stringstream ss(buf);
     		getline(ss, id, ';');
@@ -292,6 +313,8 @@ void utilisateurs::deleteClient(int _idClient, std::string client2suppr)
 	    	std::cout << "Can't read file : " << filename << std::endl;
 	    }
 	else{
+		getline(myFile, buf);
+		tempFile << buf;
     	while (getline(myFile, buf)){
     		std::stringstream ss(buf);
     		getline(ss, id, ';');
@@ -339,6 +362,48 @@ void utilisateurs::retour(int idUser, int idMedia){
 
 void utilisateurs::reservation(int idUser, std::string media, int pos){
 	users[idUser]->setResReservee(media, pos);
+
+	std::string id;
+	std::string id2compare = users[idUser]->getId();
+	std::string str;
+	std::string firstPart, secondPart, thirdPart;
+	std::ifstream myFile("utilisateurs.txt");
+	std::ofstream tempFile("temporary.txt");
+	   if(!myFile.is_open() || !tempFile.is_open()){
+	    std::cout << "Can't read file : utilisateurs.txt or write in 'temporary.txt'" << std::endl;
+	   }
+	   else{
+	   	getline(myFile, str);
+	   	tempFile << str;
+    	while (getline(myFile, str)){
+    		std::stringstream ss(str);
+    		getline(ss, id, ';');
+    		if(id.compare(id2compare) != 0){
+    			tempFile << std::endl << str;
+    		}
+    		else{
+    			//tempFile << std::endl << id << ";" << users[idUser]->getNom << ";" << users[idUser]->getPrenom << ";" << media << ;
+    			if(pos == 0){
+    				getline(ss, firstPart, '(');
+    				getline(ss, secondPart, '(');
+    				getline(ss, secondPart);
+    				tempFile << std::endl << id << ";" << firstPart << media << ",(" << secondPart;
+    			}
+    			else{
+    				getline(ss, firstPart, '(');
+    				getline(ss, secondPart, '(');
+    				getline(ss, thirdPart, ';');
+    				getline(ss, thirdPart);
+    				tempFile << std::endl << id << ";" << firstPart << "(" << secondPart << media << ";" << thirdPart;
+    			}
+    		}
+    	}
+	}
+	myFile.close();
+	tempFile.close();
+	remove("utilisateurs.txt");
+	rename("temporary.txt", "utilisateurs.txt");
+
 }
 
 std::string utilisateurs::getIdClient(int _id){

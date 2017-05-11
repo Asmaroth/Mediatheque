@@ -1043,7 +1043,7 @@ int ressources::getDisponible(int idMedia){
 }
 
 std::string ressources::infoPrincipales(int _id){
-	return "(" + medias[_id]->getId() + ") " + medias[_id]->getTitre();
+	return "(" + medias[_id]->getId() + ")" + medias[_id]->getTitre();
 }
 
 void ressources::reservation(std::string str, int idMedia){
