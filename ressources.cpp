@@ -1046,8 +1046,8 @@ std::string ressources::infoPrincipales(int _id){
 	return "(" + medias[_id]->getId() + ")" + medias[_id]->getTitre();
 }
 
-void ressources::reservation(std::string str, int idMedia){
-	medias[idMedia]->setDisponible(0);
+void ressources::reservation(std::string str, int idMedia, int annulation){
+	medias[idMedia]->setDisponible(annulation);
 	medias[idMedia]->setIdClient(str);
 	std::string type;
 	std::string id = medias[idMedia]->getId();
@@ -1066,7 +1066,6 @@ void ressources::reservation(std::string str, int idMedia){
 		type = "resNumerique";
 	else if(type.compare("P") == 0)
 		type = "peinture";
-	std::cout << type << id << idMedia << std::endl;
 	updateFile(type, id, idMedia);
 }
 

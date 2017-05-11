@@ -318,12 +318,12 @@ void reservation(int idClient, ressources *res, utilisateurs *uti, int userIsCli
 			getline(idResReservee, id2, ')');
 			if(id1.compare("0") == 0){
 				uti->reservation(idClient, res->infoPrincipales(idMed), 0);
-				res->reservation(uti->getIdClient(idClient), idMed);
+				res->reservation(uti->getIdClient(idClient), idMed, 0);
 				std::cout << "Media reserve. position 1\n" << std::endl;
 			}
 			else if(id2.compare("0") == 0){
 				uti->reservation(idClient, res->infoPrincipales(idMed), 1);
-				res->reservation(uti->getIdClient(idClient), idMed);
+				res->reservation(uti->getIdClient(idClient), idMed, 0);
 				std::cout << "Media reserve. position 2\n" << std::endl;
 			}
 			else{
@@ -336,6 +336,68 @@ void reservation(int idClient, ressources *res, utilisateurs *uti, int userIsCli
 	}
 }
 
+
+
+
+
+
+void annulerReservation(int idClient, ressources *res, utilisateurs *uti, int userIsClient){
+	std::string id2deres;
+	std::string id1;
+	std::string id2;
+	int idMed;
+
+	std::cout << "Identifier le media a anuler la reservation ou entrer 'quitter' : " << uti->getResReservee(idClient) << std::endl;
+	std::cin >> id2deres;
+	if(userIsClient)
+		res->checkVersion();
+	std::stringstream idResReservee(uti->getResReservee(idClient));
+	getline(idResReservee, id1, '(');
+	getline(idResReservee, id1, ')');
+	getline(idResReservee, id2, '(');
+	getline(idResReservee, id2, ')');
+	while(id2deres.compare(id1) != 0 && id2deres.compare(id2) != 0 && id2deres.compare("quitter") != 0){
+		std::cout << "Entree incorrecte, merci de reessayer. Identifier le media a anuler la reservation ou entrer 'quitter' : " << uti->getResReservee(idClient) << std::endl;
+		std::cin >> id2deres;
+	}
+	idMed = res->verifIdMedia(id2deres) - 1;
+	if(id2deres.compare(id1) == 0){
+		uti->reservation(idClient, "(0)aucun", 0);
+		res->reservation("0", idMed, 3);
+		std::cout << "Media dereserve.\n" << std::endl;
+	}
+	else if(id2deres.compare(id2) == 0){
+		uti->reservation(idClient, "(0)aucun", 1);
+		res->reservation("0", idMed, 3);
+		std::cout << "Media dereserve.\n" << std::endl;
+	}
+	else
+		std::cout << "Abandon de la procedure de dereservation de media.\n" << std::endl;
+}
+
+
+
+
+
+
+
+
+
+void emprunt(){
+
+}
+
+
+
+
+
+
+
+
+
+void retour(){
+
+}
 
 
 
@@ -693,15 +755,38 @@ int main(){
 					}
 					else if(choix == 4){
 						//reservation
-						std::cout << "Procedure de reservation de media. Identifier le client : ";
-						std::cin >> idClient;
-						idUser = uti->verifIdClient(idClient);
-						while(idUser <= 0 && idClient.compare("quitter") != 0){
-							std::cout << "Id client incorrect, merci de reessayer ou de quitter en rentrant 'quitter' : ";
-							std::cin >> idClient;
-							idUser = uti->verifIdClient(idClient);
+						std::cout << "Quelle action realiser :\n\t(1) reserver un media\n\t(2) annuler la reservation d'un media\n\t(3) quitter" << std::endl;
+						std::cin >> choix;
+						while(choix != 3){
+							while(choix != 1 && choix != 2){
+								std::cout << "Entree incorrecte, merci de reessayer. Quelle action realiser :\n\t(1) reserver un media\n\t(2) annuler la reservation d'un media\n\t(3) quitter" << std::endl;
+								std::cin >> choix;
+							}
+							if(choix == 1){
+								std::cout << "Procedure de reservation de media. Identifier le client : ";
+								std::cin >> idClient;
+								idUser = uti->verifIdClient(idClient);
+								while(idUser <= 0 && idClient.compare("quitter") != 0){
+									std::cout << "Id client incorrect, merci de reessayer ou de quitter en rentrant 'quitter' : ";
+									std::cin >> idClient;
+									idUser = uti->verifIdClient(idClient);
+								}
+								reservation(idUser-1, res, uti, 0);
+							}
+							else if(choix == 2){
+								std::cout << "Procedure de dereservation de media. Identifier le client : ";
+								std::cin >> idClient;
+								idUser = uti->verifIdClient(idClient);
+								while(idUser <= 0 && idClient.compare("quitter") != 0){
+									std::cout << "Id client incorrect, merci de reessayer ou de quitter en rentrant 'quitter' : ";
+									std::cin >> idClient;
+									idUser = uti->verifIdClient(idClient);
+								}
+								annulerReservation(idUser-1, res, uti, 0);
+							}
+							std::cout << "Quelle action realiser :\n\t(1) reserver un media\n\t(2) annuler la reservation d'un media\n\t(3) quitter" << std::endl;
+							std::cin >> choix;
 						}
-						reservation(idUser-1, res, uti, 0);
 					}
 					else if(choix == 5){
 						//retour
