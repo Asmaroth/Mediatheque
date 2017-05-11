@@ -74,6 +74,7 @@ class ressources {
         void reservation(std::string str, int idMedia);
         void checkVersion();
         int verifDispo(int idMedia);
+        void updateFile(std::string type, std::string _idMedia, int _id);
 };
 
 #endif

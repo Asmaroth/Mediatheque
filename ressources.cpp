@@ -749,6 +749,35 @@ std::string ressources::addMedia(int _type){
 	return newId;
 }
 
+void ressources::updateFile(std::string type, std::string _idMedia, int _id){
+	std::string str;
+	std::string id;
+	std::string filename = type + ".txt";
+	std::ifstream myFile(filename.c_str());
+	std::ofstream tempFile("temporary.txt");
+	   if(!myFile.is_open() || !tempFile.is_open()){
+	    std::cout << "Can't read file : " << type << ".txt or write in 'temporary.txt'" << std::endl;
+	   }
+	   else{
+	    getline(myFile, str);
+	    tempFile << str;
+    	while (getline(myFile, str)){
+    		std::stringstream ss(str);
+    		getline(ss, id, ';');
+    		if(id.compare(_idMedia) != 0){
+    			tempFile << std::endl << str;
+    		}
+    		else{
+    			tempFile << std::endl << medias[_id]->infoToSave();
+    		}
+    	}
+	}
+	myFile.close();
+	tempFile.close();
+	remove(filename.c_str());
+	rename("temporary.txt", filename.c_str());
+}
+
 void ressources::modifMedia(int _id, std::string _idMedia){
 	std::string type = medias[_id-1]->getType();
 	std::string str;
@@ -867,30 +896,7 @@ void ressources::modifMedia(int _id, std::string _idMedia){
 		std::getline (std::cin,str);
 		medias[_id-1] ->setLongueur(str2int(str));
 	}
-	filename = type + ".txt";
-	std::ifstream myFile(filename.c_str());
-	std::ofstream tempFile("temporary.txt");
-	   if(!myFile.is_open() || !tempFile.is_open()){
-	    std::cout << "Can't read file : " << type << ".txt or write in 'temporary.txt'" << std::endl;
-	   }
-	   else{
-	    getline(myFile, str);
-	    tempFile << str;
-    	while (getline(myFile, str)){
-    		std::stringstream ss(str);
-    		getline(ss, id, ';');
-    		if(id.compare(_idMedia) != 0){
-    			tempFile << std::endl << str;
-    		}
-    		else{
-    			tempFile << std::endl << medias[_id-1]->infoToSave();
-    		}
-    	}
-	}
-	myFile.close();
-	tempFile.close();
-	remove(filename.c_str());
-	rename("temporary.txt", filename.c_str());
+	updateFile(type, _idMedia, _id);
 }
 
 void ressources::reset(){
@@ -1043,8 +1049,25 @@ std::string ressources::infoPrincipales(int _id){
 void ressources::reservation(std::string str, int idMedia){
 	medias[idMedia]->setDisponible(0);
 	medias[idMedia]->setIdClient(str);
-	//venir enregistrer les changements dans le .txt
-
+	std::string type;
+	std::string id = medias[idMedia]->getId();
+	type = id[0];
+	if(type.compare("L") == 0)
+		type = "livre";
+	else if(type.compare("R") == 0)
+		type = "revue";
+	else if(type.compare("V") == 0)
+		type = "vhs";
+	else if(type.compare("D") == 0)
+		type = "dvd";
+	else if(type.compare("C") == 0)
+		type = "cd";
+	else if(type.compare("N") == 0)
+		type = "resNumerique";
+	else if(type.compare("P") == 0)
+		type = "peinture";
+	std::cout << type << id << idMedia << std::endl;
+	updateFile(type, id, idMedia);
 }
 
 void ressources::checkVersion()
