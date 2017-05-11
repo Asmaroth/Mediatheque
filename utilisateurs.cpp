@@ -130,13 +130,11 @@ std::string utilisateurs::getAdmin(){ //possible de connaitre le type pour diff�
 		if (users[i]->getId()[0] == '0') //identifiant admin : commence par un 0
 			str = str + "\t(" + users[i]->getId() + ") " + users[i]->getNom() + " " + users[i]->getPrenom() + "\n";
 	}
-	return str + ".";
+	return str;
 }
 
 void utilisateurs::info(){
-	std::string listeClients = getClient();
-	std::string listeAdmin = getAdmin();
-	std::cout << "Il y a " << clients.size() + adm.size() << " utilisateurs de la médiathèque, dont " << clients.size() << " clients et " << adm.size() << " administrateurs.\n" << listeClients << listeAdmin << std::endl;
+	std::cout << "Il y a " << clients.size() + adm.size() << " utilisateurs de la médiathèque, dont " << clients.size() << " clients et " << adm.size() << " administrateurs.\n" << getClient() << getAdmin() << std::endl;
 }
 
 void utilisateurs::infoClient(int _id){

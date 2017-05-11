@@ -101,13 +101,9 @@ void infoRessource(ressources *res, int userIsClient){
 		if(userIsClient)
 			res->checkVersion();
 		idMedia = res->verifIdMedia(idRessource);
-		std::cout << "test\n";
 		if (idRessource.compare("1") == 0 || idMedia == 0){
-			std::cout << "test\n";
 			res->info();
-			std::cout << "test\n";
 			res->list();
-			std::cout << "test\n";
 		}
 		else if(idMedia != 0){
 			res->info(idMedia - 1);
@@ -501,7 +497,6 @@ int main(){
 								std::cout << "Procedure de supression d'un utilisateur. Rentrez l'identifiant de l'utilisateur a supprimer : ";
 								std::cin >> client2suppr;
 								id2suppr = uti->verifIdClient(client2suppr);
-								std::cout << id2suppr << std::endl;
 								while( id2suppr == 0 || client2suppr.compare("quitter") == 0)
 								{
 									std::cout << "Entree incorrecte, merci de réssayer ou de rentrer 'quitter' pour annuler la procedure. Procedure de supression d'un utilisateur. Rentrez l'identifiant de l'utilisateur a supprimer : ";
@@ -533,7 +528,6 @@ int main(){
 								else 
 								{
 									id2suppr = -id2suppr + 1 ;
-									std::cout << id2suppr << std::endl;
 									std::cout << "Voulez vous vraiment supprimer l'administrateur suivant (o/n) : " << std::endl;
 									uti->infoClient(id2suppr);
 									std::cin >> decision ;

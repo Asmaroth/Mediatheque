@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-102;LEMONNIER;ALEXIS;(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0
-101;DUPONT;JEAN;(L1)Eragon,(0)aucun;(0)aucun,(0)aucun;(L2)D'un Monde à l'Autre,(0)aucun;01012017,01012017
-=======
-101;DUPONT;JEAN;(L2)D'un Monde à l'Autre,(0)aucun;(0)aucun,(0)aucun;(L3)Les Chroniques de Corentin,(0)aucun;01012017,01012017
->>>>>>> 286cb7988e81dbba4ab5545e6dcd5e36020b18b6
-001;BELLICAULT;CORENTIN;(0)aucun;(0)aucun;(0)aucun;0,0;aaaaaaaa
+101;DUPONT;JEAN;ERAGON Tome 3, ERAGON Tome 4;ERAGON Tome 1, Les quetes d'Ewilan Tome 1;ERAGON Tome 2, Les quetes d'Ewilan Tome 2;01012017,01012017
+001;BELLICAULT;CORENTIN;aucune;aucune;aucune;0;aaaaaaaa
+102;LEMONNIER;ALEXIS;aucune;aucune;aucune;0
