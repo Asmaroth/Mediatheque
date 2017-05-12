@@ -120,13 +120,15 @@ std::string media::int2str(int nbr)
 void media::info(){
 	std::string str;
 	if (disponible == 0)
-		str = "réservé";
+		str = "reserve";
 	else if (disponible == 1)
-		str = "emprunté";
+		str = "emprunte";
 	else if (disponible == 2)
 		str = "indisponible";
-	else
+	else if (disponible == 3)
 		str = "disponible";
+	else 
+		str = "WARNING"
 	std::cout << "(" << id << ") " << titre << ", de " << auteur << " est paru en " << annee << ". Il est actuellement " << str << ". Version " << version << std::endl;
 }
 

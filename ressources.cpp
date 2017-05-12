@@ -1069,28 +1069,6 @@ void ressources::reservation(std::string str, int idMedia, int disponibilite){
 	updateFile(type, id, idMedia);
 }
 
-/*void ressources::emprunt(std::string str, int idMedia){
-	medias[idMedia]->setDisponible(1);
-	medias[idMedia]->setIdClient(str);
-	std::string type;
-	std::string id = medias[idMedia]->getId();
-	type = id[0];
-	if(type.compare("L") == 0)
-		type = "livre";
-	else if(type.compare("R") == 0)
-		type = "revue";
-	else if(type.compare("V") == 0)
-		type = "vhs";
-	else if(type.compare("D") == 0)
-		type = "dvd";
-	else if(type.compare("C") == 0)
-		type = "cd";
-	else if(type.compare("N") == 0)
-		type = "resNumerique";
-	else if(type.compare("P") == 0)
-		type = "peinture";
-}*/
-
 void ressources::checkVersion()
 {
 	std::string buf;

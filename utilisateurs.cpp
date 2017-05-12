@@ -93,7 +93,7 @@ utilisateurs::utilisateurs(const char *filename){
 				adm.push_back(administrateur);
 			}
 			else
-				std::cout << "Impossible de créer l'utilisateur : " << buf << std::endl;
+				std::cout << "Impossible de creer l'utilisateur : " << buf << std::endl;
     	}
     	//info();
     	users.insert(users.end(), clients.begin(), clients.end());

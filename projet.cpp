@@ -52,16 +52,17 @@
 
 int connexion(utilisateurs *uti){
 	std::string idClient;
-	std::cout << "N° identifiant : ";
+	std::cout << "Numero identifiant : ";
 	std::cin >> idClient;
 	int id = uti->verifIdClient(idClient);
 	while(id == 0 && idClient.compare("0") != 0){
-		std::cout << "Numéro d'identifiant incorrect, merci de reessayer ou de rentrer '0' pour quitter : ";
+		std::cout << "Numero d'identifiant incorrect, merci de reessayer ou de rentrer '0' pour quitter : ";
 		std::cin >> idClient;
 		id = uti->verifIdClient(idClient);
 	}
-	if (idClient.compare("0") == 0)
+	if (idClient.compare("0") == 0){
 		return 0;
+	}
 	else if(id < 0){
 		std::string mdp;
 		std::cout << "Mot de passe : ";
@@ -95,7 +96,7 @@ int connexion(utilisateurs *uti){
 void infoRessource(ressources *res, int userIsClient){
 	std::string idRessource;
 	int idMedia;
-	std::cout << "Merci d'entrer un N identifiant de media pour des informations specifiques. Un ID incorrect ou '1' affiche des informations generales sur l'ensemble des medias. Entrer '0' pour quitter." << std::endl;
+	std::cout << "Merci d'entrer un Numero identifiant de media pour des informations specifiques. Un ID incorrect ou '1' affiche des informations generales sur l'ensemble des medias. Entrer '0' pour quitter." << std::endl;
 	std::cin >> idRessource;
 	while(idRessource.compare("0") != 0){
 		if(userIsClient)
@@ -108,7 +109,7 @@ void infoRessource(ressources *res, int userIsClient){
 		else if(idMedia != 0){
 			res->info(idMedia - 1);
 		}
-		std::cout << "\nEntrer N identifiant pour des informations specifiques ou '1' pour des informations generales sur tous les medias. Entrer '0' pour quitter." << std::endl;
+		std::cout << "\nEntrer Numero identifiant pour des informations specifiques ou '1' pour des informations generales sur tous les medias. Entrer '0' pour quitter." << std::endl;
 		std::cin >> idRessource;
 	}
 }
@@ -142,8 +143,8 @@ void recherche(ressources *res, int userIsClient){
 		if(typeRecherche == 1){
 			std::cout << "Recherche generale.\nMot a rechercher : ";
 			std::cin >> strSearch;
-			if(userIsClient)
-				res->checkVersion();
+			/*if(userIsClient)
+				res->checkVersion();*/
 			res->rechercheGene(strSearch);
 		}
 		else if(typeRecherche == 2){
@@ -218,8 +219,8 @@ void recherche(ressources *res, int userIsClient){
 		}
 		if(typeRecherche != 4 && flagRecherche == 0){
 			std::cout << "Resultats de la recherche : " << std::endl;
-			if(userIsClient)
-				res->checkVersion();
+			/*if(userIsClient)
+				res->checkVersion();*/
 			res->list();
 			std::cout << "Quelle action realiser :\n\t(1) Recherche sur les resultats trouves\n\t(2) Nouvelle recherche\n\t(3) Sauvegarder les resultats\n\t(4) Information sur les medias\n\t(5) Quitter" << std::endl;
 			std::cin >> typeRecherche;
@@ -386,24 +387,6 @@ void annulerReservation(int idClient, ressources *res, utilisateurs *uti, int us
 
 
 
-void retour(){
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -439,7 +422,11 @@ int main(){
 		}
 		else if(action == 1){
 			int id = connexion(uti);
-			std::string idUti = uti->getAdminNbr(-id-1);
+			std::string idUti;
+			if(id<0)
+				idUti = uti->getAdminNbr(-id-1);
+			else
+				idUti = uti->getAdminNbr(id-1);
 			int choix;
 			int idMed;
 			int idUser;
@@ -811,6 +798,7 @@ int main(){
 						idMed = res->verifIdMedia(id2act) - 1;
 						if(id2act.compare(id1) == 0){
 							uti->retour(idUser, "(0)aucun", 0);
+							uti->
 							res->reservation("0", idMed, 3);
 							std::cout << "Media retourne.\n" << std::endl;
 						}
@@ -857,13 +845,11 @@ int main(){
 			else if(id > 0){ //droits client
 				id = id - 1;
 				std::cout << "Authentification reussie (compte Client)." << std::endl
-						  << "Bonjour " << uti->getClient(id) << ", quelle action souhaitez vous realiser :\n\t(1) reservation\n\t(2) infoperso\n\t(3) recherche\n\t(4) mettre a jour le contenu de la mediatheque\n\t(5) quitter"  << std::endl;
-				//uti->infoClient(id);
+						  << "Bonjour " << uti->getClient(id) << ", quelle action souhaitez vous realiser :\n\t(1) reservation\n\t(2) infoperso\n\t(3) recherche\n\t(4)) quitter"  << std::endl;
 				std::cin >> choix;
 				while(choix != 4/*5*/){
 					while(choix != 1 && choix != 2 && choix != 3 /*&& choix != 4*/){
-						//std::cout << "Choix incorrect, merci de reessayer :\n\t(1) reservation\n\t(2) infoperso\n\t(3) recherche\n\t(4) mettre a jour le contenu de la mediatheque\n\t(5) quitter" << std::endl;
-						std::cout << "Choix incorrect, merci de reessayer :\n\t(1) reservation\n\t(2) infoperso\n\t(3) recherche\n\t(5) quitter" << std::endl;
+						std::cout << "Choix incorrect, merci de reessayer :\n\t(1) reservation\n\t(2) infoperso\n\t(3) recherche\n\t(4) quitter" << std::endl;
 						std::cin >> choix;
 					}
 					if(choix == 1){
@@ -879,10 +865,7 @@ int main(){
 						//recherche
 						recherche(res, 1);
 					}
-					/*else if(choix == 4){
-						res->reload();
-					}*/
-					std::cout << "Quelle action souhaitez vous realiser :\n\t(1) reservation\n\t(2) infoperso\n\t(3) recherche\n\t(4) mettre a jour le contenu de la mediatheque\n\t(5) quitter"  << std::endl;
+					std::cout << "Quelle action souhaitez vous realiser :\n\t(1) reservation\n\t(2) infoperso\n\t(3) recherche\n\t(4) quitter"  << std::endl;
 					std::cin >> choix;
 				}
 				std::cout << "Au revoir " << uti->getClient(id) << ".\n" << std::endl;

@@ -72,7 +72,6 @@ class ressources {
         void saveEndOfFile(std::string filename, std::string str, const char *entete);
         int getDisponible(int idMedia);
         void reservation(std::string str, int idMedia, int disponibilite);
-        //void emprunt(std::string str, int idMedia);
         void checkVersion();
         int verifDispo(int idMedia);
         void updateFile(std::string type, std::string _idMedia, int _id);
