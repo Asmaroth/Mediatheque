@@ -453,7 +453,8 @@ void ressources::save(const char *filename){
 }
 
 void ressources::clear(){
-	medias.swap(mediaSave);
+	//medias.swap(mediaSave);
+	medias = mediaSave;
 }
 
 void ressources::deleteMedia(int _id, std::string _idMedia){
@@ -583,7 +584,7 @@ std::string ressources::addMedia(int _type){
 		std::getline (std::cin,str);
 		buf = buf + ";" + str;
 		if(_type == 2){
-			type = "revue";
+			type = "revues";
 			revues *med = new revues();
 			std::cout << "\t- Editeur : ";
 			std::getline (std::cin,str);
@@ -779,122 +780,122 @@ void ressources::updateFile(std::string type, std::string _idMedia, int _id){
 }
 
 void ressources::modifMedia(int _id, std::string _idMedia){
-	std::string type = medias[_id-1]->getType();
+	std::string type = medias[_id]->getType();
 	std::string str;
 	std::string filename;
 	std::string id;
 	std::cout << "Informations actuelles du media a modifier :" <<std::endl;
-	medias[_id-1]->info();
+	medias[_id]->info();
 	std::cout << "\nMerci de remplir le formulaire de modification de media. AUCUN CHAMP NE DOIT RESTER VIDE (mettre 'aucun' ou '0' si donnee inconnue)\n\t- Titre : ";
 	std::getline (std::cin,str);
 	std::getline (std::cin,str);
-	medias[_id-1] ->setTitre(str);
+	medias[_id] ->setTitre(str);
 	std::cout << "\t- Auteur : ";
 	std::getline (std::cin,str);
-	medias[_id-1] ->setAuteur(str);
+	medias[_id] ->setAuteur(str);
 	std::cout << "\t- Annee de parution : ";
 	std::getline (std::cin,str);
-	medias[_id-1] ->setAnnee(str2int(str));
+	medias[_id] ->setAnnee(str2int(str));
 	if(type.compare("livre") == 0){
 		std::cout << "\t- Nombre de pages : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setPage(str2int(str));
+		medias[_id] ->setPage(str2int(str));
 		std::cout << "\t- Collection : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setCollection(str);
+		medias[_id] ->setCollection(str);
 		std::cout << "\t- Resume : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setResume(str);
+		medias[_id] ->setResume(str);
 		std::cout << "\t- Note (/5) : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setNote(str2int(str));
+		medias[_id] ->setNote(str2int(str));
 	}
 	else if(type.compare("revue") == 0){
 		std::cout << "\t- Nombre de pages : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setPage(str2int(str));
+		medias[_id] ->setPage(str2int(str));
 		std::cout << "\t- Collection : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setCollection(str);
+		medias[_id] ->setCollection(str);
 		std::cout << "\t- Resume : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setResume(str);
+		medias[_id] ->setResume(str);
 		std::cout << "\t- Note (/5) : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setNote(str2int(str));
+		medias[_id] ->setNote(str2int(str));
 		std::cout << "\t- Editeur : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setEditeur(str);
+		medias[_id] ->setEditeur(str);
 		std::cout << "\t- Nombre d'articles : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setNbrArticle(str2int(str));
+		medias[_id] ->setNbrArticle(str2int(str));
 		std::cout << "\t- Nom des articles (separe par une virgule, sans espace autour des virgules) : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setNomArticle(str);
+		medias[_id] ->setNomArticle(str);
 	}
 	else if(type.compare("vhs") == 0){
 		std::cout << "\t- Duree (en minutes) : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setDuree(str2int(str));
+		medias[_id] ->setDuree(str2int(str));
 		std::cout << "\t- Maison de production : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setMaisonProduction(str);
+		medias[_id] ->setMaisonProduction(str);
 		std::cout << "\t- Note (/5) : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setNote(str2int(str));
+		medias[_id] ->setNote(str2int(str));
 	}
 	else if(type.compare("dvd") == 0){
 		std::cout << "\t- Duree (en minutes ): ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setDuree(str2int(str));
+		medias[_id] ->setDuree(str2int(str));
 		std::cout << "\t- Maison de production : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setMaisonProduction(str);
+		medias[_id] ->setMaisonProduction(str);
 		std::cout << "\t- Note (/5) : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setNote(str2int(str));
+		medias[_id] ->setNote(str2int(str));
 		std::cout << "\t- Nombre de pistes : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setNbrPiste(str2int(str));
+		medias[_id] ->setNbrPiste(str2int(str));
 		std::cout << "\t- Nom des pistes (separe par une virgule, sans espace autour des virgules) : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setNomPiste(str);
+		medias[_id] ->setNomPiste(str);
 	}
 	else if(type.compare("cd") == 0){
 		std::cout << "\t- Duree (en secondes) : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setDuree(str2int(str));
+		medias[_id] ->setDuree(str2int(str));
 		std::cout << "\t- Nombre de pistes : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setNbrPiste(str2int(str));
+		medias[_id] ->setNbrPiste(str2int(str));
 		std::cout << "\t- Maison de disque : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setMaisonDisque(str);
+		medias[_id] ->setMaisonDisque(str);
 		std::cout << "\t- Titre des pistes (separe par une virgule, sans espace autour des virgules) : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setTitrePiste(str);
+		medias[_id] ->setTitrePiste(str);
 		std::cout << "\t- Note (/5) : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setNote(str2int(str));
+		medias[_id] ->setNote(str2int(str));
 	}
 	else if(type.compare("ressourcenumerique") == 0){
 		std::cout << "\t- Format : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setFormat(str);
+		medias[_id] ->setFormat(str);
 		std::cout << "\t- Taille : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setTaille(str2int(str));
+		medias[_id] ->setTaille(str2int(str));
 		std::cout << "\t- Path : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setPath(str);
+		medias[_id] ->setPath(str);
 	}
 	else if(type.compare("peinture") == 0){
 		std::cout << "\t- Hauteur : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setHauteur(str2int(str));
+		medias[_id] ->setHauteur(str2int(str));
 		std::cout << "\t- Longueur : ";
 		std::getline (std::cin,str);
-		medias[_id-1] ->setLongueur(str2int(str));
+		medias[_id] ->setLongueur(str2int(str));
 	}
 	updateFile(type, _idMedia, _id);
 }
@@ -1055,7 +1056,7 @@ void ressources::reservation(std::string str, int idMedia, int disponibilite){
 	if(type.compare("L") == 0)
 		type = "livre";
 	else if(type.compare("R") == 0)
-		type = "revue";
+		type = "revues";
 	else if(type.compare("V") == 0)
 		type = "vhs";
 	else if(type.compare("D") == 0)

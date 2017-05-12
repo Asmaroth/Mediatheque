@@ -26,7 +26,7 @@ class client {
         std::string nom;
         std::string prenom;
         std::string resReservee[LIMITE_RESERVATION];
-        std::vector<media*> resRendue;
+        std::vector<std::string> resRendue;
         std::string resEmpruntee[LIMITE_EMPRUNT];
         std::string dateEmprunt[LIMITE_EMPRUNT];
     // Operations
@@ -45,7 +45,8 @@ class client {
         void setResReservee (std::string _resReservee, int _idResReservee);
         std::string getResReservee ();
         std::string getResReservee (int _idResReservee);
-        void setResRendue (media *_resRendue);
+        //void setResRendue (media *_resRendue);
+        void setResRendue(std::string infoToSave);
         std::string getResRendue ();
         std::string getResRendue (int _idResRendue);
         void setResEmpruntee (std::string _resEmpruntee, int _idResEmpruntee);

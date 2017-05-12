@@ -128,7 +128,7 @@ void media::info(){
 	else if (disponible == 3)
 		str = "disponible";
 	else 
-		str = "WARNING"
+		str = "WARNING";
 	std::cout << "(" << id << ") " << titre << ", de " << auteur << " est paru en " << annee << ". Il est actuellement " << str << ". Version " << version << std::endl;
 }
 

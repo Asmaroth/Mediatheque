@@ -86,20 +86,28 @@ std::string client::getResReservee (int _idResReservee){
 	return resReservee[_idResReservee];
 }
 
-void client::setResRendue (media *_resRendue){
+/*void client::setResRendue (media *_resRendue){
 	resRendue.push_back(_resRendue);
-}
+}*/
 
 std::string client::getResRendue (){
-	std::string str;
-	for(int i = 0 ; i < resRendue.size() ; i++)
-		str = str + ", (" + resRendue[i]->getId() + ") " + resRendue[i]->getTitre();
-	str = str + ".";
-	return str;
+	if(resRendue.size() == 0 ){
+		return "(0)aucun";
+	}
+	else{
+		std::string str;
+		for(int i = 0 ; i < resRendue.size() ; i++)
+			str = str + ", " + resRendue[i]; //", (" + resRendue[i]->getId() + ") " + resRendue[i]->getTitre();
+		str = str + ".";
+		return str;
+	}
 }
 
 std::string client::getResRendue (int _idResRendue){
-	return "(" + resRendue[_idResRendue]->getId() + ") " + resRendue[_idResRendue]->getTitre();
+	if(resRendue.size() == 0)
+		return "(0)aucun";
+	else
+		return resRendue[_idResRendue];//"(" + resRendue[_idResRendue]->getId() + ") " + resRendue[_idResRendue]->getTitre();
 }
 
 void client::setResEmpruntee (std::string _resEmpruntee, int _idResEmpruntee){
@@ -147,3 +155,7 @@ void client::info (){
 //void client::bye (); //devrait etre implémenté dans le main.cpp ?
 
 //void client::load (std::string _file);
+
+void client::setResRendue(std::string infoToSave){
+	resRendue.push_back(infoToSave);
+}

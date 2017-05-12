@@ -258,7 +258,7 @@ void utilisateurs::deleteAdmin(int _idAdmin, std::string admin2suppr, std::strin
 {
 	if( adm.size() == 1 || admin2suppr.compare(idUti) == 0)
 	{
-		std::cout << "Impossible de supprimer cet administrateur. Il est necessaire d'avoir au moins un administrateur ou la suppression de son propre compte est impossible." << std::endl;
+		std::cout << "Impossible de supprimer cet administrateur. Remarque : il est impossible de supprimer le dernier administrateur restant et la suppression de son propre compte est impossible." << std::endl;
 	}
 	else{
 	if(0 <= _idAdmin && _idAdmin <= adm.size()){
@@ -548,4 +548,8 @@ int utilisateurs::peutEmprunter(int idUser){
 		return 1;
 	else
 		return -1;
+}
+
+void utilisateurs::setResRendue(int idUser, std::string infoToSave){
+	users[idUser]->setResRendue(infoToSave);
 }

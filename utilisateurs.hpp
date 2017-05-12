@@ -45,6 +45,7 @@ class utilisateurs {
         std::string int2str(int nbr);
         std::string getAdminNbr(int _id);
         int peutEmprunter(int idUser);
+        void setResRendue(int idUser, std::string infoToSave);
 
 };
 

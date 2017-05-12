@@ -320,12 +320,12 @@ void reservation(int idClient, ressources *res, utilisateurs *uti, int userIsCli
 			if(id1.compare("0") == 0){
 				uti->reservation(idClient, res->infoPrincipales(idMed), 0);
 				res->reservation(uti->getIdClient(idClient), idMed, 0);
-				std::cout << "Media reserve. position 1\n" << std::endl;
+				std::cout << "Media reserve.\n" << std::endl;
 			}
 			else if(id2.compare("0") == 0){
 				uti->reservation(idClient, res->infoPrincipales(idMed), 1);
 				res->reservation(uti->getIdClient(idClient), idMed, 0);
-				std::cout << "Media reserve. position 2\n" << std::endl;
+				std::cout << "Media reserve.\n" << std::endl;
 			}
 			else{
 				std::cout << "La limite maximale de media pouvant etre reservee est atteinte. Merci d'annuler une reservation avant d'en faire une autre." << std::endl;
@@ -646,12 +646,13 @@ int main(){
 								std::cin >> id2Modify;
 								idMed = res->verifIdMedia(id2Modify);
 								if(idMed != 0){
+									idMed = idMed - 1;
 									std::cout << "Souhaitez vous vraiment smodifier la ressource suivante (o/n) : " << std::endl;
-									res->info(idMed - 1);
+									res->info(idMed);
 									std::cin >> decision;
 									while(decision.compare("o") != 0 && decision.compare("n") != 0){
 										std::cout << "Entree incorrecte, merci de reessayer : Souhaitez vous vraiment modifier la ressource suivante (o/n) : " << std::endl;
-										res->info(idMed - 1);
+										res->info(idMed);
 									}
 									if(decision.compare("o") == 0){
 										res->modifMedia(idMed, id2Modify);
@@ -734,6 +735,9 @@ int main(){
 									std::cout << "Abandon de la procedure d'emprunt.\n" << std::endl;
 								}
 							}
+							else{
+								std::cout << "La limite de reservation maximale est atteinte. Merci de rendre un media avant d'en emprunter un autre." << std::endl;
+							}
 						}
 					}
 					else if(choix == 4){
@@ -798,7 +802,7 @@ int main(){
 						idMed = res->verifIdMedia(id2act) - 1;
 						if(id2act.compare(id1) == 0){
 							uti->retour(idUser, "(0)aucun", 0);
-							uti->
+							uti->setResRendue(idUser, res->infoPrincipales(idMed));
 							res->reservation("0", idMed, 3);
 							std::cout << "Media retourne.\n" << std::endl;
 						}
@@ -845,7 +849,7 @@ int main(){
 			else if(id > 0){ //droits client
 				id = id - 1;
 				std::cout << "Authentification reussie (compte Client)." << std::endl
-						  << "Bonjour " << uti->getClient(id) << ", quelle action souhaitez vous realiser :\n\t(1) reservation\n\t(2) infoperso\n\t(3) recherche\n\t(4)) quitter"  << std::endl;
+						  << "Bonjour " << uti->getClient(id) << ", quelle action souhaitez vous realiser :\n\t(1) reservation\n\t(2) infoperso\n\t(3) recherche\n\t(4) quitter"  << std::endl;
 				std::cin >> choix;
 				while(choix != 4/*5*/){
 					while(choix != 1 && choix != 2 && choix != 3 /*&& choix != 4*/){
@@ -854,7 +858,22 @@ int main(){
 					}
 					if(choix == 1){
 						//reservation
-						reservation(id, res, uti, 1);
+						std::cout << "Quelle action realiser :\n\t(1) reserver un media\n\t(2) annuler la reservation d'un media\n\t(3) quitter" << std::endl;
+						std::cin >> choix;
+						while(choix != 3){
+							while(choix != 1 && choix != 2){
+								std::cout << "Entree incorrecte, merci de reessayer. Quelle action realiser :\n\t(1) reserver un media\n\t(2) annuler la reservation d'un media\n\t(3) quitter" << std::endl;
+								std::cin >> choix;
+							}
+							if(choix == 1){
+								reservation(id, res, uti, 1);
+							}
+							else if(choix == 2){
+								annulerReservation(id, res, uti, 1);
+							}
+							std::cout << "Quelle action realiser :\n\t(1) reserver un media\n\t(2) annuler la reservation d'un media\n\t(3) quitter" << std::endl;
+							std::cin >> choix;
+						}
 					}
 					else if(choix == 2){
 						//infoperso
