@@ -344,10 +344,6 @@ void utilisateurs::effaceMemoire(){
 	users.clear();
 }
 
-void utilisateurs::emprunt(int idClient, int idMedia){
-
-}
-
 std::string utilisateurs::getResEmpruntee(int idClient){
 	return users[idClient]->getResEmpruntee();
 }
@@ -356,7 +352,70 @@ std::string utilisateurs::getResReservee(int idClient){
 	return users[idClient]->getResReservee();
 }
 
-void utilisateurs::retour(int idUser, int idMedia){
+void utilisateurs::retour(int idUser, std::string media, int pos){
+	users[idUser]->setResEmpruntee(media, pos);
+
+
+
+	//users[idUser]->setDateEmprunt(date, pos); //TODO
+
+	std::string id;
+	std::string id2compare = users[idUser]->getId();
+	std::string str;
+	std::string firstPart, secondPart, thirdPart;
+	std::ifstream myFile("utilisateurs.txt");
+	std::ofstream tempFile("temporary.txt");
+	   if(!myFile.is_open() || !tempFile.is_open()){
+	    std::cout << "Can't read file : utilisateurs.txt or write in 'temporary.txt'" << std::endl;
+	   }
+	   else{
+	   	getline(myFile, str);
+	   	tempFile << str;
+    	while (getline(myFile, str)){
+    		std::stringstream ss(str);
+    		getline(ss, id, ';');
+    		if(id.compare(id2compare) != 0){
+    			tempFile << std::endl << str;
+    		}
+    		else{
+    			if(pos == 0){
+    				getline(ss, firstPart, '(');
+    				getline(ss, secondPart, '(');
+    				firstPart = firstPart + "(" + secondPart;
+    				getline(ss, secondPart, '(');
+    				firstPart = firstPart + "(" + secondPart;
+    				getline(ss, secondPart, '(');
+    				firstPart = firstPart + "(" + secondPart;
+    				getline(ss, secondPart, '(');
+    				firstPart = firstPart + "(" + secondPart;
+    				getline(ss, secondPart, '(');
+    				getline(ss, secondPart);
+    				tempFile << std::endl << id << ";" << firstPart << media << ",(" << secondPart;
+    			}
+    			else{
+    				getline(ss, firstPart, '(');
+    				getline(ss, secondPart, '(');
+    				firstPart = firstPart + "(" + secondPart;//1
+    				getline(ss, secondPart, '(');
+    				firstPart = firstPart + "(" + secondPart;//2
+    				getline(ss, secondPart, '(');
+    				firstPart = firstPart + "(" + secondPart;//3
+    				getline(ss, secondPart, '(');
+    				firstPart = firstPart + "(" + secondPart;//4
+    				getline(ss, secondPart, '(');
+    				firstPart = firstPart + "(" + secondPart;//5
+    				getline(ss, secondPart, ';');
+    				getline(ss, secondPart);
+    				tempFile << std::endl << id << ";" << firstPart << media << ";" << secondPart;
+    			}
+    		}
+    	}
+	}
+	myFile.close();
+	tempFile.close();
+	remove("utilisateurs.txt");
+	rename("temporary.txt", "utilisateurs.txt");
+
 
 }
 
@@ -382,7 +441,6 @@ void utilisateurs::reservation(int idUser, std::string media, int pos){
     			tempFile << std::endl << str;
     		}
     		else{
-    			//tempFile << std::endl << id << ";" << users[idUser]->getNom << ";" << users[idUser]->getPrenom << ";" << media << ;
     			if(pos == 0){
     				getline(ss, firstPart, '(');
     				getline(ss, secondPart, '(');
@@ -406,7 +464,88 @@ void utilisateurs::reservation(int idUser, std::string media, int pos){
 
 }
 
+void utilisateurs::emprunt(int idUser, std::string media, int pos){
+	users[idUser]->setResEmpruntee(media, pos);
+
+
+
+	//users[idUser]->setDateEmprunt(date, pos); //TODO
+
+	std::string id;
+	std::string id2compare = users[idUser]->getId();
+	std::string str;
+	std::string firstPart, secondPart, thirdPart;
+	std::ifstream myFile("utilisateurs.txt");
+	std::ofstream tempFile("temporary.txt");
+	   if(!myFile.is_open() || !tempFile.is_open()){
+	    std::cout << "Can't read file : utilisateurs.txt or write in 'temporary.txt'" << std::endl;
+	   }
+	   else{
+	   	getline(myFile, str);
+	   	tempFile << str;
+    	while (getline(myFile, str)){
+    		std::stringstream ss(str);
+    		getline(ss, id, ';');
+    		if(id.compare(id2compare) != 0){
+    			tempFile << std::endl << str;
+    		}
+    		else{
+    			if(pos == 0){
+    				getline(ss, firstPart, '(');
+    				getline(ss, secondPart, '(');
+    				firstPart = firstPart + "(" + secondPart;
+    				getline(ss, secondPart, '(');
+    				firstPart = firstPart + "(" + secondPart;
+    				getline(ss, secondPart, '(');
+    				firstPart = firstPart + "(" + secondPart;
+    				getline(ss, secondPart, '(');
+    				firstPart = firstPart + "(" + secondPart;
+    				getline(ss, secondPart, '(');
+    				getline(ss, secondPart);
+    				tempFile << std::endl << id << ";" << firstPart << media << ",(" << secondPart;
+    			}
+    			else{
+    				getline(ss, firstPart, '(');
+    				getline(ss, secondPart, '(');
+    				firstPart = firstPart + "(" + secondPart;//1
+    				getline(ss, secondPart, '(');
+    				firstPart = firstPart + "(" + secondPart;//2
+    				getline(ss, secondPart, '(');
+    				firstPart = firstPart + "(" + secondPart;//3
+    				getline(ss, secondPart, '(');
+    				firstPart = firstPart + "(" + secondPart;//4
+    				getline(ss, secondPart, '(');
+    				firstPart = firstPart + "(" + secondPart;//5
+    				getline(ss, secondPart, ';');
+    				getline(ss, secondPart);
+    				tempFile << std::endl << id << ";" << firstPart << media << ";" << secondPart;
+    			}
+    		}
+    	}
+	}
+	myFile.close();
+	tempFile.close();
+	remove("utilisateurs.txt");
+	rename("temporary.txt", "utilisateurs.txt");
+
+}
+
 std::string utilisateurs::getIdClient(int _id){
 	return users[_id]->getId();
 }
 
+
+int utilisateurs::peutEmprunter(int idUser){
+	std::string id1, id2;
+	std::stringstream idResEmpruntee(getResEmpruntee(idUser));
+	getline(idResEmpruntee, id1, '(');
+	getline(idResEmpruntee, id1, ')');
+	getline(idResEmpruntee, id2, '(');
+	getline(idResEmpruntee, id2, ')');
+	if(id1.compare("0") == 0)
+		return 0;
+	else if(id2.compare("0") == 0)
+		return 1;
+	else
+		return -1;
+}

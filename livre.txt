@@ -1,4 +1,4 @@
 (1) Liste des Livres :1
-L1;Eragon;Christopher PAOLINI;2002;3;60;0;0;11;11;11;11
+L1;Eragon;Christopher PAOLINI;2002;3;60;0;0;11;11;0;11
 L2;D'un Monde à l'Autre;Pierre BOTTERO;2003;2;60;0;0;0;200;La Quete d'Ewilan;0
 L3;Les Chroniques de Corentin;Corentin BELLICAULT;2017;1;1;0;1500;La vie de Dieu;Coco en vacances a l'ENSEIRB;500

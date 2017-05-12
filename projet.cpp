@@ -383,15 +383,6 @@ void annulerReservation(int idClient, ressources *res, utilisateurs *uti, int us
 
 
 
-void emprunt(){
-
-}
-
-
-
-
-
-
 
 
 
@@ -722,7 +713,7 @@ int main(){
 							std::cin >> id2act;
 							idMed = res->verifIdMedia(id2act);
 						}
-						isAvailable = res->verifDispo(idMed);
+						isAvailable = res->verifDispo(idMed-1);
 						if(isAvailable == -1){
 							std::cout << "Le media demande est deja reserver. Merci de faire une autre demande ou d'annuler prealablement la reservation." << std::endl;
 						}
@@ -733,23 +724,28 @@ int main(){
 							std::cout << "Le media demande est indisponible. Merci de faire une autre demande ou de rendre disponible prealablement le media." << std::endl;
 						}
 						else if(id2act.compare("quitter") == 0){
-							std::cout << "Abortion de la procedure d'emprunt.\n" << std::endl;
+							std::cout << "Abandon de la procedure d'emprunt.\n" << std::endl;
 						}
 						else{
-							std::cout << "Souhaitez vous vraiment emprunter le media suivant (o/n) :" << std::endl;
-							res->info(idMed-1);
-							std::cin >> decision;
-							while(decision.compare("o") != 0 && decision.compare("n") != 0){
-								std::cout << "Entree incorrecte, merci de reessayer : Souhaitez vous vraiment emprunter le media suivant (o/n) :" << std::endl;
-								res->info(idMed-1);
+							int pos = uti->peutEmprunter(idUser-1);
+							idMed = idMed - 1;
+							if(pos != -1){
+								std::cout << "Souhaitez vous vraiment emprunter le media suivant (o/n) :" << std::endl;
+								res->info(idMed);
 								std::cin >> decision;
-							}
-							if(decision.compare("o") == 0){
-								uti->emprunt(idUser-1, idMed-1);
-								std::cout << "Media reserve.\n" << std::endl;
-							}
-							else if(decision.compare("n") == 0){
-								std::cout << "Abortion de la procedure d'emprunt.\n" << std::endl;
+								while(decision.compare("o") != 0 && decision.compare("n") != 0){
+									std::cout << "Entree incorrecte, merci de reessayer : Souhaitez vous vraiment emprunter le media suivant (o/n) :" << std::endl;
+									res->info(idMed);
+									std::cin >> decision;
+								}
+								if(decision.compare("o") == 0){
+									uti->emprunt(idUser-1, res->infoPrincipales(idMed), pos);
+									res->reservation(idClient, idMed, 1);
+									std::cout << "Media reserve.\n" << std::endl;
+								}
+								else if(decision.compare("n") == 0){
+									std::cout << "Abandon de la procedure d'emprunt.\n" << std::endl;
+								}
 							}
 						}
 					}
@@ -798,25 +794,29 @@ int main(){
 							std::cin >> idClient;
 							idUser = uti->verifIdClient(idClient);
 						}
-						std::stringstream idResEmpruntee(uti->getResEmpruntee(idUser-1));
+						idUser = idUser - 1;
+						std::stringstream idResEmpruntee(uti->getResEmpruntee(idUser));
 						std::string id1;
 						std::string id2;
 						getline(idResEmpruntee, id1, '(');
 						getline(idResEmpruntee, id1, ')');
 						getline(idResEmpruntee, id2, '(');
 						getline(idResEmpruntee, id2, ')');
-						std::cout << "Identifier la ressource a retourner : " << uti->getResEmpruntee(idUser-1) << std::endl;
+						std::cout << "Identifier la ressource a retourner : " << uti->getResEmpruntee(idUser) << std::endl;
 						std::cin >> id2act;
 						while(id2act.compare(id1) != 0 && id2act.compare(id2) != 0 && id2act.compare("quitter") != 0){
-							std::cout << "Entree incorrecte, merci de reessayer.\nIdentifier la ressource a retourner ou annuler la demande en rentrant 'quitter' : " << uti->getResEmpruntee(idUser-1) << std::endl;
+							std::cout << "Entree incorrecte, merci de reessayer.\nIdentifier la ressource a retourner ou annuler la demande en rentrant 'quitter' : " << uti->getResEmpruntee(idUser) << std::endl;
 							std::cin >> id2act;
 						}
+						idMed = res->verifIdMedia(id2act) - 1;
 						if(id2act.compare(id1) == 0){
-							uti->retour(idUser-1, idMed-1);
+							uti->retour(idUser, "(0)aucun", 0);
+							res->reservation("0", idMed, 3);
 							std::cout << "Media retourne.\n" << std::endl;
 						}
 						else if(id2act.compare(id2) == 0){
-							uti->retour(idUser-1, idMed-1);
+							uti->emprunt(idUser, "(0)aucun", 1);
+							res->reservation("0", idMed, 3);
 							std::cout << "Media retourne.\n" << std::endl;
 						}
 						else if(id2act.compare("quitter") == 0){

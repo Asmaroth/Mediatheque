@@ -31,10 +31,10 @@ class utilisateurs {
         void addAdmin(admin *administrateur);
         int getIdUtilisateur(std::string _id);
         void effaceMemoire();
-        void emprunt(int idClient, int idMedia);
+        void emprunt(int idUser, std::string media, int pos);
         std::string getResEmpruntee(int idClient);
         std::string getResReservee(int idClient);
-        void retour(int idUser, int idMedia);
+        void retour(int idUser, std::string media, int pos);
         void reservation(int idUser, std::string media, int pos);
         std::string getIdClient(int _id);
         void deleteAdmin(int _idAdmin, std::string admin2suppr, std::string idUti);
@@ -44,6 +44,8 @@ class utilisateurs {
         int str2int(std::string str);
         std::string int2str(int nbr);
         std::string getAdminNbr(int _id);
+        int peutEmprunter(int idUser);
+
 };
 
 #endif
