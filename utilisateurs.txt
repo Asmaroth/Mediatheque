@@ -1,5 +1,4 @@
-11;DUPONT;JEAN;(L1)Eragon,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(L3)Les Chroniques de Corentin;01/01/2017,0
+Liste des utilisateurs :
 12;LEMONNIER;ALEXIS;(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0
 13;BOUET;LOLA;(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0
-02;GALLOT;LOUIS;(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0;bbbbbbbb
 03;BELLICAULT;Corentin;(0)aucun,(0)aucun;(0)aucun,(0)aucun;(0)aucun,(0)aucun;0,0;aaaaaaaa

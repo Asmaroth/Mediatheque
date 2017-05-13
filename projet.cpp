@@ -552,7 +552,7 @@ int main(){
 								std::cout << "Procedure de supression d'un utilisateur. Rentrez l'identifiant de l'utilisateur a supprimer : ";
 								std::cin >> client2suppr;
 								id2suppr = uti->verifIdClient(client2suppr);
-								while( id2suppr == 0 || client2suppr.compare("quitter") == 0)
+								while( id2suppr == 0 && client2suppr.compare("quitter") != 0)
 								{
 									std::cout << "Entree incorrecte, merci de ressayer ou de rentrer 'quitter' pour annuler la procedure. Procedure de supression d'un utilisateur. Rentrez l'identifiant de l'utilisateur a supprimer : ";
 									std::cin >> client2suppr;
@@ -562,7 +562,9 @@ int main(){
 								{
 									id2suppr = id2suppr - 1 ;
 									std::cout << "Voulez vous vraiment supprimer le client suivant (o/n) : " << std::endl;
-									uti->infoClient(id2suppr);
+									int test = uti->getIdUtilisateur(client2suppr);
+									std::cout << test << std::endl;
+									uti->infoClient(test);
 									std::cin >> decision ;
 									while( decision.compare("o") != 0 && decision.compare("n") != 0 )
 									{
@@ -572,7 +574,7 @@ int main(){
 									if( decision.compare("o") == 0)
 									{
 										std::cout << "Client en cours de suppression..." << std::endl;
-										uti->deleteClient(id2suppr, client2suppr);
+										uti->deleteClient(uti->getIdUtilisateur(client2suppr), client2suppr);
 									}
 									else 
 									{
@@ -593,7 +595,7 @@ int main(){
 									if( decision.compare("o") == 0)
 									{
 										std::cout << "Administrateur en cours de suppression..." << std::endl;
-										uti->deleteAdmin(id2suppr, client2suppr,idUti);
+										uti->deleteAdmin(uti->getIdUtilisateur(client2suppr), client2suppr,idUti);
 									}
 									else 
 									{
@@ -621,8 +623,8 @@ int main(){
 								if (id2modif > 0 )
 								{
 									id2modif = id2modif - 1 ;
-									std::cout << "Voulez vous vraiment modifier le client suivant (o/n) : " << std::endl;
-									uti->infoClient(id2modif);
+									std::cout << "Voulez vous vraiment modifier le client suivant (o/n) : " << id2modif << std::endl;
+									uti->infoClient(uti->getIdUtilisateur(client2modif));
 									std::cin >> decision ;
 									while( decision.compare("o") != 0 && decision.compare("n") != 0 )
 									{
@@ -642,7 +644,7 @@ int main(){
 								else 
 								{
 									id2modif = -id2modif - 1 ;
-									std::cout << "Voulez vous vraiment modifier l'administrateur suivant (o/n) : " << std::endl;
+									std::cout << "Voulez vous vraiment modifier l'administrateur suivant (o/n) : " << id2modif << std::endl;
 									uti->infoClient(uti->getIdUtilisateur(client2modif));
 									std::cin >> decision ;
 									while( decision.compare("o") != 0 && decision.compare("n") != 0 )
