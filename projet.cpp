@@ -40,7 +40,7 @@
 #include "client.cpp"
 #include "admin.cpp"
 
-
+#define NBR_IGNORE 1000
 
 
 
@@ -136,8 +136,10 @@ void recherche(ressources *res, int userIsClient){
 	std::cout << "Quel type de recherche souhaitez vous effectuer :\n\t(1) Recherche generale\n\t(2) Recherche par type\n\t(3) Recherche par champ\n\t(4) Information sur les medias\n\t(5) Quitter" << std::endl;
 	std::cin >> typeRecherche;
 	while(typeRecherche != 5){
-		while(typeRecherche != 1 && typeRecherche != 2 && typeRecherche != 3 && typeRecherche != 4){
+		while(typeRecherche != 1 && typeRecherche != 2 && typeRecherche != 3 && typeRecherche != 4 && typeRecherche != 5){
 			std::cout << "Entree incorrecte, merci de reessayer :\n\t(1) Recherche generale\n\t(2) Recherche par type\n\t(3) Recherche par champ\n\t(4) Information sur les medias\n\t(5) Quitter" << std::endl;
+			std::cin.clear();
+			std::cin.ignore(NBR_IGNORE, '\n');
 			std::cin >> typeRecherche;
 		}
 		if(typeRecherche == 1){
@@ -151,8 +153,10 @@ void recherche(ressources *res, int userIsClient){
 			std::cout << "Recherche par type. Veuillez entrer le type a chercher :\n\t(1) Livre\n\t(2) Revue\n\t(3) VHS\n\t(4) DVD\n\t(5) CD\n\t(6) Ressource numerique\n\t(7) Peinture\n\t(8) Quitter" << std::endl;
 			std::cin >> typeRecherche;
 			while(typeRecherche != 8){
-				while(typeRecherche != 1 && typeRecherche != 2 && typeRecherche != 3 && typeRecherche != 4 && typeRecherche != 5 && typeRecherche != 6 && typeRecherche != 7){
+				while(typeRecherche != 1 && typeRecherche != 2 && typeRecherche != 3 && typeRecherche != 4 && typeRecherche != 5 && typeRecherche != 6 && typeRecherche != 7 && typeRecherche != 8){
 					std::cout << "Entree incorrecte, merci de reessayer :\n\t(1) Livre\n\t(2) Revue\n\t(3) VHS\n\t(4) DVD\n\t(5) CD\n\t(6) Ressource numerique\n\t(7) Peinture\n\t(8) Quitter" << std::endl;
+					std::cin.clear();
+					std::cin.ignore(NBR_IGNORE, '\n');
 					std::cin >> typeRecherche;
 				}
 				if(typeRecherche == 1){
@@ -188,8 +192,10 @@ void recherche(ressources *res, int userIsClient){
 			std::cout << "Recherche par champ. Veuillez entrer le type a chercher :\n\t(1) ID\n\t(2) Titre\n\t(3) Auteur\n\t(4) Annee de parution\n\t(5) Quitter" << std::endl;
 			std::cin >> typeRecherche;
 			while(typeRecherche != 5){
-				while(typeRecherche != 1 && typeRecherche != 2 && typeRecherche != 3 && typeRecherche != 4){
+				while(typeRecherche != 1 && typeRecherche != 2 && typeRecherche != 3 && typeRecherche != 4 && typeRecherche != 5){
 					std::cout << "Entree incorrecte, merci de reessayer :\n\t(1) ID\n\t(2) Titre\n\t(3) Auteur\n\t(4) Annee de parution\n\t(5) Quitter" << std::endl;
+					std::cin.clear();
+					std::cin.ignore(NBR_IGNORE, '\n');
 					std::cin >> typeRecherche;
 				}
 				if(typeRecherche == 1){
@@ -217,6 +223,9 @@ void recherche(ressources *res, int userIsClient){
 			//std::cin >> typeRecherche;
 			flagRecherche = 1;
 		}
+		else if(typeRecherche == 5){
+			break;
+		}
 		if(typeRecherche != 4 && flagRecherche == 0){
 			std::cout << "Resultats de la recherche : " << std::endl;
 			/*if(userIsClient)
@@ -225,8 +234,10 @@ void recherche(ressources *res, int userIsClient){
 			std::cout << "Quelle action realiser :\n\t(1) Recherche sur les resultats trouves\n\t(2) Nouvelle recherche\n\t(3) Sauvegarder les resultats\n\t(4) Information sur les medias\n\t(5) Quitter" << std::endl;
 			std::cin >> typeRecherche;
 			while(typeRecherche != 5){
-				while(typeRecherche != 1 && typeRecherche != 2 && typeRecherche != 3 && typeRecherche != 4){
+				while(typeRecherche != 1 && typeRecherche != 2 && typeRecherche != 3 && typeRecherche != 4 && typeRecherche != 5){
 						std::cout << "Entree incorrecte, merci de reessayer :\n\t(1) Recherche sur les resultats trouves\n\t(2) Nouvelle recherche\n\t(3) Sauvegarder les resultats\n\t(4) Information sur les medias\n\t(5) Quitter" << std::endl;
+						std::cin.clear();
+						std::cin.ignore(NBR_IGNORE, '\n');
 						std::cin >> typeRecherche;
 				}
 				if(typeRecherche == 1){
@@ -403,22 +414,19 @@ int main(){
 
 
 	std::cout 	<< "Bonjour et bienvenu dans le logiciel de gestion de ressources de la mediatheque " << mediath->getNom() << " . " << std::endl
-				<< "Choisissez une action a realiser :\n\t(1) connexion\n\t(2) recherche\n\t(3) aide \n\t(4) quitter" << std::endl;
+				<< "Choisissez une action a realiser :\n\t(1) connexion\n\t(2) recherche\n\t(3) aide\n\t(4) quitter" << std::endl;
 	int action;
 	std::cin >> action;
 	while(action != 4){
-		while(action != 1 && action != 2 && action != 3){
+		while(action != 1 && action != 2 && action != 3 && action != 4){
 			std::cout << "Action incorrecte, merci de saisir une action parmi les suivantes :\n\t(1) connexion\n\t(2) recherche\n\t(3) aide \n\t(4) quitter" << std::endl;
+			std::cin.clear();
+			std::cin.ignore(NBR_IGNORE, '\n');
 			std::cin >> action;
 		}
 		if(action == 3){
 			std::cout << "En mode non connecte, vous n'avez acces qu'a la recherche de media. Actuellement la mediatheque contient " << res->getNbrRessource() << " medias, dont des " << res->getTypeRessource() << std::endl
-					  << "Pour plus d'information, merci de contacter un administrateur de la mediatheque.\n";/*Que souhaitez vous faire (connexion/recherche/aide/quitter) : ";
-			std::cin >> action;
-			/*while(action.compare("connexion") != 0 && action.compare("recherche") !=0 && action.compare("aide") != 0 && action.compare("quitter") != 0){
-				std::cout << "Action incorrecte, merci de saisir une action parmi les suivantes : connexion/recherche/aide/quitter" << std::endl;
-				std::cin >> action;
-			}*/
+					  << "Pour plus d'information, merci de contacter un administrateur de la mediatheque.\n";
 		}
 		else if(action == 1){
 			int id = connexion(uti);
@@ -442,7 +450,7 @@ int main(){
 						  << "Bonjour " << uti->getAdmin(id) << ", quelle action souhaitez vous realiser :\n\t(1) modification utilisateur\n\t(2) modification ressource\n\t(3) emprunt\n\t(4) reservation\n\t(5) retour\n\t(6) info client\n\t(7) info ressource\n\t(8) recherche\n\t(9) quitter" << std::endl;
 				std::cin >> choix;
 				while(choix != 9){
-					while(choix != 1 && choix != 2 && choix != 3 && choix != 4 && choix != 5 && choix != 6 && choix != 7 && choix != 8){
+					while(choix != 1 && choix != 2 && choix != 3 && choix != 4 && choix != 5 && choix != 6 && choix != 7 && choix != 8 && action != 9){
 						std::cout << "Choix incorrect, merci de reessayer :\n\t(1) modification utilisateur\n\t(2) modification ressource\n\t(3) emprunt\n\t(4) reservation\n\t(5) retour\n\t(6) info client\n\t(7) info ressource\n\t(8) recherche\n\t(9) quitter" << std::endl;
 						std::cin >> choix;
 					}
@@ -451,8 +459,10 @@ int main(){
 						std::cout << "Que souhaitez-vous faire :\n\t(1) Ajout d'un utilisateur\n\t(2) Suppression d'un utilisateur\n\t(3) Modification des donnees d'un utilisateur\n\t(4) quitter" << std::endl;
 						std::cin >> choix;
 						while(choix != 4){
-							while(choix != 1 && choix != 2 && choix != 3){
+							while(choix != 1 && choix != 2 && choix != 3 && choix != 4){
 								std::cout << "Entree incorrecte, merci de reessayer. Que souhaitez-vous faire :\n\t(1) Ajout d'un utilisateur\n\t(2) Suppression d'un utilisateur\n\t(3) Modification des donnees d'un utilisateur\n\t(4) quitter" << std::endl;
+								std::cin.clear();
+								std::cin.ignore(NBR_IGNORE, '\n');
 								std::cin >> choix;
 							}
 							if(choix == 1){
@@ -461,8 +471,10 @@ int main(){
 								std::cout << "Procedure d'ajout d'un utilisateur. Souhaitez vous :\n\t(1) ajouter un client\n\t(2) ajouter un administrateur\n\t(3) quitter" << std::endl;
 								std::cin >> typeAjout;
 								while(typeAjout != 3){
-									while(typeAjout != 1 && typeAjout != 2){
+									while(typeAjout != 1 && typeAjout != 2 && typeAjout != 3){
 										std::cout << "Entree incorrecte, merci de reessayer :\n\t(1) ajouter un client\n\t(2) ajouter un administrateur\n\t(3) quitter" << std::endl;
+										std::cin.clear();
+										std::cin.ignore(NBR_IGNORE, '\n');
 										std::cin >> typeAjout;
 									}
 									if(typeAjout == 1){
@@ -602,8 +614,10 @@ int main(){
 						std::cout << "Modification de ressource. Souhaitez-vous :\n\t(1) Ajouter une ressource\n\t(2) Supprimer une ressource\n\t(3) Modifier une ressource\n\t(4) Formater la base de donnee\n\t(5) Quitter" << std::endl;
 						std::cin >> choix;
 						while(choix != 5){
-							while(choix != 1 && choix != 2 && choix != 3 && choix != 4){
+							while(choix != 1 && choix != 2 && choix != 3 && choix != 4 && choix != 5){
 								std::cout << "Choix incorrect, merci de reessayer :\n\t(1) Ajouter une ressource\n\t(2) Supprimer une ressource\n\t(3) Modifier une ressource\n\t(4) Formater la base de donnee\n\t(5) Quitter" << std::endl;
+								std::cin.clear();
+								std::cin.ignore(NBR_IGNORE, '\n');
 								std::cin >> choix;
 							}
 							if(choix == 1){
@@ -611,8 +625,10 @@ int main(){
 								std::cout << "Ajout d'une ressource.\nQuel type de ressource souhaitez vous ajouter :\n\t(1) Livre\n\t(2) Revue\n\t(3) VHS\n\t(4) DVD\n\t(5) CD\n\t(6) Ressource numerique\n\t(7) Peinture\n\t(8) Quitter" << std::endl;
 								std::cin >> choix;
 								while(choix != 8){
-									while(choix != 1 && choix != 2 && choix != 3 && choix != 4 && choix != 5 && choix != 6 && choix != 7){
+									while(choix != 1 && choix != 2 && choix != 3 && choix != 4 && choix != 5 && choix != 6 && choix != 7 && choix != 8){
 										std::cout << "Entree incorrecte, quel type de ressource souhaitez vous ajouter :\n\t(1) Livre\n\t(2) Revue\n\t(3) VHS\n\t(4) DVD\n\t(5) CD\n\t(6) Ressource numerique\n\t(7) Peinture\n\t(8) Quitter" << std::endl;
+										std::cin.clear();
+										std::cin.ignore(NBR_IGNORE, '\n');
 										std::cin >> choix;
 									}
 									newId = res->addMedia(choix);
@@ -745,8 +761,10 @@ int main(){
 						std::cout << "Quelle action realiser :\n\t(1) reserver un media\n\t(2) annuler la reservation d'un media\n\t(3) quitter" << std::endl;
 						std::cin >> choix;
 						while(choix != 3){
-							while(choix != 1 && choix != 2){
+							while(choix != 1 && choix != 2 && choix != 3){
 								std::cout << "Entree incorrecte, merci de reessayer. Quelle action realiser :\n\t(1) reserver un media\n\t(2) annuler la reservation d'un media\n\t(3) quitter" << std::endl;
+								std::cin.clear();
+								std::cin.ignore(NBR_IGNORE, '\n');
 								std::cin >> choix;
 							}
 							if(choix == 1){
@@ -851,9 +869,11 @@ int main(){
 				std::cout << "Authentification reussie (compte Client)." << std::endl
 						  << "Bonjour " << uti->getClient(id) << ", quelle action souhaitez vous realiser :\n\t(1) reservation\n\t(2) infoperso\n\t(3) recherche\n\t(4) quitter"  << std::endl;
 				std::cin >> choix;
-				while(choix != 4/*5*/){
-					while(choix != 1 && choix != 2 && choix != 3 /*&& choix != 4*/){
+				while(choix != 4){
+					while(choix != 1 && choix != 2 && choix != 3 && choix != 4){
 						std::cout << "Choix incorrect, merci de reessayer :\n\t(1) reservation\n\t(2) infoperso\n\t(3) recherche\n\t(4) quitter" << std::endl;
+						std::cin.clear();
+						std::cin.ignore(NBR_IGNORE, '\n');
 						std::cin >> choix;
 					}
 					if(choix == 1){
@@ -861,8 +881,10 @@ int main(){
 						std::cout << "Quelle action realiser :\n\t(1) reserver un media\n\t(2) annuler la reservation d'un media\n\t(3) quitter" << std::endl;
 						std::cin >> choix;
 						while(choix != 3){
-							while(choix != 1 && choix != 2){
+							while(choix != 1 && choix != 2 && choix != 3){
 								std::cout << "Entree incorrecte, merci de reessayer. Quelle action realiser :\n\t(1) reserver un media\n\t(2) annuler la reservation d'un media\n\t(3) quitter" << std::endl;
+								std::cin.clear();
+								std::cin.ignore(NBR_IGNORE, '\n');
 								std::cin >> choix;
 							}
 							if(choix == 1){
@@ -896,9 +918,8 @@ int main(){
 		else if(action == 2){
 			recherche(res, 1);
 		}
-		else{ //a enlever pour la version finale
-			std::cout << "Erreur, ce cas ne devrait pas se produire." << std::endl;
-			exit(EXIT_FAILURE);
+		else if(action == 4){
+			break;
 		}
 		std::cout << "Quelle action souhaitez vous realiser :\n\t(1) connexion\n\t(2) recherche\n\t(3) aide \n\t(4) quitter" << std::endl;
 		std::cin >> action;
