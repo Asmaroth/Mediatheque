@@ -21,6 +21,8 @@ admin::admin(){
     mdp = "aaaaaaaa"; //8 a
 }*/
 
+admin::~admin(){}
+
 void admin::setMdp(std::string _mdp){
 	mdp = _mdp;
 }

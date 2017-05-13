@@ -1,16 +1,6 @@
-L1;Eragon;Christopher PAOLINI;2002;3;60;0;0;0;11;11;0
 R1;Mille et une nuit;Jean jacques goldman;2024;3;60;0;218;Planete bleu;un jour ya un insecte qui nait avec mille patte et il perd une patte par jour donc il va vivre 1000 et une nuit;3;ZEF;3;inconnu
 R2;une patte et un haricots;michel pasquier;1998;3;60;0;94;la weed en folie;c'est l'histoire d'une patte et d'un haricot et le haricot regarde la patte et lui dit tu veux pas me servir de patte je veux partir;5;woodstock;3;inconnu
-R3;blanche fesse et les septs main;bamako;2012;3;60;0;1598;Dousney;tu es trop jeune je pense pour lire ce resume;5;AuPaysDesReves;3;inconnu
-V1;tintin;Herge;2012;3;60;0;2070;Herge;4
-V2;autoroute racer;connais pas;2010;3;60;0;1614;connais pas non plus;5
+L1;Eragon;Christopher PAOLINI;2002;0;60;0;694;L'Héritage;Eragon trouve une pierre dans la foret, c'est un oeuf de dragon, il devient dragonnier et se bat pour renverser le despote au pouvoir en Alagaesia ayant renversé l'antique ordre des Dragonniers qui maintenaient la paix;5
+L2;D'un Monde à l'Autre;Pierre BOTTERO;2003;3;60;0;200;La Quete d'Ewilan;Camille est une jeune surdouée qui a la capacité de passer dans un monde parallèle grace au pouvoir de l'imagination. Elle se retrouve dans un monde fantastique avec comme objectif de sauver le peuple des hommes des Ts'liches et de retrouver ses parents.;5
 D1;twilight;marc jaune;2012;3;60;0;2018;disney;2;3;inconnu
-D2;R2;george lucas;1998;3;60;0;1546;disney;2;2;inconnu
-C1;opening;multiple;2014;3;60;0;30500;3;buli;inconnu;0
-C2;holiday;green day;2008;3;60;0;2800;3;eglise;inconnu;0
 N1;toto va a la plage;toto;2012;3;60;0;PNG une;2080;http://www.mediatheque.fr/Path/coucou/toto_va_a_la_plage.png
-N2;martine au tibet;martine;2084;3;60;0;JPEG;1514;http://www.mediatheque.fr/Path/martine_va_au_tibet.jpeg
-P1;la joconde;Leonard de vinci;1486;3;60;0;40;25
-P2;david contre goliath;michael ange;1525;3;60;0;180;210
-P3;test;test;0;3;60;-1;0;0
-P4;test;test;0;3;60;-1;0;0

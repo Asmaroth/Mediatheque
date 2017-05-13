@@ -499,6 +499,7 @@ int main(){
 										}
 										else if(str.compare("n") == 0){
 											std::cout << "Client non confirme, abortion de la procedure d'ajout d'utilisateur.\n" << std::endl;
+											delete clt;
 										}
 										break;
 									}
@@ -531,6 +532,7 @@ int main(){
 										}
 										else if(str.compare("n") == 0){
 											std::cout << "Client non confirme, abortion de la procedure d'ajout d'utilisateur.\n" << std::endl;
+											delete adm;
 										}
 
 										break;

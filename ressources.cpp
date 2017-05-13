@@ -784,8 +784,6 @@ void ressources::modifMedia(int _id, std::string _idMedia){
 	std::string str;
 	std::string filename;
 	std::string id;
-	std::cout << "Informations actuelles du media a modifier :" <<std::endl;
-	medias[_id]->info();
 	std::cout << "\nMerci de remplir le formulaire de modification de media. AUCUN CHAMP NE DOIT RESTER VIDE (mettre 'aucun' ou '0' si donnee inconnue)\n\t- Titre : ";
 	std::getline (std::cin,str);
 	std::getline (std::cin,str);
@@ -908,18 +906,25 @@ void ressources::reset(){
 	medias.clear();
 	mediaSave.clear();
 	std::ofstream deleteLivre("livre.txt");
+	deleteLivre << "() Liste des livres :1";
 	deleteLivre.close();
 	std::ofstream deleteRevue("revues.txt");
+	deleteRevue << "() Liste des revues :1";
 	deleteRevue.close();
 	std::ofstream deleteVhs("vhs.txt");
+	deleteVhs << "() Liste des vhs :1";
 	deleteVhs.close();
 	std::ofstream deleteDvd("dvd.txt");
+	deleteDvd << "() Liste des dvd :1";
 	deleteDvd.close();
 	std::ofstream deleteCd("cd.txt");
+	deleteCd << "() Liste des cd :1";
 	deleteCd.close();
 	std::ofstream deleteResNum("resNumerique.txt");
+	deleteResNum << "() Liste des ressources numeriques:1";
 	deleteResNum.close();
 	std::ofstream deletePeinture("peinture.txt");
+	deletePeinture << "() Liste des peintures :1";
 	deletePeinture.close();
 }
 
