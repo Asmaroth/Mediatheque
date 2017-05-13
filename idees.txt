@@ -57,7 +57,7 @@ Idee pour le reload automatique :
 Soutenance :
 Mardi 16 : ordre de passage a definir
 consignes :
-	- duree : XX min de pressentation + XX min de questions
+	- duree : ~10 min de pressentation + ~10 min de questions
 	- format : client(le prof)/Dev+Vendeur (nous)
 			   slides + demo
 
