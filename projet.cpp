@@ -540,7 +540,7 @@ int main(){
 								id2suppr = uti->verifIdClient(client2suppr);
 								while( id2suppr == 0 || client2suppr.compare("quitter") == 0)
 								{
-									std::cout << "Entree incorrecte, merci de réssayer ou de rentrer 'quitter' pour annuler la procedure. Procedure de supression d'un utilisateur. Rentrez l'identifiant de l'utilisateur a supprimer : ";
+									std::cout << "Entree incorrecte, merci de ressayer ou de rentrer 'quitter' pour annuler la procedure. Procedure de supression d'un utilisateur. Rentrez l'identifiant de l'utilisateur a supprimer : ";
 									std::cin >> client2suppr;
 									id2suppr = uti->verifIdClient(client2suppr);
 								}
@@ -552,7 +552,7 @@ int main(){
 									std::cin >> decision ;
 									while( decision.compare("o") != 0 && decision.compare("n") != 0 )
 									{
-										std::cout << "Entree incorrecte, merci de réssayer. Voulez vous vraiment supprimer le client suivant (o/n) : " << std::endl;
+										std::cout << "Entree incorrecte, merci de ressayer. Voulez vous vraiment supprimer le client suivant (o/n) : " << std::endl;
 										std::cin >> decision ;
 									}
 									if( decision.compare("o") == 0)
@@ -573,7 +573,7 @@ int main(){
 									std::cin >> decision ;
 									while( decision.compare("o") != 0 && decision.compare("n") != 0 )
 									{
-										std::cout << "Entree incorrecte, merci de réssayer. Voulez vous vraiment supprimer l'administrateur suivant (o/n) : " << std::endl;
+										std::cout << "Entree incorrecte, merci de ressayer. Voulez vous vraiment supprimer l'administrateur suivant (o/n) : " << std::endl;
 										std::cin >> decision ;
 									}
 									if( decision.compare("o") == 0)
@@ -591,6 +591,61 @@ int main(){
 
 							}
 							else if(choix == 3){
+								int id2modif;
+								std::string decision ;
+								std::string client2modif ;
+								std::string str;
+								std::cout << "Procedure de modification d'un utilisateur. Rentrez l'identifiant de l'utilisateur a modifier : ";
+								std::cin >> client2modif;
+								id2modif = uti->verifIdClient(client2modif);
+								while( id2modif == 0 || client2modif.compare("quitter") == 0)
+								{
+									std::cout << "Entree incorrecte, merci de ressayer ou de rentrer 'quitter' pour annuler la procedure. Procedure de modification d'un utilisateur. Rentrez l'identifiant de l'utilisateur a modifier : ";
+									std::cin >> client2modif;
+									id2modif = uti->verifIdClient(client2modif);
+								}
+								if (id2modif > 0 )
+								{
+									id2modif = id2modif - 1 ;
+									std::cout << "Voulez vous vraiment modifier le client suivant (o/n) : " << std::endl;
+									uti->infoClient(id2modif);
+									std::cin >> decision ;
+									while( decision.compare("o") != 0 && decision.compare("n") != 0 )
+									{
+										std::cout << "Entree incorrecte, merci de ressayer. Voulez vous vraiment modifier le client suivant (o/n) : " << std::endl;
+										std::cin >> decision ;
+									}
+									if( decision.compare("o") == 0)
+									{
+										std::cout << "Client en cours de modification..." << std::endl;
+										uti->modifyClient(id2modif, client2modif);
+									}
+									else 
+									{
+										std::cout << "Abandon de la procedure de modification du client.\n" << std::endl;
+									}
+								}
+								else 
+								{
+									id2modif = -id2modif - 1 ;
+									std::cout << "Voulez vous vraiment modifier l'administrateur suivant (o/n) : " << std::endl;
+									uti->infoClient(uti->getIdUtilisateur(client2modif));
+									std::cin >> decision ;
+									while( decision.compare("o") != 0 && decision.compare("n") != 0 )
+									{
+										std::cout << "Entree incorrecte, merci de ressayer. Voulez vous vraiment modifier l'administrateur suivant (o/n) : " << std::endl;
+										std::cin >> decision ;
+									}
+									if( decision.compare("o") == 0)
+									{
+										std::cout << "Administrateur en cours de modification..." << std::endl;
+										uti->modifyAdmin(id2modif, client2modif);
+									}
+									else 
+									{
+										std::cout << "Abandon de la procedure de modification de l'administrateur.\n" << std::endl;
+									}
+								}
 
 							}
 							std::cout << "Que souhaitez-vous faire :\n\t(1) Ajout d'un utilisateur\n\t(2) Suppression d'un utilisateur\n\t(3) Modification des donnees d'un utilisateur\n\t(4) quitter" << std::endl;
