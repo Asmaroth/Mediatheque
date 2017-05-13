@@ -486,15 +486,15 @@ int main(){
 										std::cout <<"\tPrenom : ";
 										std::cin >> str;
 										clt->setPrenom(str);
-										std::cout << "Confirmez vous l'enregistrement du client (y/n) : " << clt->getNom() << " " << clt->getPrenom() << ".\t";
+										std::cout << "Confirmez vous l'enregistrement du client (o/n) : " << clt->getNom() << " " << clt->getPrenom() << ".\t";
 										std::cin >> str;
-										while(str.compare("y") != 0 && str.compare("n") != 0){
-											std::cout << "Entree incorrecte, merci de reessayer (y/n) : ";
+										while(str.compare("o") != 0 && str.compare("n") != 0){
+											std::cout << "Entree incorrecte, merci de reessayer (o/n) : ";
 											std::cin >> str;
 										}
-										if(str.compare("y") == 0){
+										if(str.compare("o") == 0){
 											uti->addClient(clt);
-											std::cout << "Ajout du client confirme.\n" << std::endl; 
+											std::cout << "Ajout du client confirme.\n" << "Son identifiant est le suivant : " << uti->getLastClientId() << std::endl; 
 											//addUser(clt);
 										}
 										else if(str.compare("n") == 0){
@@ -519,15 +519,15 @@ int main(){
 											std::cin >> str;
 										}
 										adm->setMdp(str);
-										std::cout << "Confirmez vous l'enregistrement de l'administrateur (y/n) : " << adm->getNom() << " " << adm->getPrenom() << ".\t";
+										std::cout << "Confirmez vous l'enregistrement de l'administrateur (o/n) : " << adm->getNom() << " " << adm->getPrenom() << ".\t";
 										std::cin >> str;
-										while(str.compare("y") != 0 && str.compare("n") != 0){
-											std::cout << "Entree incorrecte, merci de reessayer (y/n) : ";
+										while(str.compare("o") != 0 && str.compare("n") != 0){
+											std::cout << "Entree incorrecte, merci de reessayer (o/n) : ";
 											std::cin >> str;
 										}
-										if(str.compare("y") == 0){
+										if(str.compare("o") == 0){
 											uti->addAdmin(adm);
-											std::cout << "Ajout de l'administrateur confirme.\n" << std::endl; 
+											std::cout << "Ajout de l'administrateur confirme.\n" << "Son identifiant est le suivant : " << uti->getLastAdminId() << std::endl; 
 											//addUser(adm);
 										}
 										else if(str.compare("n") == 0){
@@ -562,13 +562,7 @@ int main(){
 								{
 									id2suppr = id2suppr - 1 ;
 									std::cout << "Voulez vous vraiment supprimer le client suivant (o/n) : " << std::endl;
-<<<<<<< HEAD
 									uti->infoClient(uti->getIdUtilisateur(client2suppr));
-=======
-									int test = uti->getIdUtilisateur(client2suppr);
-									std::cout << test << std::endl;
-									uti->infoClient(test);
->>>>>>> 12b64da763e80a804931dabd711dd2d0afe6f405
 									std::cin >> decision ;
 									while( decision.compare("o") != 0 && decision.compare("n") != 0 )
 									{
@@ -627,11 +621,7 @@ int main(){
 								if (id2modif > 0 )
 								{
 									id2modif = id2modif - 1 ;
-<<<<<<< HEAD
 									std::cout << "Voulez vous vraiment modifier le client suivant (o/n) : " << std::endl;
-=======
-									std::cout << "Voulez vous vraiment modifier le client suivant (o/n) : " << id2modif << std::endl;
->>>>>>> 12b64da763e80a804931dabd711dd2d0afe6f405
 									uti->infoClient(uti->getIdUtilisateur(client2modif));
 									std::cin >> decision ;
 									while( decision.compare("o") != 0 && decision.compare("n") != 0 )

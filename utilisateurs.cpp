@@ -301,6 +301,15 @@ std::string utilisateurs::getAdminNbr(int _id){
 	return adm[_id]->getId();
 }
 
+
+std::string utilisateurs::getLastClientId(){
+	return clients[clients.size()-1]->getId();
+}
+
+std::string utilisateurs::getLastAdminId(){
+	return adm[adm.size()-1]->getId();
+}
+
 void utilisateurs::addClient(client *clt){
 	std::string newId;
 	if(clients.size() == 0)
@@ -376,9 +385,9 @@ void utilisateurs::deleteAdmin(int _idAdmin, std::string admin2suppr, std::strin
 		std::cout << "Impossible de supprimer cet administrateur. Remarque : il est impossible de supprimer le dernier administrateur restant et la suppression de son propre compte est impossible." << std::endl;
 	}
 	else{
-		if(0 <= _idAdmin && _idAdmin < users.size()){
-			delete users[_idAdmin];
-			users.erase(users.begin() + _idAdmin);
+		if(0 <= _idAdmin && _idAdmin < adm.size()){
+			delete users[getIdUtilisateur(admin2suppr)];
+			users.erase(users.begin() + getIdUtilisateur(admin2suppr));
 			adm.erase(adm.begin() + getIdAdmin(admin2suppr));
 			std::string filename;
 			std::string id;
@@ -414,17 +423,17 @@ void utilisateurs::deleteAdmin(int _idAdmin, std::string admin2suppr, std::strin
 
 void utilisateurs::deleteClient(int _idClient, std::string client2suppr)
 {
-<<<<<<< HEAD
+//<<<<<<< HEAD
 	std::cout << _idClient << std::endl;
 	std::cout << getIdUtilisateur(client2suppr) << std::endl;
 	if(0 <= _idClient && _idClient <= clients.size()){
 	delete users[getIdUtilisateur(client2suppr)];
 	users.erase(users.begin() + getIdUtilisateur(client2suppr));
-=======
+/*=======
 	if(0 <= _idClient && _idClient < users.size()){
 	delete users[_idClient];
 	users.erase(users.begin() + _idClient);
->>>>>>> 12b64da763e80a804931dabd711dd2d0afe6f405
+>>>>>>> 12b64da763e80a804931dabd711dd2d0afe6f405*/
 	clients.erase(clients.begin() + getIdClient(client2suppr));
 	std::string id;
 	std::string filename;

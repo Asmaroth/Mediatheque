@@ -48,6 +48,8 @@ class utilisateurs {
         void setResRendue(int idUser, std::string infoToSave);
         void modifyClient(int id2modif, std::string client2modif);
         void modifyAdmin(int id2modif, std::string client2modif);
+        std::string getLastClientId();
+        std::string getLastAdminId();
 
 };
 

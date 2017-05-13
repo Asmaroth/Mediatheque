@@ -21,7 +21,7 @@
 
 class client {
     // Attributes
-    protected :
+    protected:
         std::string id;
         std::string nom;
         std::string prenom;
@@ -30,7 +30,7 @@ class client {
         std::string resEmpruntee[LIMITE_EMPRUNT];
         std::string dateEmprunt[LIMITE_EMPRUNT];
     // Operations
-    public :
+    public:
         client();
         //client(std::string _id, std::string _nom, std::string _prenom, std::string *_resReservee, media *_resRendue, std::string *_resEmpruntee, int *_dateEmprunt);
         ~client();
