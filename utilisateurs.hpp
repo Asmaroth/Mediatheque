@@ -46,6 +46,8 @@ class utilisateurs {
         std::string getAdminNbr(int _id);
         int peutEmprunter(int idUser);
         void setResRendue(int idUser, std::string infoToSave);
+        void modifyClient(int id2modif, std::string client2modif);
+        void modifyAdmin(int id2modif, std::string client2modif);
 
 };
 

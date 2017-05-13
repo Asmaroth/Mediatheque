@@ -77,7 +77,7 @@ std::string client::getResReservee (){
 	for (int i = 0 ; i < LIMITE_RESERVATION ; i++){
 		str = str + resReservee[i];
 		if (i + 1 < LIMITE_RESERVATION)
-			str = str + ", ";
+			str = str + ",";
 	}
 	return str;
 }
@@ -97,8 +97,8 @@ std::string client::getResRendue (){
 	else{
 		std::string str;
 		for(int i = 0 ; i < resRendue.size() ; i++)
-			str = str + ", " + resRendue[i]; //", (" + resRendue[i]->getId() + ") " + resRendue[i]->getTitre();
-		str = str + ".";
+			str = str + "," + resRendue[i]; //", (" + resRendue[i]->getId() + ") " + resRendue[i]->getTitre();
+		//str = str + ".";
 		return str;
 	}
 }
@@ -119,9 +119,9 @@ std::string client::getResEmpruntee (){
 	for (int i = 0 ; i < LIMITE_EMPRUNT ; i++){
 		str = str + resEmpruntee[i];
 		if (i + 1 < LIMITE_EMPRUNT)
-			str = str + ", ";
+			str = str + ",";
 		else
-			str = str + ".";
+			str = str ;//+ ".";
 	}
 	return str;
 }
@@ -139,7 +139,7 @@ std::string client::getDateEmprunt (){
 	for (int i = 0 ; i < LIMITE_EMPRUNT ; i++){
 		str = str + dateEmprunt[i];
 		if (i + 1 < LIMITE_EMPRUNT)
-			str = str + ", ";
+			str = str + ",";
 	}
 	return str;
 }

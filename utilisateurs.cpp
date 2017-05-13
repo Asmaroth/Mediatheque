@@ -116,6 +116,109 @@ std::string utilisateurs::getUsers(){
 	return str;
 }
 
+void utilisateurs::modifyAdmin(int id2modif, std::string client2modif){
+	std::string newname;
+	std::string newprenom;
+	std::string newmdp;
+	admin *administrateur = adm[id2modif];
+	if(0 <= id2modif && id2modif <= adm.size())
+	{
+	std::cout << "Quel est le nouveau nom de l'administrateur : ";
+	std::cin >> newname;
+	administrateur->setNom(newname);
+	std::cout << "Quel est le nouveau prenom de l'administrateur : ";
+	std::cin >> newprenom;
+	administrateur->setPrenom(newprenom);
+	std::cout << "Quel est le nouveau mot de passe de l'administrateur : ";
+	std::cin >> newmdp;
+	administrateur->setMdp(newmdp);
+	std::string info2Save = client2modif+ ";" + newname + ";" + newprenom + ";"+ administrateur->getResEmpruntee() +";"+ administrateur->getDateEmprunt() +";"+ administrateur->getResRendue() +";"+ administrateur->getResReservee() +";"+ newmdp;
+	std::string filename;
+	std::string id;
+	std::string buf;
+	filename = "utilisateurs.txt";
+	std::ifstream myFile(filename.c_str());
+	std::ofstream tempFile("temporary.txt");
+	if(!myFile.is_open() && !tempFile.is_open()){
+	    	std::cout << "Can't read file : " << filename << " ou de creer un temporary.txt." << std::endl;
+	    }
+	else{
+		getline(myFile, buf);
+		tempFile << buf ;
+    	while (getline(myFile, buf)){
+    		std::stringstream ss(buf);
+    		getline(ss, id, ';');
+    		if(id.compare(client2modif) != 0){
+    			tempFile << std::endl  << buf;
+    			}
+    		else if (id.compare(client2modif) == 0)
+    		{
+    			tempFile << std::endl << info2Save;
+    		}
+    	}
+		}
+	myFile.close();
+	tempFile.close();
+	remove(filename.c_str());
+	rename("temporary.txt", filename.c_str());
+	std::cout << "Administrateur modifie. " << std::endl;
+	}
+	else
+		std::cout << "Impossible de modifier l'administrateur " << client2modif << std::endl;
+}
+
+
+
+
+void utilisateurs::modifyClient(int id2modif, std::string client2modif){
+	std::string newname;
+	std::string newprenom; 
+	client * clt = clients[id2modif];
+	if(0 <= id2modif && id2modif <= clients.size()){
+		std::cout << "Quel est le nouveau nom du client : ";
+		std::cin >> newname;
+		clt->setNom(newname);
+		std::cout << "Quel est le nouveau prenom du client : ";
+		std::cin >> newprenom;
+		clt->setPrenom(newprenom);
+		std::cout << "Client modifie. " << std::endl;
+		std::string infoToSave = client2modif + ";" + newname + ";" + newprenom + ";"+ clt->getResEmpruntee() +";"+ clt->getDateEmprunt() +";"+ clt->getResRendue() +";"+ clt->getResReservee();
+		std::string filename;
+		std::string id;
+		std::string buf;
+		filename = "utilisateurs.txt";
+		std::ifstream myFile(filename.c_str());
+		std::ofstream tempFile("temporary.txt");
+		if(!myFile.is_open() && !tempFile.is_open()){
+	    	std::cout << "Can't read file : " << filename << " ou de creer un temporary.txt." << std::endl;
+	   		 }
+		else{
+			getline(myFile, buf);
+			tempFile << buf ;
+    		while (getline(myFile, buf)){
+    			std::stringstream ss(buf);
+    			getline(ss, id, ';');
+    			if(id.compare(client2modif) != 0)
+    			{
+    				tempFile << std::endl << buf;
+    			}
+    			else if (id.compare(client2modif) == 0)
+    			{
+    				tempFile << std::endl << infoToSave;
+    			}
+    		}
+		}
+	myFile.close();
+	tempFile.close();
+	remove(filename.c_str());
+	rename("temporary.txt", filename.c_str());
+	std::cout << "Client modifie. " << std::endl;
+	}
+
+	else
+		std::cout << "Impossible de modifier le client " << client2modif << std::endl;
+}
+
 std::string utilisateurs::getClient(){ //possible de connaitre le type pour différencier client et admin ? Sinon utilisation d'un ID spécifique
 	std::string str = "Les clients sont :\n";
 	for (int i = 0 ; i < users.size() ; i++){
@@ -276,7 +379,7 @@ void utilisateurs::deleteAdmin(int _idAdmin, std::string admin2suppr, std::strin
 	    }
 	else{
 		getline(myFile, buf);
-		tempFile << buf;
+		tempFile << buf ;
     	while (getline(myFile, buf)){
     		std::stringstream ss(buf);
     		getline(ss, id, ';');
@@ -314,12 +417,12 @@ void utilisateurs::deleteClient(int _idClient, std::string client2suppr)
 	    }
 	else{
 		getline(myFile, buf);
-		tempFile << buf;
+		tempFile << buf ;
     	while (getline(myFile, buf)){
     		std::stringstream ss(buf);
     		getline(ss, id, ';');
     		if(id.compare(client2suppr) != 0){
-    			tempFile << buf << std::endl;
+    			tempFile << std::endl << buf;
     			}
     		}
 		}
