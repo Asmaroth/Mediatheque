@@ -562,7 +562,7 @@ int main(){
 								{
 									id2suppr = id2suppr - 1 ;
 									std::cout << "Voulez vous vraiment supprimer le client suivant (o/n) : " << std::endl;
-									uti->infoClient(id2suppr);
+									uti->infoClient(uti->getIdUtilisateur(client2suppr));
 									std::cin >> decision ;
 									while( decision.compare("o") != 0 && decision.compare("n") != 0 )
 									{
@@ -622,7 +622,7 @@ int main(){
 								{
 									id2modif = id2modif - 1 ;
 									std::cout << "Voulez vous vraiment modifier le client suivant (o/n) : " << std::endl;
-									uti->infoClient(id2modif);
+									uti->infoClient(uti->getIdUtilisateur(client2modif));
 									std::cin >> decision ;
 									while( decision.compare("o") != 0 && decision.compare("n") != 0 )
 									{
