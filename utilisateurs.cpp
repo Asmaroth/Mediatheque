@@ -237,7 +237,7 @@ std::string utilisateurs::getAdmin(){ //possible de connaitre le type pour diff�
 }
 
 void utilisateurs::info(){
-	std::cout << "Il y a " << clients.size() + adm.size() << " utilisateurs de la médiathèque, dont " << clients.size() << " clients et " << adm.size() << " administrateurs.\n" << getClient() << getAdmin() << std::endl;
+	std::cout << "Il y a " << clients.size() + adm.size() << " utilisateurs de la mediatheque, dont " << clients.size() << " clients et " << adm.size() << " administrateurs.\n" << getClient() << getAdmin() << std::endl;
 }
 
 void utilisateurs::infoClient(int _id){
@@ -424,7 +424,7 @@ void utilisateurs::deleteAdmin(int _idAdmin, std::string admin2suppr, std::strin
 
 void utilisateurs::deleteClient(int _idClient, std::string client2suppr, int _idInClients)
 {
-<<<<<<< HEAD
+/*<<<<<<< HEAD
 //<<<<<<< HEAD
 	std::cout << clients.size() << std::endl;
 	std::cout << users.size() << std::endl;
@@ -435,7 +435,7 @@ void utilisateurs::deleteClient(int _idClient, std::string client2suppr, int _id
 	if(0 <= _idClient && _idClient < users.size()){
 	delete users[_idClient];
 	users.erase(users.begin() + _idClient);
->>>>>>> 12b64da763e80a804931dabd711dd2d0afe6f405*/
+>>>>>>> 12b64da763e80a804931dabd711dd2d0afe6f405
 	clients.erase(clients.begin() + getIdClient(client2suppr));
 	std::cout << clients.size() << std::endl;
 	std::cout << users.size() << std::endl;
@@ -446,9 +446,9 @@ void utilisateurs::deleteClient(int _idClient, std::string client2suppr, int _id
 	std::ifstream myFile(filename.c_str());
 	std::ofstream tempFile("temporary.txt");
 	if(!myFile.is_open() && !tempFile.is_open()){
-=======
-	std::cout << _idClient << std::endl;
-	std::cout << getIdUtilisateur(client2suppr) << std::endl;
+=======*/
+	//std::cout << _idClient << std::endl;
+	//std::cout << getIdUtilisateur(client2suppr) << std::endl;
 	if(0 <= _idClient && _idClient < users.size()){
 		delete users[_idClient];
 		users.erase(users.begin() + _idClient);
@@ -460,7 +460,7 @@ void utilisateurs::deleteClient(int _idClient, std::string client2suppr, int _id
 		std::ifstream myFile(filename.c_str());
 		std::ofstream tempFile("temporary.txt");
 		if(!myFile.is_open() || !tempFile.is_open()){
->>>>>>> 40cd865216661951f9f855497607734e6356d052
+//>>>>>>> 40cd865216661951f9f855497607734e6356d052
 	    	std::cout << "Can't read file : " << filename << std::endl;
 	    }
 		else{
