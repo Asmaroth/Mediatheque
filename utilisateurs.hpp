@@ -38,7 +38,7 @@ class utilisateurs {
         void reservation(int idUser, std::string media, int pos);
         std::string getIdClient(int _id);
         void deleteAdmin(int _idAdmin, std::string admin2suppr, std::string idUti);
-        void deleteClient(int _idClient, std::string client2suppr);
+        void deleteClient(int _idClient, std::string client2suppr, int _idInClients);
         int getIdAdmin(std::string _id);
         int getIdClient(std::string _id);
         int str2int(std::string str);
