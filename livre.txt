@@ -1,4 +1,5 @@
-(1) Liste des Livres :1
-L1;Eragon;Christopher PAOLINI;2002;0;60;0;694;L'Héritage;Eragon trouve une pierre dans la foret, c'est un oeuf de dragon, il devient dragonnier et se bat pour renverser le despote au pouvoir en Alagaesia ayant renversé l'antique ordre des Dragonniers qui maintenaient la paix;5
+(1) Liste des Livres :2
+L1;Eragon;Christopher PAOLINI;2002;1;60;01/01/2017;694;L'Héritage;Eragon trouve une pierre dans la foret, c'est un oeuf de dragon, il devient dragonnier et se bat pour renverser le despote au pouvoir en Alagaesia ayant renversé l'antique ordre des Dragonniers qui maintenaient la paix;5
 L2;D'un Monde à l'Autre;Pierre BOTTERO;2003;3;60;0;200;La Quete d'Ewilan;Camille est une jeune surdouée qui a la capacité de passer dans un monde parallèle grace au pouvoir de l'imagination. Elle se retrouve dans un monde fantastique avec comme objectif de sauver le peuple des hommes des Ts'liches et de retrouver ses parents.;5
 L3;Les Chroniques de Corentin;Corentin BELLICAULT;2017;1;1;0;1500;La vie de Dieu;Coco en vacances a l'ENSEIRB;500
+L4;Harry Potter - Les Reliques De La Mort;J.K Rowling;2007;3;60;-1;809;Harry Potter;Harry est en fuite, il se fait pourchasser par les sbires de Voldemort et cherche a retrouver les horcruxes afin de venir ? bout de son pire ennemi et sauver a la fois le monde des sorciers et des hommes.;5
