@@ -424,9 +424,9 @@ void utilisateurs::deleteAdmin(int _idAdmin, std::string admin2suppr, std::strin
 void utilisateurs::deleteClient(int _idClient, std::string client2suppr)
 {
 //<<<<<<< HEAD
-	std::cout << _idClient << std::endl;
-	std::cout << getIdUtilisateur(client2suppr) << std::endl;
-	if(0 <= _idClient && _idClient <= clients.size()){
+	std::cout << clients.size() << std::endl;
+	std::cout << users.size() << std::endl;
+	if(0 <= _idClient && getIdClient(client2suppr) <= clients.size()){
 	delete users[getIdUtilisateur(client2suppr)];
 	users.erase(users.begin() + getIdUtilisateur(client2suppr));
 /*=======
@@ -435,6 +435,8 @@ void utilisateurs::deleteClient(int _idClient, std::string client2suppr)
 	users.erase(users.begin() + _idClient);
 >>>>>>> 12b64da763e80a804931dabd711dd2d0afe6f405*/
 	clients.erase(clients.begin() + getIdClient(client2suppr));
+	std::cout << clients.size() << std::endl;
+	std::cout << users.size() << std::endl;
 	std::string id;
 	std::string filename;
 	std::string buf;
