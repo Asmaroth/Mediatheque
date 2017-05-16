@@ -425,7 +425,7 @@ int main(){
 			std::cin >> action;
 		}
 		if(action == 3){
-			std::cout << "En mode non connecte, vous n'avez acces qu'a la recherche de media. Actuellement la mediatheque contient " << res->getNbrRessource() << " medias, dont des " << res->getTypeRessource() << std::endl
+			std::cout << "En mode non connecte, vous n'avez acces qu'a la recherche de media. Actuellement la mediatheque contient " << res->getNbrRessource() << " medias. " << std::endl
 					  << "Pour plus d'information, merci de contacter un administrateur de la mediatheque.\n";
 		}
 		else if(action == 1){
@@ -844,7 +844,8 @@ int main(){
 									std::cin >> idClient;
 									idUser = uti->verifIdClient(idClient);
 								}
-								annulerReservation(idUser-1, res, uti, 0);
+								if(idClient.compare("quitter") != 0)
+									annulerReservation(idUser-1, res, uti, 0);
 							}
 							std::cout << "Quelle action realiser :\n\t(1) reserver un media\n\t(2) annuler la reservation d'un media\n\t(3) quitter" << std::endl;
 							std::cin >> choix;

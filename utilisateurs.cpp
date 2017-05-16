@@ -384,12 +384,10 @@ void utilisateurs::deleteAdmin(int _idAdmin, std::string admin2suppr, std::strin
 		std::cout << "Impossible de supprimer cet administrateur. Remarque : il est impossible de supprimer le dernier administrateur restant et la suppression de son propre compte est impossible." << std::endl;
 	}
 	else{
-		std::cout << users.size() << "\t" << adm.size() << std::endl;
 		if(0 <= _idAdmin && _idAdmin < users.size()){
 			delete users[_idAdmin];
 			users.erase(users.begin() + _idAdmin);
 			adm.erase(adm.begin() + getIdAdmin(admin2suppr));
-			std::cout << users.size() << "\t" << adm.size() << std::endl;
 			std::string filename;
 			std::string id;
 			std::string buf;

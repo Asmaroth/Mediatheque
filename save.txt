@@ -1,6 +1,6 @@
 R1;Mille et une nuit;Jean jacques goldman;2024;3;60;0;218;Planete bleu;un jour ya un insecte qui nait avec mille patte et il perd une patte par jour donc il va vivre 1000 et une nuit;3;ZEF;3;inconnu
 R2;une patte et un haricots;michel pasquier;1998;3;60;0;94;la weed en folie;c'est l'histoire d'une patte et d'un haricot et le haricot regarde la patte et lui dit tu veux pas me servir de patte je veux partir;5;woodstock;3;inconnu
-L1;Eragon;Christopher PAOLINI;2002;0;60;0;694;L'Héritage;Eragon trouve une pierre dans la foret, c'est un oeuf de dragon, il devient dragonnier et se bat pour renverser le despote au pouvoir en Alagaesia ayant renversé l'antique ordre des Dragonniers qui maintenaient la paix;5
+L1;Eragon;Christopher PAOLINI;2002;1;60;1;694;L'Héritage;Eragon trouve une pierre dans la foret, c'est un oeuf de dragon, il devient dragonnier et se bat pour renverser le despote au pouvoir en Alagaesia ayant renversé l'antique ordre des Dragonniers qui maintenaient la paix;5
 L2;D'un Monde à l'Autre;Pierre BOTTERO;2003;3;60;0;200;La Quete d'Ewilan;Camille est une jeune surdouée qui a la capacité de passer dans un monde parallèle grace au pouvoir de l'imagination. Elle se retrouve dans un monde fantastique avec comme objectif de sauver le peuple des hommes des Ts'liches et de retrouver ses parents.;5
 D1;twilight;marc jaune;2012;3;60;0;2018;disney;2;3;inconnu
 N1;toto va a la plage;toto;2012;3;60;0;PNG une;2080;http://www.mediatheque.fr/Path/coucou/toto_va_a_la_plage.png

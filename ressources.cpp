@@ -47,8 +47,8 @@ int ressources::getStock()
 
 void ressources::info()
 {
-	std::cout << "il y a " << getNbrRessource() << " ressources dont " << getStock() << " en stock" << std::endl
-		  	  << "Elles sont de type : " << getTypeRessource() << "." << std::endl;
+	std::cout << "il y a " << getNbrRessource() << " ressources dont " << getStock() << " en stock" << std::endl;
+		  	  //<< "Elles sont de type : " << getTypeRessource() << "." << std::endl;
 }
 
 
@@ -390,7 +390,7 @@ void ressources::load(const char *filename)
 				stock++;
 			}
 			else
-				std::cout << "Impossible de créer le media : " << buf << std::endl;
+				std::cout << "Impossible de creer le media : " << buf << std::endl;
     	}
     	//list();
     }
@@ -435,7 +435,7 @@ void ressources::save(const char *filename){
 	char choix = 0; 												//il y avait -1, normal ??
 	if(testFile.is_open()){
 		while (choix != 121 && choix != 110){ //121 = y 110 = n
-			std::cout << "Le fichier existe déjà, êtes vous sur de vouloir ecraser les données ? y/n : ";
+			std::cout << "Le fichier existe deja, êtes vous sur de vouloir ecraser les donnees ? y/n : ";
 			std::cin >> choix;
 		}
 		testFile.close();
